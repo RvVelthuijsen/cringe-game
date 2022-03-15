@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body class="stats-body">
+    <h1 class="stats-title">Score Ranking</h1>
+    <!--  here we display different headings depending on winning/losing state,
+            e.g. "Congrats...." when winning, "ooops, you failed..." when losing-->
+    <h2 class="stats-message">
+      Take a look at the scores of you and other players!
+    </h2>
+    <div class="container-img-statstable">
+      <div class="stats-flex-item">
+        <img
+          src="https://placekitten.com/200/287"
+          class="img-players-character"
+        />
+      </div>
+      <div class="stats-flex-item">
+        <!-- Via JavaScript, DOM manipulation and Tiny DB, creating table rows -->
+        <table class="stats-table">
+          <tr>
+            <th>Rank</th>
+            <th>Player's name</th>
+            <th>Time</th>
+            <th>No. of items</th>
+            <th>Score</th>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Test</td>
+            <td>Test</td>
+            <td>Test</td>
+            <td>Test</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <!--  Change text in button depending on case (play again, try again) -->
+    <div class="container-btn">
+      <a href="game.html"><button class="play-again-btn">Play</button></a>
+    </div>
+    <script src="stats.js"></script>
+  </body>
+</html>

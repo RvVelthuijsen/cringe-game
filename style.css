@@ -1,0 +1,67 @@
+/* Mobile version */
+
+/*we should define css variable for font-sizes*/
+.stats-title {
+    font-size: 6vw;
+}
+
+.stats-message {
+    font-size: 4vw;
+}
+
+
+
+
+.stats-title,
+.stats-message {
+  text-align: center;
+}
+
+.stats-message {
+  margin-bottom: 4rem;
+}
+
+.container-img-statstable {
+  margin-bottom: 6rem;
+}
+
+.stats-flex-item {
+  margin-bottom: 4rem;
+  text-align: center;
+}
+
+.stats-table {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.stats-table th {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.stats-table tr td {
+  text-align: center;
+  font-size: 1.5vw;
+}
+
+.container-btn {
+  text-align: center;
+}
+
+/* still need to size the pic with relative untis 
+.img-players-character {
+  width: 
+} */
+
+/* Desktop Version */
+@media screen and (min-width: 600px) {
+  .container-img-statstable {
+    display: flex;
+    justify-content: space-around;
+  }
+}
+
+/* TO DO: 
+- sizing the image
+- font-sizes (for responsive design)
