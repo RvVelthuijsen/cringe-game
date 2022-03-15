@@ -1,11 +1,45 @@
 * {
   box-sizing: border-box;
+  font-family: monospace;
 }
 
 body {
+  margin: 0;
+  padding: 0; 
   background: url('background.jpg') no-repeat center center fixed;
   background-size: cover;
 }
+/* start header */
+.header {
+  height: 4rem;
+  color: whitesmoke;  
+  background-color: blue;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-container {
+  display: flex;
+  font-size: 3rem;
+  padding: .5rem;
+}
+.navbar {
+
+}
+
+.navbar a {
+  text-decoration: none;
+  color:whitesmoke;
+  padding: 0 1rem;
+  font-size: 2rem;
+}
+
+#active-html {
+  color: red;
+}
+
+/* end header */
 
 #wrapper {
   position: relative;
@@ -16,6 +50,7 @@ body {
 }
 
 #game {
+  margin: 10rem 0 5rem;
   position: relative;
   display: inline-grid;
   background: black;
@@ -166,4 +201,62 @@ body {
       0 20px
     );
   }
+}
+
+
+@media only screen and (max-width: 600px) {
+
+  .header {
+    /* height: auto; */
+  }
+  .navbar {
+    /* background-color: blue; */
+    position: absolute;
+    top: 4rem;
+    right: 0;
+    /* visibility: hidden; */
+    flex-direction: column;
+    z-index: 1;
+    
+  }
+  
+  
+  .navbar a {
+    /* background-color: blue; */
+    /* color: red; */
+    display: flex;
+    visibility: hidden;
+    position: relative;
+    top: 4rem;
+    right: 0;
+    flex-direction: column;
+    text-align: right;
+  }
+  .burger-menu {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+  }
+  .burger {
+    background-color: whitesmoke;
+    height: .25rem;
+    width: 2rem;
+    border-radius: 3px;
+    margin: .25rem 2rem;
+  }
+
+  #game {
+    /* display: none; */
+    margin: 1rem;
+  }
+}
+
+
+@media only screen and (min-width: 600px) {
+  .navbar {
+    display: flex;
+  }
+    .burger-menu {
+      /* visibility: hidden; */
+    }
 }
