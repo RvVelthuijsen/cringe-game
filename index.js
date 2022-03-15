@@ -57,7 +57,7 @@ CLASS_LIST = [
 
 const LEVEL = [
     1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-  1, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 1,
+  1, 3, 2, 2, 2, 2, 2, 2, 2, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 1,
   1, 2, 1, 1, 2, 1, 1, 1, 2, 1, 1, 2, 1, 1, 1, 2, 1, 1, 2, 1,
   1, 7, 1, 1, 2, 1, 1, 1, 2, 1, 1, 2, 1, 1, 1, 2, 1, 1, 7, 1,
   1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1,
@@ -246,6 +246,11 @@ handleKeyInput = (e, objectExist) => {     // e = event
 const gameGrid = document.querySelector('#game');
 const scoreTable = document.querySelector('#score');
 const startButton = document.querySelector('#start-button');
+const leftButton = document.getElementById('left-btn');
+const rightButton = document.getElementById('right-btn');
+// console.log("RIGHT BUTTON",rightButton); // used to check whether the button was recognized or not
+const upButton = document.getElementById('up-btn');
+const downButton = document.getElementById('down-btn');
 // Game constants
 const POWER_PILL_TIME = 10000; // ms
 const GLOBAL_SPEED = 80; // ms
@@ -287,6 +292,21 @@ function startGame() {
                                 // return this.grid[pos].classList.contains(object)}
   
   );
+
+  // hardcoding the directions for buttons
+    rightButton.addEventListener('click', (e) =>
+    pacman.handleKeyInput({keyCode:39,key:"ArrowRight"}, gameBoard.objectExist.bind(gameBoard)) 
+  );
+    leftButton.addEventListener('click', (e) =>
+    pacman.handleKeyInput({keyCode:37,key:"ArrowLeft"}, gameBoard.objectExist.bind(gameBoard)) 
+  );
+    upButton.addEventListener('click', (e) =>
+    pacman.handleKeyInput({keyCode:38,key:"ArrowUp"}, gameBoard.objectExist.bind(gameBoard)) 
+  );
+    downButton.addEventListener('click', (e) =>
+    pacman.handleKeyInput({keyCode:40,key:"ArrowDown"}, gameBoard.objectExist.bind(gameBoard)) 
+  );
+
     timer = setInterval(() => gameLoop(pacman), GLOBAL_SPEED)
 }
 
