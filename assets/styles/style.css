@@ -81,7 +81,7 @@ body {
   position: relative;
   display: inline-grid;
   background: black;
-  background-image: url(./trial\ with\ grid\ 400px.png);
+  background-image: url('../images/grid-400px.png');
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -171,7 +171,7 @@ body {
 }
 
 .dot {
-  background-image: url(./javascript_16x16.png);
+  background-image: url('../images/javascript_16x16.png');
   background-repeat: no-repeat;
   background-size: cover;
 }
