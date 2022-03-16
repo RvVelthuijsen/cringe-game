@@ -64,8 +64,11 @@ body {
   cursor: pointer;
 }
 /* end home */
-/* start game */
-#wrapper {
+/******************************************
+************START GAME********************* 
+ ******************************************/
+ 
+ #wrapper {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -74,7 +77,7 @@ body {
 }
 
 #game {
-  margin: 10rem 0 5rem;
+  margin: 1rem;
   position: relative;
   display: inline-grid;
   background: black;
@@ -115,10 +118,10 @@ body {
 
 #start-button {
   position: absolute;
-  top: 8rem;
+  top: 20%;
   margin: 1rem;
-  width: 10rem;
-  height: 3rem;
+  width: 12rem;
+  height: 4rem;
   font-size: 1.5rem;
   cursor: pointer;
 }
@@ -262,7 +265,9 @@ body {
     );
   }
 }
-
+/******************************************
+************END GAME************************ 
+ ******************************************/
 @media only screen and (max-width: 600px) {
   /* start header */
 
@@ -305,6 +310,7 @@ body {
   #game {
     margin: 1rem;
   }
+  
 }
 
 @media only screen and (min-width: 600px) {
