@@ -82,6 +82,7 @@ const LEVEL = [
 ];
 
 // GAMEBOARD
+let hasMoved = false;
 
 let doorpos = []
 class GameBoard {
@@ -155,10 +156,13 @@ class GameBoard {
       );
       const { classesToRemove, classesToAdd } = character.makeMove();
 
-      if (character.rotation && nextMovePos !== character.pos) {
+      if (nextMovePos !== character.pos) {
         this.rotateDiv(nextMovePos, character.dir.rotation); // we have rotated the div
         // we have to rotat back the previous div or the ghost will be rotated when they move to that div
         this.rotateDiv(character.pos, 0);
+      }
+      if (nextMovePos === character.pos) {
+        this.rotateDiv(character.pos, character.dir.rotation);
       }
 
       // now we can move the character on the div, by remove and adding classes
@@ -196,11 +200,15 @@ class Pacman {
     // initially we don't move before player press a direciton on the keyboard
     if (!this.dir) return false;
 
-    if (this.timer === this.speed) {
-      this.timer = 0;
+    // if (this.timer === this.speed) {
+    //   this.timer = 0;
+    //   return true;
+    // }
+    // this.timer++;
+
+    if (this.dir) {
       return true;
     }
-    this.timer++;
   }
 
   // this method calculate the next move of pacman
@@ -211,9 +219,11 @@ class Pacman {
     if (
       objectExist(nextMovePos, OBJECT_TYPE.WALL) ||
       objectExist(nextMovePos, OBJECT_TYPE.DOOR) 
+      // || hasMoved === true
     ) {
       nextMovePos = this.pos; // we don't do anything, we set the current position
     }
+    
     return { nextMovePos, direction: this.dir }; // we return an object and is the same interface that a ghost class is going to have
   }
   // if we have next move then we have a method to make the move
@@ -221,12 +231,18 @@ class Pacman {
   makeMove() {
     const classesToRemove = [OBJECT_TYPE.PACMAN]; // we remove the pacman class from the current position and we add it to the new position
     const classesToAdd = [OBJECT_TYPE.PACMAN];
+    // hasMoved = true;
+    
 
     return { classesToRemove, classesToAdd }; // with ES6 syntax we don't need to {classesToRemove: classesToRemove} as the name is the same as the const
   }
 
   setNewPos(nextMovePos) {
+    if (this.dir = null) {
+      return;
+    } else{
     this.pos = nextMovePos;
+  }
   }
 
   handleKeyInput = (e, objectExist) => {
@@ -242,10 +258,10 @@ class Pacman {
     }
 
     const nextMovePos = this.pos + dir.movement;
-    if (
-      objectExist(nextMovePos, OBJECT_TYPE.WALL) ||
-      objectExist(nextMovePos, OBJECT_TYPE.DOOR)
-      ) return;
+    // if (
+    //   objectExist(nextMovePos, OBJECT_TYPE.WALL) ||
+    //   objectExist(nextMovePos, OBJECT_TYPE.DOOR)
+    //   ) return;
     this.dir = dir;
   };
 }
