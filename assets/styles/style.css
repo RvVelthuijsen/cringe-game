@@ -22,8 +22,6 @@ body {
   font-size: 3rem;
   padding: 0.5rem;
 }
-.navbar {
-}
 
 .navbar a {
   text-decoration: none;
@@ -67,8 +65,8 @@ body {
 /******************************************
 ************START GAME********************* 
  ******************************************/
- 
- #wrapper {
+
+#wrapper {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -81,7 +79,7 @@ body {
   position: relative;
   display: inline-grid;
   background: black;
-  background-image: url('../images/grid-400px.png');
+  background-image: url("../images/grid-400px.png");
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -138,10 +136,10 @@ body {
   grid-area: 2 / 1 / 4 / 1;
 }
 #right-btn {
-  grid-area: 2 / 3 / 4 / 3 ;
+  grid-area: 2 / 3 / 4 / 3;
 }
 #up-btn {
-  grid-area: 1 / 2 / 3 / 2 
+  grid-area: 1 / 2 / 3 / 2;
 }
 #down-btn {
   grid-area: 3 / 2 / 5 / 2;
@@ -171,7 +169,7 @@ body {
 }
 
 .dot {
-  background-image: url('../images/javascript_16x16.png');
+  background-image: url("../images/javascript_16x16.png");
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -268,74 +266,11 @@ body {
 /******************************************
 ************END GAME************************ 
  ******************************************/
-@media only screen and (max-width: 600px) {
-  /* start header */
-
-  .navbar {
-    visibility: hidden;
-    position: absolute;
-    top: 4rem;
-    right: 0;
-    flex-direction: column;
-    z-index: 1;
-  }
-
-  .navbar a {
-    background-color: blue;
-    display: flex;
-    right: 0;
-    flex-direction: column;
-    text-align: right;
-  }
-  .burger-menu {
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
-  }
-  .burger {
-    background-color: whitesmoke;
-    height: 0.25rem;
-    width: 2rem;
-    border-radius: 3px;
-    margin: 0.25rem 2rem;
-  }
-  /* end header */
-  /* start home */
-
-  .instructions {
-    margin: 0.5rem;
-  }
-
-  /* end home */
-  #game {
-    margin: 1rem;
-  }
-  
-}
-
-@media only screen and (min-width: 600px) {
-  /* start header */
-  .navbar {
-    visibility: visible;
-    display: flex;
-  }
-  /* end header */
-  /* start home */
-
-  .landing-gif-container {
-    margin: 0 40rem;
-  }
-  .instructions {
-    margin: 0 40rem;
-  }
-  /* end home */
-}
 
 /**********************************
 *****        STATS PAGE       *****
 **********************************/
 
-/* Mobile version */
 .stats-title {
   font-size: 3rem;
   margin-bottom: 3rem;
@@ -397,8 +332,68 @@ td {
   text-align: center;
 }
 
-/* Desktop Version */
-@media screen and (min-width: 600px) {
+@media only screen and (max-width: 600px) {
+  /* start header */
+
+  .navbar {
+    visibility: hidden;
+    position: absolute;
+    top: 4rem;
+    right: 0;
+    flex-direction: column;
+    z-index: 1;
+  }
+
+  .navbar a {
+    background-color: blue;
+    display: flex;
+    right: 0;
+    flex-direction: column;
+    text-align: right;
+  }
+  .burger-menu {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+  }
+  .burger {
+    background-color: whitesmoke;
+    height: 0.25rem;
+    width: 2rem;
+    border-radius: 3px;
+    margin: 0.25rem 2rem;
+  }
+  /* end header */
+  /* start home */
+
+  .instructions {
+    margin: 0.5rem;
+  }
+
+  /* end home */
+  #game {
+    margin: 1rem;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  /* start header */
+  .navbar {
+    visibility: visible;
+    display: flex;
+  }
+  /* end header */
+  /* start home */
+
+  .landing-gif-container {
+    margin: 0 40rem;
+  }
+  .instructions {
+    margin: 0 40rem;
+  }
+  /* end home */
+
+  /* start stats */
   .container-img-statstable {
     display: flex;
     justify-content: space-around;
@@ -411,6 +406,7 @@ td {
     margin-right: 0;
   }
 }
+/* end stats */
 
 /**********************************
 *****    IMPRESSUM PAGE       *****
