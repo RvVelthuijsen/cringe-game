@@ -5,14 +5,14 @@
 
 body {
   margin: 0;
-  padding: 0; 
-  background: url('background.jpg') no-repeat center center fixed;
+  padding: 0;
+  background: url("background.jpg") no-repeat center center fixed;
   background-size: cover;
 }
 /* start header */
 .header {
   height: 4rem;
-  color: whitesmoke;  
+  color: whitesmoke;
   background-color: blue;
   display: flex;
   justify-content: space-between;
@@ -22,15 +22,14 @@ body {
 .logo-container {
   display: flex;
   font-size: 3rem;
-  padding: .5rem;
+  padding: 0.5rem;
 }
 .navbar {
-  
 }
 
 .navbar a {
   text-decoration: none;
-  color:whitesmoke;
+  color: whitesmoke;
   padding: 0 1rem;
   font-size: 2rem;
 }
@@ -112,7 +111,6 @@ body {
   background: white;
   border: 8px solid black;
   border-radius: 50%;
-
 }
 
 .pill {
@@ -128,7 +126,7 @@ body {
 }
 
 .ghost::before {
-  content: '';
+  content: "";
   display: block;
   position: absolute;
   width: 3px;
@@ -141,7 +139,7 @@ body {
 }
 
 .ghost::after {
-  content: '';
+  content: "";
   display: block;
   position: absolute;
   width: 3px;
@@ -203,9 +201,7 @@ body {
   }
 }
 
-
 @media only screen and (max-width: 600px) {
-
   .header {
     /* height: auto; */
   }
@@ -216,10 +212,8 @@ body {
     right: 0;
     flex-direction: column;
     z-index: 1;
-    
   }
-  
-  
+
   .navbar a {
     /* visibility: hidden; */
     background-color: blue;
@@ -235,10 +229,10 @@ body {
   }
   .burger {
     background-color: whitesmoke;
-    height: .25rem;
+    height: 0.25rem;
     width: 2rem;
     border-radius: 3px;
-    margin: .25rem 2rem;
+    margin: 0.25rem 2rem;
   }
 
   #game {
@@ -247,13 +241,71 @@ body {
   }
 }
 
-
 @media only screen and (min-width: 600px) {
   .navbar {
     visibility: visible;
     display: flex;
   }
-    .burger-menu {
-      /* visibility: hidden; */
-    }
+  .burger-menu {
+    /* visibility: hidden; */
+  }
 }
+
+/**********************************
+*****        STATS PAGE       *****
+**********************************/
+
+/* Mobile version */
+.stats-title {
+    font-size: 3rem;
+    margin-bottom: 3rem;
+  }
+  
+  .stats-message {
+    font-size: 2rem;
+    margin-bottom: 4rem;
+  }
+  
+  .stats-title,
+  .stats-message {
+      @@ -33,35 +287,40 @@
+  .stats-table {
+    margin-left: auto;
+    margin-right: auto;
+    width: 70vw;
+  }
+  
+  .stats-table th {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    font-size: 1.5rem;
+  }
+  
+  .stats-table tr td {
+    text-align: center;
+    font-size: 1rem;
+  }
+  
+  .container-btn {
+    text-align: center;
+  }
+  
+  .img-players-character {
+    width: 50vw;
+    height: 50vw;
+  }
+  
+  /* Desktop Version */
+  @media screen and (min-width: 600px) {
+    .container-img-statstable {
+      display: flex;
+      justify-content: space-around;
+    }
+    .img-players-character {
+      width: 30vw;
+      height: 30vw;
+    }
+    .stats-table {
+      width: 60vw;
+    }
+  }
