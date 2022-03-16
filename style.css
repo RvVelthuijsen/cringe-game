@@ -1,0 +1,379 @@
+* {
+  box-sizing: border-box;
+  font-family: monospace;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: url("background.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
+/* start header */
+.header {
+  height: 4rem;
+  color: whitesmoke;
+  background-color: blue;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-container {
+  display: flex;
+  font-size: 3rem;
+  padding: 0.5rem;
+}
+.navbar {
+}
+
+.navbar a {
+  text-decoration: none;
+  color: whitesmoke;
+  padding: 0 1rem;
+  font-size: 2rem;
+}
+
+#active-html {
+  color: red;
+}
+
+/* end header */
+/* start home */
+
+.landing-page {
+  text-align: center;
+}
+
+.landing-gif-container img {
+  width: 100%;
+  height: auto;
+}
+.instructions {
+  display: grid;
+  justify-content: space-between;
+  align-items: center;
+}
+.instructions p {
+  grid-column: 1 / 3;
+  grid-row: 2;
+}
+.play-btn {
+  margin: 0.5rem 2rem;
+}
+.play-btn button {
+  height: 2.5rem;
+  cursor: pointer;
+}
+/* end home */
+/* start game */
+#wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#game {
+  margin: 10rem 0 5rem;
+  position: relative;
+  display: inline-grid;
+  background: black;
+  /* background-image: url(./bear.jpeg);
+  background-repeat: no-repeat; */
+}
+
+.game-status {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 50px;
+  border: 5px darkblue solid;
+  background: black;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.5rem;
+}
+
+#score {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 50px;
+  border: 5px darkblue solid;
+  background: black;
+  margin-top: 20px;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 2rem;
+}
+
+#start-button {
+  margin-top: 20px;
+}
+
+.hide {
+  display: none;
+}
+
+.square {
+  display: block;
+}
+
+.blank {
+  background: black;
+}
+
+.wall {
+  border: 1px solid blue;
+}
+
+.dot {
+  background: white;
+  border: 8px solid black;
+  border-radius: 50%;
+}
+
+.pill {
+  background: white;
+  border: 5px solid black;
+  border-radius: 50%;
+}
+
+.ghost {
+  position: relative;
+  border-radius: 10px 10px 2px 2px;
+  border: none;
+}
+
+.ghost::before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: black;
+  border-radius: 50%;
+  left: 3px;
+  top: 5px;
+  border: 2px solid white;
+}
+
+.ghost::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: black;
+  border-radius: 50%;
+  right: 3px;
+  top: 5px;
+  border: 2px solid white;
+}
+
+.scared {
+  background: blue !important;
+}
+
+.blinky {
+  background: red;
+}
+
+.pinky {
+  background: pink;
+}
+
+.inky {
+  background: cyan;
+}
+
+.clyde {
+  background: orange;
+}
+
+.pacman {
+  background: yellow;
+  border: none;
+  border-radius: 50%;
+  clip-path: polygon(
+    0 0,
+    20px 0,
+    20px -5px,
+    8px 10px,
+    20px 25px,
+    20px 20px,
+    0 20px
+  );
+  animation: chew 0.2s linear forwards infinite;
+}
+
+@keyframes chew {
+  50% {
+    clip-path: polygon(
+      0 0,
+      20px 0,
+      20px 10px,
+      8px 10px,
+      20px 10px,
+      20px 20px,
+      0 20px
+    );
+  }
+}
+
+@media only screen and (max-width: 600px) {
+
+
+  /* start header */
+
+	.navbar {
+    visibility: hidden;
+    position: absolute;
+    top: 4rem;
+    right: 0;
+    flex-direction: column;
+    z-index: 1;
+  }
+
+  .navbar a {
+    background-color: blue;
+    display: flex;
+    right: 0;
+    flex-direction: column;
+    text-align: right;
+  }
+  .burger-menu {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+  }
+  .burger {
+    background-color: whitesmoke;
+    height: 0.25rem;
+    width: 2rem;
+    border-radius: 3px;
+    margin: 0.25rem 2rem;
+  }
+  /* end header */
+  /* start home */
+
+  .instructions {
+    margin: 0.5rem;
+  }
+
+  /* end home */
+  #game {
+    margin: 1rem;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  /* start header */
+  .navbar {
+    visibility: visible;
+    display: flex;
+  }
+  .burger-menu {
+    /* visibility: hidden; */
+  }
+
+    /* end header */
+    /* start home */
+
+  .landing-gif-container {
+    margin: 0 40rem;
+  }
+  .instructions {
+    margin: 0 40rem;
+  }
+  /* end home */
+}
+}
+
+/**********************************
+*****        STATS PAGE       *****
+**********************************/
+
+/* Mobile version */
+.stats-title {
+  font-size: 3rem;
+  margin-bottom: 3rem;
+}
+
+.stats-message {
+  font-size: 2rem;
+  margin-bottom: 4rem;
+}
+
+.stats-title,
+.stats-message {
+  text-align: center;
+}
+
+.stats-flex-item {
+  text-align: center;
+}
+
+.img-players-character {
+  width: 100%;
+  height: auto;
+}
+
+.img-container {
+  margin: 20%;
+}
+
+.stats-table {
+  width: 100%;
+  height: auto;
+  margin-bottom: 6rem;
+}
+
+.table-container {
+  margin: 10%;
+  overflow-x: auto;
+}
+
+.stats-table,
+th,
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+.stats-table th {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.stats-table tr td {
+  text-align: center;
+  font-size: 1rem;
+}
+
+.container-btn {
+  text-align: center;
+}
+
+/* Desktop Version */
+@media screen and (min-width: 600px) {
+  .container-img-statstable {
+    display: flex;
+    justify-content: space-around;
+  }
+  .img-container {
+    margin: 5%;
+  }
+  .table-container {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
