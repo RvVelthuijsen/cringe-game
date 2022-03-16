@@ -257,55 +257,69 @@ body {
 
 /* Mobile version */
 .stats-title {
-    font-size: 3rem;
-    margin-bottom: 3rem;
+  font-size: 3rem;
+  margin-bottom: 3rem;
+}
+
+.stats-message {
+  font-size: 2rem;
+  margin-bottom: 4rem;
+}
+
+.stats-title,
+.stats-message {
+  text-align: center;
+}
+
+.stats-flex-item {
+  text-align: center;
+}
+
+.img-players-character {
+  width: 40vw;
+  height: 40vw;
+  margin: 4rem;
+}
+
+.stats-table {
+  width: 60vw;
+  margin: auto;
+  margin-bottom: 6rem;
+}
+
+.stats-table,
+th,
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+.stats-table th {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.stats-table tr td {
+  text-align: center;
+  font-size: 1rem;
+}
+
+.container-btn {
+  text-align: center;
+}
+
+/* Desktop Version */
+@media screen and (min-width: 600px) {
+  .container-img-statstable {
+    display: flex;
+    justify-content: space-around;
   }
-  
-  .stats-message {
-    font-size: 2rem;
-    margin-bottom: 4rem;
-  }
-  
-  .stats-title,
-  .stats-message {
-      @@ -33,35 +287,40 @@
-  .stats-table {
-    margin-left: auto;
-    margin-right: auto;
-    width: 70vw;
-  }
-  
-  .stats-table th {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-    font-size: 1.5rem;
-  }
-  
-  .stats-table tr td {
-    text-align: center;
-    font-size: 1rem;
-  }
-  
-  .container-btn {
-    text-align: center;
-  }
-  
   .img-players-character {
-    width: 50vw;
-    height: 50vw;
+    width: 25vw;
+    height: 25vw;
   }
-  
-  /* Desktop Version */
-  @media screen and (min-width: 600px) {
-    .container-img-statstable {
-      display: flex;
-      justify-content: space-around;
-    }
-    .img-players-character {
-      width: 30vw;
-      height: 30vw;
-    }
-    .stats-table {
-      width: 60vw;
-    }
+  .stats-table {
+    width: 60vw;
   }
+}
