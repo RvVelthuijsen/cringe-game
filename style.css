@@ -80,14 +80,14 @@ body {
 .door {
   background: green;
 }
+
 .dooropen {
   background: greenyellow;
 }
 
 .dot {
-  background: white;
-  border: 8px solid black;
-  border-radius: 50%;
+  background-image: url(./javascript_16x16.png);
+  background-repeat: no-repeat;
 }
 
 .pill {
