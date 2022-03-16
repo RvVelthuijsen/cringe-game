@@ -45,7 +45,7 @@ body {
   text-align: center;
 }
 
-.landing-gif-container img{
+.landing-gif-container img {
   width: 100%;
   height: auto;
 }
@@ -59,9 +59,9 @@ body {
   grid-row: 2;
 }
 .play-btn {
-  margin: .5rem 2rem;
+  margin: 0.5rem 2rem;
 }
-.play-btn button{
+.play-btn button {
   height: 2.5rem;
   cursor: pointer;
 }
@@ -230,12 +230,10 @@ body {
 
 @media only screen and (max-width: 600px) {
 
+
   /* start header */
 
-  .header {
-    /* height: auto; */
-  }
-  .navbar {
+	.navbar {
     visibility: hidden;
     position: absolute;
     top: 4rem;
@@ -243,7 +241,6 @@ body {
     flex-direction: column;
     z-index: 1;
   }
-  
 
   .navbar a {
     background-color: blue;
@@ -264,14 +261,14 @@ body {
     border-radius: 3px;
     margin: 0.25rem 2rem;
   }
-/* end header */
-/* start home */
+  /* end header */
+  /* start home */
 
-.instructions {
-  margin: .5rem;
-}
+  .instructions {
+    margin: 0.5rem;
+  }
 
-/* end home */
+  /* end home */
   #game {
     margin: 1rem;
   }
@@ -286,6 +283,7 @@ body {
   .burger-menu {
     /* visibility: hidden; */
   }
+
     /* end header */
     /* start home */
 
@@ -324,15 +322,23 @@ body {
 }
 
 .img-players-character {
-  width: 40vw;
-  height: 40vw;
-  margin: 4rem;
+  width: 100%;
+  height: auto;
+}
+
+.img-container {
+  margin: 20%;
 }
 
 .stats-table {
-  width: 60vw;
-  margin: auto;
+  width: 100%;
+  height: auto;
   margin-bottom: 6rem;
+}
+
+.table-container {
+  margin: 10%;
+  overflow-x: auto;
 }
 
 .stats-table,
@@ -363,11 +369,11 @@ td {
     display: flex;
     justify-content: space-around;
   }
-  .img-players-character {
-    width: 25vw;
-    height: 25vw;
+  .img-container {
+    margin: 5%;
   }
-  .stats-table {
-    width: 60vw;
+  .table-container {
+    margin-left: 0;
+    margin-right: 0;
   }
 }
