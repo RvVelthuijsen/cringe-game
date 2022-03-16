@@ -40,7 +40,34 @@ body {
 }
 
 /* end header */
+/* start home */
 
+.landing-page {
+  text-align: center;
+}
+
+.landing-gif-container img{
+  width: 100%;
+  height: auto;
+}
+.instructions {
+  display: grid;
+  justify-content: space-between;
+  align-items: center;
+}
+.instructions p {
+  grid-column: 1 / 3;
+  grid-row: 2;
+}
+.play-btn {
+  margin: .5rem 2rem;
+}
+.play-btn button{
+  height: 2.5rem;
+  cursor: pointer;
+}
+/* end home */
+/* start game */
 #wrapper {
   position: relative;
   display: flex;
@@ -206,9 +233,8 @@ body {
 
 @media only screen and (max-width: 600px) {
 
-  .header {
-    /* height: auto; */
-  }
+  /* start header */
+
   .navbar {
     visibility: hidden;
     position: absolute;
@@ -219,9 +245,7 @@ body {
     
   }
   
-  
   .navbar a {
-    /* visibility: hidden; */
     background-color: blue;
     display: flex;
     right: 0;
@@ -240,20 +264,37 @@ body {
     border-radius: 3px;
     margin: .25rem 2rem;
   }
+/* end header */
+/* start home */
 
+.instructions {
+  margin: .5rem;
+}
+
+/* end home */
   #game {
-    /* display: none; */
     margin: 1rem;
   }
 }
 
 
 @media only screen and (min-width: 600px) {
+  /* start header */
   .navbar {
     visibility: visible;
     display: flex;
   }
-    .burger-menu {
-      /* visibility: hidden; */
-    }
+  .burger-menu {
+    /* visibility: hidden; */
+  }
+    /* end header */
+    /* start home */
+
+  .landing-gif-container {
+    margin: 0 40rem;
+  }
+  .instructions {
+    margin: 0 40rem;
+  }
+  /* end home */
 }
