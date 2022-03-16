@@ -45,7 +45,7 @@ body {
   text-align: center;
 }
 
-.landing-gif-container img{
+.landing-gif-container img {
   width: 100%;
   height: auto;
 }
@@ -59,9 +59,9 @@ body {
   grid-row: 2;
 }
 .play-btn {
-  margin: .5rem 2rem;
+  margin: 0.5rem 2rem;
 }
-.play-btn button{
+.play-btn button {
   height: 2.5rem;
   cursor: pointer;
 }
@@ -229,15 +229,9 @@ body {
 }
 
 @media only screen and (max-width: 600px) {
-<<<<<<< HEAD
-
-  /* start header */
-
-=======
   .header {
     /* height: auto; */
   }
->>>>>>> 9e65c3366ffe2ee8f42d75c700485e1759e829f1
   .navbar {
     visibility: hidden;
     position: absolute;
@@ -246,11 +240,6 @@ body {
     flex-direction: column;
     z-index: 1;
   }
-<<<<<<< HEAD
-  
-=======
-
->>>>>>> 9e65c3366ffe2ee8f42d75c700485e1759e829f1
   .navbar a {
     background-color: blue;
     display: flex;
@@ -270,14 +259,14 @@ body {
     border-radius: 3px;
     margin: 0.25rem 2rem;
   }
-/* end header */
-/* start home */
+  /* end header */
+  /* start home */
 
-.instructions {
-  margin: .5rem;
-}
+  .instructions {
+    margin: 0.5rem;
+  }
 
-/* end home */
+  /* end home */
   #game {
     margin: 1rem;
   }
@@ -292,19 +281,6 @@ body {
   .burger-menu {
     /* visibility: hidden; */
   }
-<<<<<<< HEAD
-    /* end header */
-    /* start home */
-
-  .landing-gif-container {
-    margin: 0 40rem;
-  }
-  .instructions {
-    margin: 0 40rem;
-  }
-  /* end home */
-}
-=======
 }
 
 /**********************************
@@ -379,4 +355,3 @@ td {
     width: 60vw;
   }
 }
->>>>>>> 9e65c3366ffe2ee8f42d75c700485e1759e829f1
