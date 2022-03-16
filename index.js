@@ -30,7 +30,7 @@ const OBJECT_TYPE = {
   BLANK: 'blank',
   WALL: 'wall',
   DOT: 'dot',
-  BLINKY: 'blinky',
+  DOOR: 'door',
   PINKY: 'pinky',
   INKY: 'inky',
   CLYDE: 'clyde',
@@ -38,66 +38,69 @@ const OBJECT_TYPE = {
   PACMAN: 'pacman',
   GHOST: 'ghost',
   SCARED: 'scared',
-  GHOSTLAIR: 'lair'
+  GHOSTLAIR: 'lair',
+  STAR: 'star',
+  DOOROPEN: 'dooropen'
 };
 
 // Lookup array for classes
-CLASS_LIST = [
+const CLASS_LIST = [
   OBJECT_TYPE.BLANK,
   OBJECT_TYPE.WALL,
   OBJECT_TYPE.DOT,
-  OBJECT_TYPE.BLINKY,
+  OBJECT_TYPE.DOOR,
   OBJECT_TYPE.PINKY,
   OBJECT_TYPE.INKY,
   OBJECT_TYPE.CLYDE,
   OBJECT_TYPE.PILL,
   OBJECT_TYPE.PACMAN,
-  OBJECT_TYPE.GHOSTLAIR
+  OBJECT_TYPE.GHOSTLAIR,
+  OBJECT_TYPE.STAR,
+  OBJECT_TYPE.DOOROPEN
 ];
 
 const LEVEL = [
-    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-  1, 3, 2, 2, 2, 2, 2, 2, 2, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 1,
-  1, 2, 1, 1, 2, 1, 1, 1, 2, 1, 1, 2, 1, 1, 1, 2, 1, 1, 2, 1,
-  1, 7, 1, 1, 2, 1, 1, 1, 2, 1, 1, 2, 1, 1, 1, 2, 1, 1, 7, 1,
-  1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1,
-  1, 2, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1, 1, 2, 1, 2, 1, 1, 2, 1,
-  1, 2, 2, 2, 2, 1, 2, 2, 2, 1, 1, 2, 2, 2, 1, 2, 2, 2, 2, 1,
-  1, 1, 1, 1, 2, 1, 1, 1, 2, 1, 1, 2, 1, 1, 1, 2, 1, 1, 1, 1,
-  0, 0, 0, 1, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 1, 0, 0, 0,
-  0, 0, 0, 1, 2, 1, 2, 1, 9, 9, 9, 9, 1, 2, 1, 2, 1, 0, 0, 0,
-  1, 1, 1, 1, 2, 1, 2, 1, 9, 9, 9, 9, 1, 2, 1, 2, 1, 1, 1, 1, 
-  1, 0, 0, 0, 2, 2, 2, 1, 9, 9, 9, 9, 1, 2, 2, 2, 0, 0, 0, 1, 
-  1, 1, 1, 1, 2, 1, 2, 1, 9, 9, 9, 9, 1, 2, 1, 2, 1, 1, 1, 1, 
-  0, 0, 0, 1, 2, 1, 2, 1, 1, 1, 1, 1, 1, 2, 1, 2, 1, 0, 0, 0,
-  0, 0, 0, 1, 2, 1, 2, 0, 0, 0, 0, 0, 0, 2, 1, 2, 1, 0, 0, 0,
-  1, 1, 1, 1, 2, 1, 1, 1, 2, 1, 1, 2, 1, 1, 1, 2, 1, 1, 1, 1,
-  1, 2, 2, 2, 2, 1, 2, 2, 2, 1, 1, 2, 2, 2, 1, 2, 2, 2, 2, 1,
-  1, 2, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1, 1, 2, 1, 2, 1, 1, 2, 1,
-  1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1,
-  1, 7, 1, 1, 2, 1, 1, 1, 2, 1, 1, 2, 1, 1, 1, 2, 1, 1, 7, 1,
-  1, 2, 1, 1, 2, 1, 1, 1, 2, 1, 1, 2, 1, 1, 1, 2, 1, 1, 2, 1,
-  1, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 1,
   1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+2, 0, 0, 1, 1, 1, 1, 1, 3, 3, 1, 1, 1, 1, 1, 0, 0, 0, 0, 2,
+0, 0, 0, 1, 1, 1, 1, 1, 3, 3, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0,
+0, 0, 0, 1, 1, 1, 1, 1, 3, 3, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0,
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1,
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1,
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1,
+0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1,
+0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1,
+0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1,
+0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1,
+0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1,
+0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1,
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1,
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1,
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1,
 ];
 
 
 // GAMEBOARD
 
-
+let doorpos = []
 class GameBoard {
   constructor(DOMGrid) {
-    this.dotCount = 0;
     this.grid = [];
     this.DOMGrid = DOMGrid;
   }
 
-  showGameStatus() {
-
+  showGameStatus(gameWin) {
+     // Create and show game win or game over
+    const div = document.createElement('div');
+    div.classList.add('game-status');
+    div.innerHTML = `${gameWin ? 'WIN!' : 'GAME OVER!'}`;
+    this.DOMGrid.appendChild(div);
   }
 
   createGrid(level) {
-    this.dotCount = 0;
     this.grid = [];
     this.DOMGrid.innerHTML = '';
     // First set correct amount of columns based on Grid Size and Cell Size
@@ -109,10 +112,15 @@ class GameBoard {
       div.style.cssText = `width: ${CELL_SIZE}px; height: ${CELL_SIZE}px;`;
       this.DOMGrid.appendChild(div);
       this.grid.push(div);
-
-      // Add dots
-      if (CLASS_LIST[square] === OBJECT_TYPE.DOT) this.dotCount++;
     });
+
+    // creating an array with door.pos
+    for (let i = 0; i < this.grid.length; i++) {
+      if (this.grid[i].classList.contains('door')) {
+        doorpos.push([i])
+      }
+      
+    }
   }
 
   // to add or remove classes
@@ -167,7 +175,7 @@ class GameBoard {
 }
 
 
-//  CRINGE
+//  PACMAN
 
 
 class Pacman {
@@ -198,7 +206,7 @@ class Pacman {
     // if statement to check if we collide with a wall
     if(
       objectExist(nextMovePos, OBJECT_TYPE.WALL) ||
-      objectExist(nextMovePos, OBJECT_TYPE.GHOSTLAIR) 
+      objectExist(nextMovePos, OBJECT_TYPE.DOOR) 
     ) {
         nextMovePos = this.pos;  // we don't do anything, we set the current position
       }
@@ -232,7 +240,7 @@ handleKeyInput = (e, objectExist) => {     // e = event
     const nextMovePos = this.pos + dir.movement;
     if (
       objectExist(nextMovePos, OBJECT_TYPE.WALL) ||
-      objectExist(nextMovePos, OBJECT_TYPE.GHOSTLAIR)
+      objectExist(nextMovePos, OBJECT_TYPE.DOOR)
       ) return;
     this.dir = dir;
   };
@@ -261,16 +269,57 @@ let timer = null;
 let gameWin = false;
 let powerPillActive = false;
 let powerPillTimer = null;
+let dotCount = 2;
+let doorOpen = false;
 
 
 function playAudio() {}
 
-function gameOver() {}
+function gameOver(pacman, grid) {
+  document.removeEventListener('keydown', e => 
+  pacman.handleKeyInput(e, gameBoard.objectExist.bind(gameBoard)))
+
+  gameBoard.showGameStatus(gameWin);
+
+  clearInterval(timer); // we stop the game loop
+
+  startButton.classList.remove('hide')
+
+}
 
 function checkCollision() {}
 
 function gameLoop(pacman, ghosts) {
     gameBoard.moveCharacter(pacman)
+
+    // check if pacman eats a key
+    if(gameBoard.objectExist(pacman.pos, OBJECT_TYPE.DOT)) {
+      gameBoard.removeObject(pacman.pos, [OBJECT_TYPE.DOT]);
+      dotCount--;
+
+      if(dotCount === 0) {
+        doorOpen = true;
+      }
+    } 
+
+
+    // check if pacman can enter the door
+    if (doorOpen === true){
+      for (let i = 0; i < doorpos.length; i++) {
+      gameBoard.removeObject(doorpos[i], [OBJECT_TYPE.DOOR]);
+      gameBoard.addObject(doorpos[i], [OBJECT_TYPE.DOOROPEN])
+      
+      }
+    }
+
+    // // Check if all dots have been eaten
+    // if(gameBoard.keyCount === 0) {
+    //   gameWin = true;
+    //   gameOver(pacman);
+    // }
+
+    // // Show the score
+    // scoreTable.innerHTML = score;
 }
 
 function startGame() {
@@ -282,8 +331,8 @@ function startGame() {
 
     gameBoard.createGrid(LEVEL);
 
-    const pacman = new Pacman(2, 287); // Pacman(speed, position)
-    gameBoard.addObject(287, [OBJECT_TYPE.PACMAN]); // we are adding a class(position, array with classes)
+    const pacman = new Pacman(2, 380); // Pacman(speed, position)
+    gameBoard.addObject(380, [OBJECT_TYPE.PACMAN]); // we are adding a class(position, array with classes)
 
     document.addEventListener('keydown', (e) =>
     pacman.handleKeyInput(e, gameBoard.objectExist.bind(gameBoard)) // we have to bind it because we call if from a function, otherwise it will return undefined

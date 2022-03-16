@@ -18,9 +18,9 @@ body {
 #game {
   position: relative;
   display: inline-grid;
-  background: black;
-  /* background-image: url(./bear.jpeg);
-  background-repeat: no-repeat; */
+  /* background: black; */
+  background-image: url(./theme.png);
+
 }
 
 .game-status {
@@ -66,13 +66,18 @@ body {
 }
 
 .blank {
-  background: black;
+  /* background: black; */
 }
 
 .wall {
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
 }
-
+.door {
+  background: green;
+}
+.dooropen {
+  background: greenyellow;
+}
 .dot {
   background: white;
   border: 8px solid black;
