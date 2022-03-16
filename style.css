@@ -229,10 +229,11 @@ body {
 }
 
 @media only screen and (max-width: 600px) {
-  .header {
-    /* height: auto; */
-  }
-  .navbar {
+
+
+  /* start header */
+
+	.navbar {
     visibility: hidden;
     position: absolute;
     top: 4rem;
@@ -240,6 +241,7 @@ body {
     flex-direction: column;
     z-index: 1;
   }
+
   .navbar a {
     background-color: blue;
     display: flex;
@@ -281,6 +283,18 @@ body {
   .burger-menu {
     /* visibility: hidden; */
   }
+
+    /* end header */
+    /* start home */
+
+  .landing-gif-container {
+    margin: 0 40rem;
+  }
+  .instructions {
+    margin: 0 40rem;
+  }
+  /* end home */
+}
 }
 
 /**********************************
