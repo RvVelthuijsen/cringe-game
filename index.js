@@ -99,20 +99,27 @@ class GameBoard {
     this.grid = [];
     this.DOMGrid.innerHTML = "";
     // First set correct amount of columns based on Grid Size and Cell Size
-    this.DOMGrid.style.cssText = `grid-template-columns: repeat(${GRID_SIZE}, ${CELL_SIZE}px);`;
+    this.DOMGrid.style.cssText = `grid-template-columns: repeat(${GRID_SIZE}, 1fr);`;
 
     level.forEach((square) => {
       const div = document.createElement("div");
       div.classList.add("square", CLASS_LIST[square]);
-      div.style.cssText = `width: ${CELL_SIZE}px; height: ${CELL_SIZE}px;`;
+      // Check if the media query is true
+      const mediaQuery = window.matchMedia('(max-width: 600px)')
+      if (mediaQuery.matches) {
+        div.style.cssText = `width: calc(${CELL_SIZE} * .05rem); height: calc(${CELL_SIZE} * .05rem);`;
+      } else {
+        div.style.cssText = `width: calc(${CELL_SIZE} * .08rem); height: calc(${CELL_SIZE} * .08rem);`;
+        
+      }
       this.DOMGrid.appendChild(div);
       this.grid.push(div);
-
+      
       // Add dots
       if (CLASS_LIST[square] === OBJECT_TYPE.DOT) this.dotCount++;
     });
   }
-
+  
   // to add or remove classes
   // if we want to change the grid to canves, we don't have classes. that's why it calls addobjects
   addObject(pos, classes) {
