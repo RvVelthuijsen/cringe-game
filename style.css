@@ -1,0 +1,259 @@
+* {
+  box-sizing: border-box;
+  font-family: monospace;
+}
+
+body {
+  margin: 0;
+  padding: 0; 
+  background: url('background.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+/* start header */
+.header {
+  height: 4rem;
+  color: whitesmoke;  
+  background-color: blue;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-container {
+  display: flex;
+  font-size: 3rem;
+  padding: .5rem;
+}
+.navbar {
+  
+}
+
+.navbar a {
+  text-decoration: none;
+  color:whitesmoke;
+  padding: 0 1rem;
+  font-size: 2rem;
+}
+
+#active-html {
+  color: red;
+}
+
+/* end header */
+
+#wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#game {
+  margin: 10rem 0 5rem;
+  position: relative;
+  display: inline-grid;
+  background: black;
+  /* background-image: url(./bear.jpeg);
+  background-repeat: no-repeat; */
+}
+
+.game-status {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 50px;
+  border: 5px darkblue solid;
+  background: black;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.5rem;
+}
+
+#score {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 50px;
+  border: 5px darkblue solid;
+  background: black;
+  margin-top: 20px;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 2rem;
+}
+
+#start-button {
+  margin-top: 20px;
+}
+
+.hide {
+  display: none;
+}
+
+.square {
+  display: block;
+}
+
+.blank {
+  background: black;
+}
+
+.wall {
+  border: 1px solid blue;
+}
+
+.dot {
+  background: white;
+  border: 8px solid black;
+  border-radius: 50%;
+
+}
+
+.pill {
+  background: white;
+  border: 5px solid black;
+  border-radius: 50%;
+}
+
+.ghost {
+  position: relative;
+  border-radius: 10px 10px 2px 2px;
+  border: none;
+}
+
+.ghost::before {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: black;
+  border-radius: 50%;
+  left: 3px;
+  top: 5px;
+  border: 2px solid white;
+}
+
+.ghost::after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: black;
+  border-radius: 50%;
+  right: 3px;
+  top: 5px;
+  border: 2px solid white;
+}
+
+.scared {
+  background: blue !important;
+}
+
+.blinky {
+  background: red;
+}
+
+.pinky {
+  background: pink;
+}
+
+.inky {
+  background: cyan;
+}
+
+.clyde {
+  background: orange;
+}
+
+.pacman {
+  background: yellow;
+  border: none;
+  border-radius: 50%;
+  clip-path: polygon(
+    0 0,
+    20px 0,
+    20px -5px,
+    8px 10px,
+    20px 25px,
+    20px 20px,
+    0 20px
+  );
+  animation: chew 0.2s linear forwards infinite;
+}
+
+@keyframes chew {
+  50% {
+    clip-path: polygon(
+      0 0,
+      20px 0,
+      20px 10px,
+      8px 10px,
+      20px 10px,
+      20px 20px,
+      0 20px
+    );
+  }
+}
+
+
+@media only screen and (max-width: 600px) {
+
+  .header {
+    /* height: auto; */
+  }
+  .navbar {
+    visibility: hidden;
+    position: absolute;
+    top: 4rem;
+    right: 0;
+    flex-direction: column;
+    z-index: 1;
+    
+  }
+  
+  
+  .navbar a {
+    /* visibility: hidden; */
+    background-color: blue;
+    display: flex;
+    right: 0;
+    flex-direction: column;
+    text-align: right;
+  }
+  .burger-menu {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+  }
+  .burger {
+    background-color: whitesmoke;
+    height: .25rem;
+    width: 2rem;
+    border-radius: 3px;
+    margin: .25rem 2rem;
+  }
+
+  #game {
+    /* display: none; */
+    margin: 1rem;
+  }
+}
+
+
+@media only screen and (min-width: 600px) {
+  .navbar {
+    visibility: visible;
+    display: flex;
+  }
+    .burger-menu {
+      /* visibility: hidden; */
+    }
+}
