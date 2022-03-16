@@ -25,7 +25,7 @@ body {
   padding: .5rem;
 }
 .navbar {
-
+  
 }
 
 .navbar a {
@@ -250,6 +250,7 @@ body {
 
 @media only screen and (min-width: 600px) {
   .navbar {
+    visibility: visible;
     display: flex;
   }
     .burger-menu {
