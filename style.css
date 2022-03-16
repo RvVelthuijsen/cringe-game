@@ -3,7 +3,7 @@
 }
 
 body {
-  background: url('background.jpg') no-repeat center center fixed;
+  background: url("background.jpg") no-repeat center center fixed;
   background-size: cover;
 }
 
@@ -18,9 +18,10 @@ body {
 #game {
   position: relative;
   display: inline-grid;
-  /* background: black; */
-  background-image: url(./theme.png);
-
+  background: black;
+  background-image: url(./trial\ with\ grid\ 400px.png);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .game-status {
@@ -47,16 +48,44 @@ body {
   height: 50px;
   border: 5px darkblue solid;
   background: black;
-  margin-top: 20px;
+  margin: 1rem;
   color: white;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 2rem;
 }
 
 #start-button {
-  margin-top: 20px;
+  position: absolute;
+  top: 8rem;
+  margin: 1rem;
+  width: 10rem;
+  height: 3rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+/* start movement buttons */
+.btn {
+  width: 20rem;
+  height: 10rem;
+  display: grid;
+  grid-template-columns: 1fr 1.25fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  gap: 1rem;
+}
+#left-btn {
+  grid-area: 2 / 1 / 4 / 1;
+}
+#right-btn {
+  grid-area: 2 / 3 / 4 / 3 ;
+}
+#up-btn {
+  grid-area: 1 / 2 / 3 / 2 
+}
+#down-btn {
+  grid-area: 3 / 2 / 5 / 2;
 }
 
+/* end movement buttons */
 .hide {
   display: none;
 }
@@ -78,11 +107,11 @@ body {
 .dooropen {
   background: greenyellow;
 }
-.dot {
-  background: white;
-  border: 8px solid black;
-  border-radius: 50%;
 
+.dot {
+  background-image: url(./javascript_16x16.png);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .pill {
@@ -98,7 +127,7 @@ body {
 }
 
 .ghost::before {
-  content: '';
+  content: "";
   display: block;
   position: absolute;
   width: 3px;
@@ -111,7 +140,7 @@ body {
 }
 
 .ghost::after {
-  content: '';
+  content: "";
   display: block;
   position: absolute;
   width: 3px;
@@ -145,16 +174,18 @@ body {
 
 .pacman {
   background: yellow;
+  /* background-repeat: no-repeat; */
+  /* background-size: cover; */
   border: none;
   border-radius: 50%;
   clip-path: polygon(
     0 0,
-    20px 0,
-    20px -5px,
-    8px 10px,
-    20px 25px,
-    20px 20px,
-    0 20px
+    40px 0,
+    40px -10px,
+    16px 20px,
+    40px 50px,
+    40px 40px,
+    0 40px
   );
   animation: chew 0.2s linear forwards infinite;
 }
@@ -163,12 +194,12 @@ body {
   50% {
     clip-path: polygon(
       0 0,
-      20px 0,
-      20px 10px,
-      8px 10px,
-      20px 10px,
-      20px 20px,
-      0 20px
+      40px 0,
+      40px 20px,
+      16px 20px,
+      40px 20px,
+      40px 40px,
+      0 40px
     );
   }
 }
