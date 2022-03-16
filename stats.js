@@ -1,5 +1,5 @@
-// Changing the stats message
-const statsMessage = document.querySelector(.stats-message);
+// Changing the stats message"
+const statsMessage = document.querySelector(".stats-message");
 
 /*if (player wins) {
     statsMessage.innerHTML = "Congrats! You did it!";
@@ -11,4 +11,4 @@ else if (player loses) {
 
 // Adding rows to the table
 
-const playersTableRow = document.createElement("tr")
+const playersTableRow = document.createElement("tr");
