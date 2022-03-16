@@ -280,10 +280,6 @@ body {
     visibility: visible;
     display: flex;
   }
-  .burger-menu {
-    /* visibility: hidden; */
-  }
-
     /* end header */
     /* start home */
 
@@ -294,7 +290,6 @@ body {
     margin: 0 40rem;
   }
   /* end home */
-}
 }
 
 /**********************************
