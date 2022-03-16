@@ -112,7 +112,7 @@ class GameBoard {
       if (mediaQuery.matches) {
         div.style.cssText = `width: calc(${CELL_SIZE} * .05rem); height: calc(${CELL_SIZE} * .05rem);`;
       } else {
-        div.style.cssText = `width: calc(${CELL_SIZE} * .08rem); height: calc(${CELL_SIZE} * .08rem);`;
+        div.style.cssText = `width: calc(${CELL_SIZE} * .1rem); height: calc(${CELL_SIZE} * .1rem);`;
         
       }
       this.DOMGrid.appendChild(div);
