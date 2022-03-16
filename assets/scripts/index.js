@@ -82,7 +82,6 @@ const LEVEL = [
 ];
 
 // GAMEBOARD
-let hasMoved = false;
 
 let doorpos = []
 class GameBoard {
@@ -155,12 +154,13 @@ class GameBoard {
         this.objectExist.bind(this)
       );
       const { classesToRemove, classesToAdd } = character.makeMove();
-
-      if (nextMovePos !== character.pos) {
+      
+      if (character.rotation && nextMovePos !== character.pos) {
         this.rotateDiv(nextMovePos, character.dir.rotation); // we have rotated the div
         // we have to rotat back the previous div or the ghost will be rotated when they move to that div
         this.rotateDiv(character.pos, 0);
       }
+      // to rotate div in place we check if nextMovePos is char.pos then rotating the char.pos div
       if (nextMovePos === character.pos) {
         this.rotateDiv(character.pos, character.dir.rotation);
       }
@@ -200,12 +200,15 @@ class Pacman {
     // initially we don't move before player press a direciton on the keyboard
     if (!this.dir) return false;
 
+
     // if (this.timer === this.speed) {
     //   this.timer = 0;
     //   return true;
     // }
     // this.timer++;
 
+    
+    // instead of returning true once every N of loops through the timer we return true only is 'this.dir' which is a keypress is true
     if (this.dir) {
       return true;
     }
@@ -219,7 +222,6 @@ class Pacman {
     if (
       objectExist(nextMovePos, OBJECT_TYPE.WALL) ||
       objectExist(nextMovePos, OBJECT_TYPE.DOOR) 
-      // || hasMoved === true
     ) {
       nextMovePos = this.pos; // we don't do anything, we set the current position
     }
@@ -230,13 +232,12 @@ class Pacman {
   // this is a div in the dom, so we can add/remove classes when we make a move
   makeMove() {
     const classesToRemove = [OBJECT_TYPE.PACMAN]; // we remove the pacman class from the current position and we add it to the new position
-    const classesToAdd = [OBJECT_TYPE.PACMAN];
-    // hasMoved = true;
-    
+    const classesToAdd = [OBJECT_TYPE.PACMAN];    
 
     return { classesToRemove, classesToAdd }; // with ES6 syntax we don't need to {classesToRemove: classesToRemove} as the name is the same as the const
   }
 
+  // now when setting new position we're first checking if a key was pressed (this.dir = null means no key press), and only then we change pacmans pos
   setNewPos(nextMovePos) {
     if (this.dir = null) {
       return;
@@ -258,10 +259,13 @@ class Pacman {
     }
 
     const nextMovePos = this.pos + dir.movement;
+
+    // i still want to rotate on keypress so i removed this
     // if (
     //   objectExist(nextMovePos, OBJECT_TYPE.WALL) ||
     //   objectExist(nextMovePos, OBJECT_TYPE.DOOR)
     //   ) return;
+    
     this.dir = dir;
   };
 }
