@@ -3,7 +3,7 @@
 }
 
 body {
-  background: url('background.jpg') no-repeat center center fixed;
+  background: url("background.jpg") no-repeat center center fixed;
   background-size: cover;
 }
 
@@ -19,8 +19,8 @@ body {
   position: relative;
   display: inline-grid;
   background: black;
-  /* background-image: url(./bear.jpeg);
-  background-repeat: no-repeat; */
+  background-image: url(./trial\ with\ grid\ 400px.png);
+  /* background-repeat: no-repeat; */
 }
 
 .game-status {
@@ -66,18 +66,28 @@ body {
 }
 
 .blank {
-  background: black;
+  /* background: black; */
 }
 
 .wall {
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
+}
+
+.star {
+  background: orange;
+}
+
+.door {
+  background: green;
+}
+.dooropen {
+  background: greenyellow;
 }
 
 .dot {
   background: white;
   border: 8px solid black;
   border-radius: 50%;
-
 }
 
 .pill {
@@ -93,7 +103,7 @@ body {
 }
 
 .ghost::before {
-  content: '';
+  content: "";
   display: block;
   position: absolute;
   width: 3px;
@@ -106,7 +116,7 @@ body {
 }
 
 .ghost::after {
-  content: '';
+  content: "";
   display: block;
   position: absolute;
   width: 3px;
