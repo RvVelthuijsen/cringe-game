@@ -231,6 +231,12 @@ body {
   background: orange;
 }
 
+.js {
+  background-image: url("../images/javascript_16x16.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .pacman {
   background: yellow;
   /* background-repeat: no-repeat; */
