@@ -39,7 +39,11 @@ const OBJECT_TYPE = {
   SCARED: 'scared',
   GHOSTLAIR: 'lair',
   STAR: 'star',
-  DOOROPEN: 'dooropen'
+  DOOROPEN: 'dooropen',
+  JS: 'js',
+  HTML: 'html',
+  GIT: 'git',
+  CSS: 'css'
 };
 
 // Lookup array for classes
@@ -55,7 +59,12 @@ const CLASS_LIST = [
   OBJECT_TYPE.PACMAN,
   OBJECT_TYPE.GHOSTLAIR,
   OBJECT_TYPE.STAR,
-  OBJECT_TYPE.DOOROPEN
+  OBJECT_TYPE.DOOROPEN,
+  OBJECT_TYPE.JS,
+  OBJECT_TYPE.HTML,
+  OBJECT_TYPE.GIT,
+  OBJECT_TYPE.CSS
+
 ];
 
 const LEVEL = [
@@ -63,7 +72,7 @@ const LEVEL = [
 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-2, 0, 0, 1, 1, 1, 1, 1, 3, 3, 1, 1, 1, 1, 1, 0, 0, 0, 0, 2,
+14, 0, 0, 1, 1, 1, 1, 1, 3, 3, 1, 1, 1, 1, 1, 0, 0, 0, 0, 15,
 0, 0, 0, 1, 1, 1, 1, 1, 3, 3, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0,
 0, 0, 0, 1, 1, 1, 1, 1, 3, 3, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0,
 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -72,12 +81,12 @@ const LEVEL = [
 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1,
 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1,
 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1,
-0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1,
+0, 0, 0, 0, 1, 1, 1, 0, 12, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1,
 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1,
 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1,
 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1,
 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1,
-0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1,
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 13, 0, 1, 1,
 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1,
 ];
 
@@ -93,6 +102,13 @@ class GameBoard {
   showGameStatus(gameWin) {
      // Create and show game win or game over
      window.location.href = "./stats.html";
+  }
+
+  showPickup(objecttoadd) {
+    const pickUp = document.createElement("div");
+    pickUp.classList.add(objecttoadd)
+    pickUp.style.cssText = `width: calc(${CELL_SIZE} * .05rem); height: calc(${CELL_SIZE} * .05rem);`;
+    scoreTable.appendChild(pickUp);
   }
 
   createGrid(level) {
@@ -286,7 +302,7 @@ let timer = null;
 let gameWin = false;
 let powerPillActive = false;
 let powerPillTimer = null;
-let dotCount = 2;
+let dotCount = 4;
 let doorOpen = false;
 
 
@@ -328,16 +344,31 @@ function gameLoop(pacman, ghosts) {
     gameBoard.moveCharacter(pacman)
 
     // check if pacman eats a key
-    if(gameBoard.objectExist(pacman.pos, OBJECT_TYPE.DOT)) {
-      gameBoard.removeObject(pacman.pos, [OBJECT_TYPE.DOT]);
+    if(gameBoard.objectExist(pacman.pos, OBJECT_TYPE.HTML) ) {
+      gameBoard.removeObject(pacman.pos, [OBJECT_TYPE.HTML]);
+      gameBoard.showPickup(OBJECT_TYPE.HTML)
       dotCount--;
+    }
+    if(gameBoard.objectExist(pacman.pos, OBJECT_TYPE.CSS)) {
+      gameBoard.removeObject(pacman.pos, [OBJECT_TYPE.CSS]);
+      gameBoard.showPickup(OBJECT_TYPE.CSS)
+      dotCount--;
+    }
+    if(gameBoard.objectExist(pacman.pos, OBJECT_TYPE.JS)) {
+      gameBoard.removeObject(pacman.pos, [OBJECT_TYPE.JS]);
+      gameBoard.showPickup(OBJECT_TYPE.JS)
+      dotCount--;
+    }
+    if(gameBoard.objectExist(pacman.pos, OBJECT_TYPE.GIT) ) {
+      gameBoard.removeObject(pacman.pos, [OBJECT_TYPE.GIT]);
+      gameBoard.showPickup(OBJECT_TYPE.GIT)
+      dotCount--;
+    }
 
-      if(dotCount === 0) {
-        doorOpen = true;
-        gameGrid.style.backgroundImage = "url('./assets/images/dooropen map.png')";
-      }
-    } 
-
+    if(dotCount === 0) {
+      doorOpen = true;
+      gameGrid.style.backgroundImage = "url('./assets/images/dooropen map.png')";
+    }
 
     // check if pacman can enter the door
     if (doorOpen === true){
