@@ -92,10 +92,7 @@ class GameBoard {
 
   showGameStatus(gameWin) {
      // Create and show game win or game over
-    const div = document.createElement('div');
-    div.classList.add('game-status');
-    div.innerHTML = `${gameWin ? 'WIN!' : 'GAME OVER!'}`;
-    this.DOMGrid.appendChild(div);
+     window.location.href = "./stats.html";
   }
 
   createGrid(level) {
@@ -337,6 +334,7 @@ function gameLoop(pacman, ghosts) {
 
       if(dotCount === 0) {
         doorOpen = true;
+        gameGrid.style.backgroundImage = "url('./assets/images/dooropen map.png')";
       }
     } 
 
@@ -351,10 +349,10 @@ function gameLoop(pacman, ghosts) {
     }
 
     // // Check if all dots have been eaten
-    // if(gameBoard.keyCount === 0) {
-    //   gameWin = true;
-    //   gameOver(pacman);
-    // }
+    if(gameBoard.objectExist(pacman.pos, OBJECT_TYPE.DOOROPEN)) {
+       gameWin = true;
+       gameOver(pacman);
+     }
 
     // // Show the score
     // scoreTable.innerHTML = score;
