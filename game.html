@@ -3,10 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./assets/styles/style.css" />
-    <title>😔 CRINGE GAME</title>
-    <script src="./assets/scripts/header.js"></script>
-    
+    <link rel="stylesheet" href="./assets/styles/style.css">
+    <link href=".\assets\styles\node_modules\nes.css\css\nes.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <link href="https://unpkg.com/nes.css/css/nes.css" rel="stylesheet" />
+    <title>JS Pacman</title>
   </head>
   <body>
     <!-- header start -->
@@ -32,15 +33,19 @@
       <!-- end header -->
     <div id="wrapper">
       <div id="game"></div>
-      <button id="start-button">Start Game</button>
-      <div id="score"></div>
+      <button type="button" class="nes-btn is-primary">Start Game</button>
+      <!-- <button id="start-button">Start Game</button> -->
+      <div class="nes-container is-rounded is-dark">
+        <p>Score: </p></div>
+      <!-- <div id="score"></div> -->
       <div class="btn">
-        <button id="left-btn">◀</button>
-        <button id="right-btn">▶</button>
-        <button id="up-btn">▲</button>
-        <button id="down-btn">▼</button>
+        <button class="nes-btn" href="#" id="left-btn">◀</button>
+        <button class="nes-btn" href="#" id="right-btn">▶</button>
+        <button class="nes-btn" href="#" id="up-btn">▲</button>
+        <button class="nes-btn" href="#" id="down-btn">▼</button>
       </div>
     </div>
     <script src="./assets/scripts/index.js"></script>
+    <script src="./assets/scripts/header.js"></script>
   </body>
 </html>

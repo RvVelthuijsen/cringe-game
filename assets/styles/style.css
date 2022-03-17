@@ -1,6 +1,6 @@
 * {
   box-sizing: border-box;
-  font-family: monospace;
+/*   font-family: monospace; */
 }
 
 body {
@@ -10,8 +10,8 @@ body {
 /* start header */
 .header {
   height: 4rem;
-  color: whitesmoke;
-  background-color: blue;
+/*   color: whitesmoke; */
+ /*  background-color: blue; */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -24,8 +24,8 @@ body {
 }
 
 .navbar a {
-  text-decoration: none;
-  color: whitesmoke;
+ /*  text-decoration: none;
+  color: whitesmoke; */
   padding: 0 1rem;
   font-size: 2rem;
 }
