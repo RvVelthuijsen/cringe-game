@@ -60,11 +60,15 @@ const CLASS_LIST = [
   OBJECT_TYPE.GHOSTLAIR,
   OBJECT_TYPE.STAR,
   OBJECT_TYPE.DOOROPEN,
+  
+
+];
+
+const PICKUPS = [
   OBJECT_TYPE.JS,
   OBJECT_TYPE.HTML,
   OBJECT_TYPE.GIT,
   OBJECT_TYPE.CSS
-
 ];
 
 const LEVEL = [
@@ -72,7 +76,7 @@ const LEVEL = [
 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-14, 0, 0, 1, 1, 1, 1, 1, 3, 3, 1, 1, 1, 1, 1, 0, 0, 0, 0, 15,
+0, 0, 0, 1, 1, 1, 1, 1, 3, 3, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0,
 0, 0, 0, 1, 1, 1, 1, 1, 3, 3, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0,
 0, 0, 0, 1, 1, 1, 1, 1, 3, 3, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0,
 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -81,14 +85,56 @@ const LEVEL = [
 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1,
 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1,
 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1,
-0, 0, 0, 0, 1, 1, 1, 0, 12, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1,
+0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1,
 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1,
 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1,
 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1,
 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1,
-0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 13, 0, 1, 1,
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1,
 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1,
 ];
+
+
+const pickupLevel = LEVEL;
+
+function addPickups(level) {
+  let tries = 0;
+  for (let i = 0; i < level.length; i++) {
+    const random = Math.floor(Math.random() * level.length);
+    if (level[random] === 0){
+      level[random] = 2;
+      tries++;
+      if (tries === 4) {
+        return 
+      }
+    }
+  }
+}
+
+function globalTimer() {
+
+  const startMinutes = 1;
+  let time = startMinutes * 20;
+
+// const countdownEl = document.getElementById();
+
+  setInterval(updateCountdown, 1000);
+
+  function updateCountdown() {
+  const minutes = Math.floor(time / 60);
+  let seconds = time % 60;
+
+  seconds = seconds < 10 ? "0" + seconds : seconds;
+  // countdownEl.innerHTML = ${minutes} : ${seconds};
+  time--;
+  if (time === 0) {
+  window.location.href = "./stats.html";
+  }
+  console.log(time);
+  }
+}
+
+
 
 // GAMEBOARD
 
@@ -108,16 +154,19 @@ class GameBoard {
     }
   }
 
-addPickupClass(div) {
-  for (let i = 0; i < this.grid.length; i++) {
-    if (div.classList.contains(OBJECT_TYPE.JS) ||
-    div.classList.contains(OBJECT_TYPE.HTML) ||
-    div.classList.contains(OBJECT_TYPE.GIT) ||
-    div.classList.contains(OBJECT_TYPE.CSS)){
-      div.classList.add(OBJECT_TYPE.DOT);
+  
+
+addPickupClass(grid) {
+  const pickups = PICKUPS;
+  for (let i = 0; i < grid.length; i++) {
+    if (grid[i].classList.contains(OBJECT_TYPE.DOT)){
+      grid[i].classList.add(pickups[0]);
+      pickups.shift();
+      console.log(pickups);
+      console.log(grid[i]);
       }
-    }
   }
+};
 
   handlePickup(pos, object) {
     if (gameBoard.objectExist(pos, object)){
@@ -156,11 +205,11 @@ addPickupClass(div) {
       
       }
     }
-  }
+  };
 
-  createDoorArray(div) {
-    for (let i = 0; i < div.length; i++) {
-      if (div[i].classList.contains(OBJECT_TYPE.DOOR)) {
+  createDoorArray(grid) {
+    for (let i = 0; i < grid.length; i++) {
+      if (grid[i].classList.contains(OBJECT_TYPE.DOOR)) {
         doorpos.push([i])
       }
     }
@@ -190,12 +239,11 @@ addPickupClass(div) {
       div.classList.add("square", CLASS_LIST[square]);
       // Check if the media query is true
       this.isSmallScreen(div);
-      
       this.DOMGrid.appendChild(div);
       this.grid.push(div);
-      this.addPickupClass(div);
     });
 
+    this.addPickupClass(this.grid);
     this.createDoorArray(this.grid);
   }
   
@@ -420,8 +468,8 @@ function startGame() {
   score = 0;
 
   startButton.classList.add("hide");
-
-  gameBoard.createGrid(LEVEL);
+  addPickups(pickupLevel);
+  gameBoard.createGrid(pickupLevel);
 
     const pacman = new Pacman(2, 380); // Pacman(speed, position)
     gameBoard.addObject(380, [OBJECT_TYPE.PACMAN]); // we are adding a class(position, array with classes)
@@ -472,7 +520,10 @@ function startGame() {
 }
 
 // Initialize game
-startButton.addEventListener("click", startGame);
+startButton.addEventListener("click",() => {    
+  startGame();
+  globalTimer();    
+});
 
 // // GHOSTS
 
