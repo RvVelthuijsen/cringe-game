@@ -116,7 +116,7 @@ function globalTimer() {
   const startMinutes = 1;
   let time = startMinutes * 20;
 
-// const countdownEl = document.getElementById();
+const countdownEl = document.getElementById('timer');
 
   setInterval(updateCountdown, 1000);
 
@@ -125,7 +125,7 @@ function globalTimer() {
   let seconds = time % 60;
 
   seconds = seconds < 10 ? "0" + seconds : seconds;
-  // countdownEl.innerHTML = ${minutes} : ${seconds};
+  countdownEl.innerHTML = time;
   time--;
   if (time === 0) {
   window.location.href = "./stats.html";
