@@ -99,6 +99,73 @@ class GameBoard {
     this.DOMGrid = DOMGrid;
   }
 
+  isSmallScreen(div){
+    const mediaQuery = window.matchMedia('(max-width: 600px)');
+    if (this.mediaQuery) {
+      div.style.cssText = `width: calc(${CELL_SIZE} * .05rem); height: calc(${CELL_SIZE} * .05rem);`;
+    } else {
+      div.style.cssText = `width: calc(${CELL_SIZE} * .1rem); height: calc(${CELL_SIZE} * .1rem);`;
+    }
+  }
+
+addPickupClass(div) {
+  for (let i = 0; i < this.grid.length; i++) {
+    if (div.classList.contains(OBJECT_TYPE.JS) ||
+    div.classList.contains(OBJECT_TYPE.HTML) ||
+    div.classList.contains(OBJECT_TYPE.GIT) ||
+    div.classList.contains(OBJECT_TYPE.CSS)){
+      div.classList.add(OBJECT_TYPE.DOT);
+      }
+    }
+  }
+
+  handlePickup(pos, object) {
+    if (gameBoard.objectExist(pos, object)){
+      if(gameBoard.objectExist(pos, OBJECT_TYPE.HTML) ) {
+        gameBoard.removeObject(pos, [OBJECT_TYPE.HTML]);
+        gameBoard.showPickup(OBJECT_TYPE.HTML)
+        dotCount--;
+      }
+      if(gameBoard.objectExist(pos, OBJECT_TYPE.CSS)) {
+        gameBoard.removeObject(pos, [OBJECT_TYPE.CSS]);
+        gameBoard.showPickup(OBJECT_TYPE.CSS)
+        dotCount--;
+      }
+      if(gameBoard.objectExist(pos, OBJECT_TYPE.JS)) {
+        gameBoard.removeObject(pos, [OBJECT_TYPE.JS]);
+        gameBoard.showPickup(OBJECT_TYPE.JS)
+        dotCount--;
+      }
+      if(gameBoard.objectExist(pos, OBJECT_TYPE.GIT) ) {
+        gameBoard.removeObject(pos, [OBJECT_TYPE.GIT]);
+        gameBoard.showPickup(OBJECT_TYPE.GIT)
+        dotCount--;
+      }
+    }
+
+    if(dotCount === 0) {
+      doorOpen = true;
+      gameGrid.style.backgroundImage = "url('./assets/images/dooropen map.png')";
+    }
+
+    // check if pacman can enter the door
+    if (doorOpen === true){
+      for (let i = 0; i < doorpos.length; i++) {
+      gameBoard.removeObject(doorpos[i], [OBJECT_TYPE.DOOR]);
+      gameBoard.addObject(doorpos[i], [OBJECT_TYPE.DOOROPEN])
+      
+      }
+    }
+  }
+
+  createDoorArray(div) {
+    for (let i = 0; i < div.length; i++) {
+      if (div[i].classList.contains(OBJECT_TYPE.DOOR)) {
+        doorpos.push([i])
+      }
+    }
+  }
+
   showGameStatus(gameWin) {
      // Create and show game win or game over
      window.location.href = "./stats.html";
@@ -106,39 +173,30 @@ class GameBoard {
 
   showPickup(objecttoadd) {
     const pickUp = document.createElement("div");
-    pickUp.classList.add(objecttoadd)
-    pickUp.style.cssText = `width: calc(${CELL_SIZE} * .05rem); height: calc(${CELL_SIZE} * .05rem);`;
+    pickUp.classList.add(objecttoadd);
+    this.isSmallScreen(pickUp);
     scoreTable.appendChild(pickUp);
-  }
+  }  
 
   createGrid(level) {
     this.grid = [];
     this.DOMGrid.innerHTML = "";
     // First set correct amount of columns based on Grid Size and Cell Size
     this.DOMGrid.style.cssText = `grid-template-columns: repeat(${GRID_SIZE}, 1fr);`;
+     
 
     level.forEach((square) => {
       const div = document.createElement("div");
       div.classList.add("square", CLASS_LIST[square]);
       // Check if the media query is true
-      const mediaQuery = window.matchMedia('(max-width: 600px)')
-      if (mediaQuery.matches) {
-        div.style.cssText = `width: calc(${CELL_SIZE} * .05rem); height: calc(${CELL_SIZE} * .05rem);`;
-      } else {
-        div.style.cssText = `width: calc(${CELL_SIZE} * .1rem); height: calc(${CELL_SIZE} * .1rem);`;
-        
-      }
+      this.isSmallScreen(div);
+      
       this.DOMGrid.appendChild(div);
       this.grid.push(div);
+      this.addPickupClass(div);
     });
 
-    // creating an array with door.pos
-    for (let i = 0; i < this.grid.length; i++) {
-      if (this.grid[i].classList.contains('door')) {
-        doorpos.push([i])
-      }
-      
-    }
+    this.createDoorArray(this.grid);
   }
   
   // to add or remove classes
@@ -344,47 +402,14 @@ function gameLoop(pacman, ghosts) {
     gameBoard.moveCharacter(pacman)
 
     // check if pacman eats a key
-    if(gameBoard.objectExist(pacman.pos, OBJECT_TYPE.HTML) ) {
-      gameBoard.removeObject(pacman.pos, [OBJECT_TYPE.HTML]);
-      gameBoard.showPickup(OBJECT_TYPE.HTML)
-      dotCount--;
-    }
-    if(gameBoard.objectExist(pacman.pos, OBJECT_TYPE.CSS)) {
-      gameBoard.removeObject(pacman.pos, [OBJECT_TYPE.CSS]);
-      gameBoard.showPickup(OBJECT_TYPE.CSS)
-      dotCount--;
-    }
-    if(gameBoard.objectExist(pacman.pos, OBJECT_TYPE.JS)) {
-      gameBoard.removeObject(pacman.pos, [OBJECT_TYPE.JS]);
-      gameBoard.showPickup(OBJECT_TYPE.JS)
-      dotCount--;
-    }
-    if(gameBoard.objectExist(pacman.pos, OBJECT_TYPE.GIT) ) {
-      gameBoard.removeObject(pacman.pos, [OBJECT_TYPE.GIT]);
-      gameBoard.showPickup(OBJECT_TYPE.GIT)
-      dotCount--;
-    }
+    gameBoard.handlePickup(pacman.pos, OBJECT_TYPE.DOT)
 
-    if(dotCount === 0) {
-      doorOpen = true;
-      gameGrid.style.backgroundImage = "url('./assets/images/dooropen map.png')";
-    }
-
-    // check if pacman can enter the door
-    if (doorOpen === true){
-      for (let i = 0; i < doorpos.length; i++) {
-      gameBoard.removeObject(doorpos[i], [OBJECT_TYPE.DOOR]);
-      gameBoard.addObject(doorpos[i], [OBJECT_TYPE.DOOROPEN])
-      
-      }
-    }
 
     // // Check if all dots have been eaten
     if(gameBoard.objectExist(pacman.pos, OBJECT_TYPE.DOOROPEN)) {
-       gameWin = true;
-       gameOver(pacman);
-     }
-
+      gameWin = true;
+      gameOver(pacman);
+    }
     // // Show the score
     // scoreTable.innerHTML = score;
 }

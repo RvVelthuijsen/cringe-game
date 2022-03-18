@@ -168,9 +168,9 @@ body {
 }
 
 .dot {
-  background-image: url("../images/javascript_16x16.png");
+  /* background-image: url("../images/javascript_16x16.png");
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: cover; */
 }
 
 .pill {
