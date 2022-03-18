@@ -55,6 +55,7 @@ button, .burger-menu {
   justify-content: space-between;
   align-items: center;
   border-bottom: 3px solid red;
+  box-shadow: 2px solid grey;
 }
 
 .logo-container {
