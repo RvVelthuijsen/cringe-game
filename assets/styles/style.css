@@ -232,16 +232,16 @@ button, .burger-menu {
   /* border: 1px solid blue; */
 }
 .door {
-  background: green;
+  /* background: green; */
 }
 .dooropen {
-  background: greenyellow;
+  /* background: greenyellow; */
 }
 
 .dot {
-  background-image: url("../images/javascript_16x16.png");
+  /* background-image: url("../images/javascript_16x16.png");
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: cover; */
 }
 
 .pill {
@@ -298,8 +298,31 @@ button, .burger-menu {
   background: cyan;
 }
 
-.clyde {
-  background: orange;
+.css {
+  background-image: url("../images/css_16x16.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.js {
+  background-image: url("../images/javascript_16x16.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 16px;
+}
+
+.git {
+  background-image: url("../images/git_16x16.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 16px;
+}
+
+.html {
+  background-image: url("../images/html_16x16.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 16px;
 }
 
 .pacman {

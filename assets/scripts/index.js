@@ -39,7 +39,11 @@ const OBJECT_TYPE = {
   SCARED: 'scared',
   GHOSTLAIR: 'lair',
   STAR: 'star',
-  DOOROPEN: 'dooropen'
+  DOOROPEN: 'dooropen',
+  JS: 'js',
+  HTML: 'html',
+  GIT: 'git',
+  CSS: 'css'
 };
 
 // Lookup array for classes
@@ -55,7 +59,16 @@ const CLASS_LIST = [
   OBJECT_TYPE.PACMAN,
   OBJECT_TYPE.GHOSTLAIR,
   OBJECT_TYPE.STAR,
-  OBJECT_TYPE.DOOROPEN
+  OBJECT_TYPE.DOOROPEN,
+  
+
+];
+
+const PICKUPS = [
+  OBJECT_TYPE.JS,
+  OBJECT_TYPE.HTML,
+  OBJECT_TYPE.GIT,
+  OBJECT_TYPE.CSS
 ];
 
 const LEVEL = [
@@ -63,7 +76,7 @@ const LEVEL = [
 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-2, 0, 0, 1, 1, 1, 1, 1, 3, 3, 1, 1, 1, 1, 1, 0, 0, 0, 0, 2,
+0, 0, 0, 1, 1, 1, 1, 1, 3, 3, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0,
 0, 0, 0, 1, 1, 1, 1, 1, 3, 3, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0,
 0, 0, 0, 1, 1, 1, 1, 1, 3, 3, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0,
 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -81,6 +94,48 @@ const LEVEL = [
 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1,
 ];
 
+
+const pickupLevel = LEVEL;
+
+function addPickups(level) {
+  let tries = 0;
+  for (let i = 0; i < level.length; i++) {
+    const random = Math.floor(Math.random() * level.length);
+    if (level[random] === 0){
+      level[random] = 2;
+      tries++;
+      if (tries === 4) {
+        return 
+      }
+    }
+  }
+}
+
+function globalTimer() {
+
+  const startMinutes = 1;
+  let time = startMinutes * 20;
+
+// const countdownEl = document.getElementById();
+
+  setInterval(updateCountdown, 1000);
+
+  function updateCountdown() {
+  const minutes = Math.floor(time / 60);
+  let seconds = time % 60;
+
+  seconds = seconds < 10 ? "0" + seconds : seconds;
+  // countdownEl.innerHTML = ${minutes} : ${seconds};
+  time--;
+  if (time === 0) {
+  window.location.href = "./stats.html";
+  }
+  console.log(time);
+  }
+}
+
+
+
 // GAMEBOARD
 
 let doorpos = []
@@ -90,42 +145,106 @@ class GameBoard {
     this.DOMGrid = DOMGrid;
   }
 
+  isSmallScreen(div){
+    const mediaQuery = window.matchMedia('(max-width: 600px)');
+    if (this.mediaQuery) {
+      div.style.cssText = `width: calc(${CELL_SIZE} * .05rem); height: calc(${CELL_SIZE} * .05rem);`;
+    } else {
+      div.style.cssText = `width: calc(${CELL_SIZE} * .1rem); height: calc(${CELL_SIZE} * .1rem);`;
+    }
+  }
+
+  
+
+addPickupClass(grid) {
+  const pickups = PICKUPS;
+  for (let i = 0; i < grid.length; i++) {
+    if (grid[i].classList.contains(OBJECT_TYPE.DOT)){
+      grid[i].classList.add(pickups[0]);
+      pickups.shift();
+      console.log(pickups);
+      console.log(grid[i]);
+      }
+  }
+};
+
+  handlePickup(pos, object) {
+    if (gameBoard.objectExist(pos, object)){
+      if(gameBoard.objectExist(pos, OBJECT_TYPE.HTML) ) {
+        gameBoard.removeObject(pos, [OBJECT_TYPE.HTML]);
+        gameBoard.showPickup(OBJECT_TYPE.HTML)
+        dotCount--;
+      }
+      if(gameBoard.objectExist(pos, OBJECT_TYPE.CSS)) {
+        gameBoard.removeObject(pos, [OBJECT_TYPE.CSS]);
+        gameBoard.showPickup(OBJECT_TYPE.CSS)
+        dotCount--;
+      }
+      if(gameBoard.objectExist(pos, OBJECT_TYPE.JS)) {
+        gameBoard.removeObject(pos, [OBJECT_TYPE.JS]);
+        gameBoard.showPickup(OBJECT_TYPE.JS)
+        dotCount--;
+      }
+      if(gameBoard.objectExist(pos, OBJECT_TYPE.GIT) ) {
+        gameBoard.removeObject(pos, [OBJECT_TYPE.GIT]);
+        gameBoard.showPickup(OBJECT_TYPE.GIT)
+        dotCount--;
+      }
+    }
+
+    if(dotCount === 0) {
+      doorOpen = true;
+      gameGrid.style.backgroundImage = "url('./assets/images/dooropen map.png')";
+    }
+
+    // check if pacman can enter the door
+    if (doorOpen === true){
+      for (let i = 0; i < doorpos.length; i++) {
+      gameBoard.removeObject(doorpos[i], [OBJECT_TYPE.DOOR]);
+      gameBoard.addObject(doorpos[i], [OBJECT_TYPE.DOOROPEN])
+      
+      }
+    }
+  };
+
+  createDoorArray(grid) {
+    for (let i = 0; i < grid.length; i++) {
+      if (grid[i].classList.contains(OBJECT_TYPE.DOOR)) {
+        doorpos.push([i])
+      }
+    }
+  }
+
   showGameStatus(gameWin) {
      // Create and show game win or game over
-    const div = document.createElement('div');
-    div.classList.add('game-status');
-    div.innerHTML = `${gameWin ? 'WIN!' : 'GAME OVER!'}`;
-    this.DOMGrid.appendChild(div);
+     window.location.href = "./stats.html";
   }
+
+  showPickup(objecttoadd) {
+    const pickUp = document.createElement("div");
+    pickUp.classList.add(objecttoadd);
+    this.isSmallScreen(pickUp);
+    scoreTable.appendChild(pickUp);
+  }  
 
   createGrid(level) {
     this.grid = [];
     this.DOMGrid.innerHTML = "";
     // First set correct amount of columns based on Grid Size and Cell Size
     this.DOMGrid.style.cssText = `grid-template-columns: repeat(${GRID_SIZE}, 1fr);`;
+     
 
     level.forEach((square) => {
       const div = document.createElement("div");
       div.classList.add("square", CLASS_LIST[square]);
       // Check if the media query is true
-      const mediaQuery = window.matchMedia('(max-width: 600px)')
-      if (mediaQuery.matches) {
-        div.style.cssText = `width: calc(${CELL_SIZE} * .05rem); height: calc(${CELL_SIZE} * .05rem);`;
-      } else {
-        div.style.cssText = `width: calc(${CELL_SIZE} * .1rem); height: calc(${CELL_SIZE} * .1rem);`;
-        
-      }
+      this.isSmallScreen(div);
       this.DOMGrid.appendChild(div);
       this.grid.push(div);
     });
 
-    // creating an array with door.pos
-    for (let i = 0; i < this.grid.length; i++) {
-      if (this.grid[i].classList.contains('door')) {
-        doorpos.push([i])
-      }
-      
-    }
+    this.addPickupClass(this.grid);
+    this.createDoorArray(this.grid);
   }
   
   // to add or remove classes
@@ -154,11 +273,15 @@ class GameBoard {
         this.objectExist.bind(this)
       );
       const { classesToRemove, classesToAdd } = character.makeMove();
-
+      
       if (character.rotation && nextMovePos !== character.pos) {
         this.rotateDiv(nextMovePos, character.dir.rotation); // we have rotated the div
         // we have to rotat back the previous div or the ghost will be rotated when they move to that div
         this.rotateDiv(character.pos, 0);
+      }
+      // to rotate div in place we check if nextMovePos is char.pos then rotating the char.pos div
+      if (nextMovePos === character.pos) {
+        this.rotateDiv(character.pos, character.dir.rotation);
       }
 
       // now we can move the character on the div, by remove and adding classes
@@ -196,11 +319,18 @@ class Pacman {
     // initially we don't move before player press a direciton on the keyboard
     if (!this.dir) return false;
 
-    if (this.timer === this.speed) {
-      this.timer = 0;
+
+    // if (this.timer === this.speed) {
+    //   this.timer = 0;
+    //   return true;
+    // }
+    // this.timer++;
+
+    
+    // instead of returning true once every N of loops through the timer we return true only is 'this.dir' which is a keypress is true
+    if (this.dir) {
       return true;
     }
-    this.timer++;
   }
 
   // this method calculate the next move of pacman
@@ -214,19 +344,25 @@ class Pacman {
     ) {
       nextMovePos = this.pos; // we don't do anything, we set the current position
     }
+    
     return { nextMovePos, direction: this.dir }; // we return an object and is the same interface that a ghost class is going to have
   }
   // if we have next move then we have a method to make the move
   // this is a div in the dom, so we can add/remove classes when we make a move
   makeMove() {
     const classesToRemove = [OBJECT_TYPE.PACMAN]; // we remove the pacman class from the current position and we add it to the new position
-    const classesToAdd = [OBJECT_TYPE.PACMAN];
+    const classesToAdd = [OBJECT_TYPE.PACMAN];    
 
     return { classesToRemove, classesToAdd }; // with ES6 syntax we don't need to {classesToRemove: classesToRemove} as the name is the same as the const
   }
 
+  // now when setting new position we're first checking if a key was pressed (this.dir = null means no key press), and only then we change pacmans pos
   setNewPos(nextMovePos) {
+    if (this.dir = null) {
+      return;
+    } else{
     this.pos = nextMovePos;
+  }
   }
 
   handleKeyInput = (e, objectExist) => {
@@ -242,10 +378,13 @@ class Pacman {
     }
 
     const nextMovePos = this.pos + dir.movement;
-    if (
-      objectExist(nextMovePos, OBJECT_TYPE.WALL) ||
-      objectExist(nextMovePos, OBJECT_TYPE.DOOR)
-      ) return;
+
+    // i still want to rotate on keypress so i removed this
+    // if (
+    //   objectExist(nextMovePos, OBJECT_TYPE.WALL) ||
+    //   objectExist(nextMovePos, OBJECT_TYPE.DOOR)
+    //   ) return;
+    
     this.dir = dir;
   };
 }
@@ -269,7 +408,7 @@ let timer = null;
 let gameWin = false;
 let powerPillActive = false;
 let powerPillTimer = null;
-let dotCount = 2;
+let dotCount = 4;
 let doorOpen = false;
 
 
@@ -311,31 +450,14 @@ function gameLoop(pacman, ghosts) {
     gameBoard.moveCharacter(pacman)
 
     // check if pacman eats a key
-    if(gameBoard.objectExist(pacman.pos, OBJECT_TYPE.DOT)) {
-      gameBoard.removeObject(pacman.pos, [OBJECT_TYPE.DOT]);
-      dotCount--;
+    gameBoard.handlePickup(pacman.pos, OBJECT_TYPE.DOT)
 
-      if(dotCount === 0) {
-        doorOpen = true;
-      }
-    } 
-
-
-    // check if pacman can enter the door
-    if (doorOpen === true){
-      for (let i = 0; i < doorpos.length; i++) {
-      gameBoard.removeObject(doorpos[i], [OBJECT_TYPE.DOOR]);
-      gameBoard.addObject(doorpos[i], [OBJECT_TYPE.DOOROPEN])
-      
-      }
-    }
 
     // // Check if all dots have been eaten
-    // if(gameBoard.keyCount === 0) {
-    //   gameWin = true;
-    //   gameOver(pacman);
-    // }
-
+    if(gameBoard.objectExist(pacman.pos, OBJECT_TYPE.DOOROPEN)) {
+      gameWin = true;
+      gameOver(pacman);
+    }
     // // Show the score
     // scoreTable.innerHTML = score;
 }
@@ -346,8 +468,8 @@ function startGame() {
   score = 0;
 
   startButton.classList.add("hide");
-
-  gameBoard.createGrid(LEVEL);
+  addPickups(pickupLevel);
+  gameBoard.createGrid(pickupLevel);
 
     const pacman = new Pacman(2, 380); // Pacman(speed, position)
     gameBoard.addObject(380, [OBJECT_TYPE.PACMAN]); // we are adding a class(position, array with classes)
@@ -398,7 +520,10 @@ function startGame() {
 }
 
 // Initialize game
-startButton.addEventListener("click", startGame);
+startButton.addEventListener("click",() => {    
+  startGame();
+  globalTimer();    
+});
 
 // // GHOSTS
 
