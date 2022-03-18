@@ -401,12 +401,14 @@ button, .burger-menu {
 **********************************/
 
 .stats-title {
-  font-size: 3rem;
+/*   font-size: 3rem; */
+margin-top: 4rem;
   margin-bottom: 3rem;
 }
 
 .stats-message {
-  font-size: 2rem;
+/*   font-size: 2rem; */
+  margin-top: 4rem;
   margin-bottom: 4rem;
 }
 
@@ -425,7 +427,7 @@ button, .burger-menu {
 }
 
 .img-container {
-  margin: 20%;
+  margin: 0 20% 20% 20%;
 }
 
 .stats-table {
@@ -435,7 +437,7 @@ button, .burger-menu {
 }
 
 .table-container {
-  margin: 10%;
+  margin: 0 10% 10% 10%;
   overflow-x: auto;
 }
 
@@ -449,7 +451,7 @@ td {
 .stats-table th {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 
 .stats-table tr td {
@@ -531,8 +533,7 @@ td {
     margin: 5%;
   }
   .table-container {
-    margin-left: 0;
-    margin-right: 0;
+    margin-right: 5%;
   }
 }
 /* end stats */
@@ -548,7 +549,7 @@ td {
 
 .main-title {
   font-weight: 600;
-  font-size: 3rem;
+  /* font-size: 3rem; */
   text-align: center;
 }
 

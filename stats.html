@@ -2,33 +2,33 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./assets/styles/style.css" />
-    <script src="./assets/scripts/header.js"></script>
-    <title>Document</title>
+    <link rel="stylesheet" href="./assets/styles/style.css">
+    <link href="./assets/styles/node_modules/nes.css/css/nes.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <!-- <link href="https://unpkg.com/nes.css/css/nes.css" rel="stylesheet" /> -->
+    <title>JS Pacman</title>
   </head>
-  <!-- header start -->
-  <div class="header">
-    <div class="logo-container">
-      😔
-      <!-- <img src="" alt="logo" class="logo"> -->
-    </div>
-    <div class="navbar" id="navbar">
-      <a href="./index.html">Home </a>
-      <!-- active html page gets id="active-html" for color highlighting in CSS -->
-      <a href="./game.html">Game</a>
-      <a href="./stats.html" id="active-html">Stats</a>
-      <a href="./impressum.html">Impressum</a>
-      <a href="./settings.html">Settings</a>
-    </div>
-    <div class="burger-menu" id="burger-menu">
-      <div class="burger"></div>
-      <div class="burger"></div>
-    </div>
-  </div>
-
-  <!-- end header -->
+      <!-- header start -->
+      <div class="header">
+        <div class="logo-container">
+          😔
+          <!-- <img src="" alt="logo" class="logo"> -->
+        </div>
+        <div class="navbar" id="navbar">
+          <a href="./index.html">Home </a>
+          <!-- active html page gets id="active-html" for color highlighting in CSS -->
+          <a href="./game.html">Game</a>
+          <a href="./stats.html" id="active-html">Stats</a>
+          <a href="./impressum.html" >Impressum</a>
+          <a href="./settings.html">Settings</a>
+        </div>
+        <div class="burger-menu" id="burger-menu">
+          <div class="burger"></div>
+          <div class="burger"></div>
+        </div>
+      </div>
+      <!-- end header -->
   <body class="stats-body">
     <h1 class="stats-title">Score Ranking</h1>
     <!--  here we display different headings depending on winning/losing state,
@@ -45,7 +45,7 @@
       </div>
       <div class="stats-flex-item table-container">
         <!-- Via JavaScript, DOM manipulation and Tiny DB, creating table rows -->
-        <table class="stats-table">
+        <table class="stats-table nes-table is-bordered is-dark">
           <tr>
             <th>Rank</th>
             <th>Player's name</th>
@@ -65,7 +65,7 @@
     </div>
     <!--  Change text in button depending on case (play again, try again) -->
     <div class="container-btn">
-      <a href="game.html"><button class="play-again-btn">Play</button></a>
+      <a href="game.html"><button type="button" class="nes-btn is-primary">Play ▶</button></a>
     </div>
     <script src="stats.js"></script>
     <script src="header.js"></script>
