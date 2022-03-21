@@ -109,7 +109,6 @@ button, .burger-menu {
   margin: 1rem;
   display: flex;
   justify-content: center;
-  button-style: none;
   
   /* width: auto; */
 }
@@ -138,7 +137,7 @@ button, .burger-menu {
   position: relative;
   display: inline-grid;
   background: black;
-  background-image: url("../images/grid-400px.png");
+  background-image: url("../images/level 2.png");
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -229,7 +228,7 @@ button, .burger-menu {
 }
 
 .wall {
-  /* border: 1px solid blue; */
+  border: 1px solid blue;
 }
 .door {
   /* background: green; */
