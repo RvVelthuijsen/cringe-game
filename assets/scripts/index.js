@@ -28,7 +28,7 @@ const DIRECTIONS = {
 const OBJECT_TYPE = {
   BLANK: 'blank',
   WALL: 'wall',
-  DOT: 'dot',
+  PICKUP: 'pickup',
   DOOR: 'door',
   PINKY: 'pinky',
   INKY: 'inky',
@@ -50,7 +50,7 @@ const OBJECT_TYPE = {
 const CLASS_LIST = [
   OBJECT_TYPE.BLANK,
   OBJECT_TYPE.WALL,
-  OBJECT_TYPE.DOT,
+  OBJECT_TYPE.PICKUP,
   OBJECT_TYPE.DOOR,
   OBJECT_TYPE.PINKY,
   OBJECT_TYPE.INKY,
@@ -146,20 +146,18 @@ class GameBoard {
   }
 
   isSmallScreen(div){
-    const mediaQuery = window.matchMedia('(max-width: 600px)');
-    if (this.mediaQuery) {
+    const mediaQuery = window.matchMedia('(max-width: 600px)')
+    if (mediaQuery.matches) {
       div.style.cssText = `width: calc(${CELL_SIZE} * .05rem); height: calc(${CELL_SIZE} * .05rem);`;
     } else {
       div.style.cssText = `width: calc(${CELL_SIZE} * .1rem); height: calc(${CELL_SIZE} * .1rem);`;
     }
   }
 
-  
-
 addPickupClass(grid) {
   const pickups = PICKUPS;
   for (let i = 0; i < grid.length; i++) {
-    if (grid[i].classList.contains(OBJECT_TYPE.DOT)){
+    if (grid[i].classList.contains(OBJECT_TYPE.PICKUP)){
       grid[i].classList.add(pickups[0]);
       pickups.shift();
       console.log(pickups);
@@ -173,26 +171,26 @@ addPickupClass(grid) {
       if(gameBoard.objectExist(pos, OBJECT_TYPE.HTML) ) {
         gameBoard.removeObject(pos, [OBJECT_TYPE.HTML]);
         gameBoard.showPickup(OBJECT_TYPE.HTML)
-        dotCount--;
+        pickupCount--;
       }
       if(gameBoard.objectExist(pos, OBJECT_TYPE.CSS)) {
         gameBoard.removeObject(pos, [OBJECT_TYPE.CSS]);
         gameBoard.showPickup(OBJECT_TYPE.CSS)
-        dotCount--;
+        pickupCount--;
       }
       if(gameBoard.objectExist(pos, OBJECT_TYPE.JS)) {
         gameBoard.removeObject(pos, [OBJECT_TYPE.JS]);
         gameBoard.showPickup(OBJECT_TYPE.JS)
-        dotCount--;
+        pickupCount--;
       }
       if(gameBoard.objectExist(pos, OBJECT_TYPE.GIT) ) {
         gameBoard.removeObject(pos, [OBJECT_TYPE.GIT]);
         gameBoard.showPickup(OBJECT_TYPE.GIT)
-        dotCount--;
+        pickupCount--;
       }
     }
 
-    if(dotCount === 0) {
+    if(pickupCount === 0) {
       doorOpen = true;
       gameGrid.style.backgroundImage = "url('./assets/images/dooropen map.png')";
     }
@@ -408,7 +406,7 @@ let timer = null;
 let gameWin = false;
 let powerPillActive = false;
 let powerPillTimer = null;
-let dotCount = 4;
+let pickupCount = 4;
 let doorOpen = false;
 
 
@@ -450,7 +448,7 @@ function gameLoop(pacman, ghosts) {
     gameBoard.moveCharacter(pacman)
 
     // check if pacman eats a key
-    gameBoard.handlePickup(pacman.pos, OBJECT_TYPE.DOT)
+    gameBoard.handlePickup(pacman.pos, OBJECT_TYPE.PICKUP)
 
 
     // // Check if all dots have been eaten
@@ -475,8 +473,7 @@ function startGame() {
     gameBoard.addObject(380, [OBJECT_TYPE.PACMAN]); // we are adding a class(position, array with classes)
 
   document.addEventListener(
-    "keydown",
-    (e) => pacman.handleKeyInput(e, gameBoard.objectExist.bind(gameBoard)) // we have to bind it because we call if from a function, otherwise it will return undefined
+    "keydown", (e) => pacman.handleKeyInput(e, gameBoard.objectExist.bind(gameBoard), e.preventDefault()) // we have to bind it because we call if from a function, otherwise it will return undefined
     // or we can set an arrow function in the objectExist
     // objectExist(pos, object) => {
     // return this.grid[pos].classList.contains(object)}
@@ -486,7 +483,7 @@ function startGame() {
   rightButton.addEventListener("click", (e) =>
     pacman.handleKeyInput(
       { keyCode: 39, key: "ArrowRight" },
-      gameBoard.objectExist.bind(gameBoard)
+      gameBoard.objectExist.bind(gameBoard),
     )
   );
   leftButton.addEventListener("click", (e) =>
