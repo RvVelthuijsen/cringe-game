@@ -216,6 +216,7 @@ button, .burger-menu {
 }
 
 /* end movement buttons */
+/* start game grid div properties */
 .hide {
   display: none;
 }
@@ -244,19 +245,14 @@ button, .burger-menu {
   background-size: cover; */
 }
 
-.pill {
-  background: white;
-  border: 5px solid black;
-  border-radius: 50%;
-}
 
-.ghost {
+.enemy {
   position: relative;
   border-radius: 10px 10px 2px 2px;
   border: none;
 }
 
-.ghost::before {
+.enemy::before {
   content: "";
   display: block;
   position: absolute;
@@ -269,7 +265,7 @@ button, .burger-menu {
   border: 2px solid white;
 }
 
-.ghost::after {
+.enemy::after {
   content: "";
   display: block;
   position: absolute;
@@ -280,22 +276,6 @@ button, .burger-menu {
   right: 3px;
   top: 5px;
   border: 2px solid white;
-}
-
-.scared {
-  background: blue !important;
-}
-
-.blinky {
-  background: red;
-}
-
-.pinky {
-  background: pink;
-}
-
-.inky {
-  background: cyan;
 }
 
 .css {
@@ -325,7 +305,7 @@ button, .burger-menu {
   width: 16px;
 }
 
-.pacman {
+.player {
   background: yellow;
   /* background-repeat: no-repeat; */
   /* background-size: cover; */
@@ -356,6 +336,7 @@ button, .burger-menu {
     );
   }
 }
+/* end game grid div properties */
 /******************************************
 ************END GAME************************ 
  ******************************************/

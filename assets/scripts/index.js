@@ -30,15 +30,8 @@ const OBJECT_TYPE = {
   WALL: 'wall',
   PICKUP: 'pickup',
   DOOR: 'door',
-  PINKY: 'pinky',
-  INKY: 'inky',
-  CLYDE: 'clyde',
-  PILL: 'pill',
-  PACMAN: 'pacman',
-  GHOST: 'ghost',
-  SCARED: 'scared',
-  GHOSTLAIR: 'lair',
-  STAR: 'star',
+  PLAYER: 'player',
+  ENEMY: 'enemy',
   DOOROPEN: 'dooropen',
   JS: 'js',
   HTML: 'html',
@@ -52,13 +45,8 @@ const CLASS_LIST = [
   OBJECT_TYPE.WALL,
   OBJECT_TYPE.PICKUP,
   OBJECT_TYPE.DOOR,
-  OBJECT_TYPE.PINKY,
-  OBJECT_TYPE.INKY,
-  OBJECT_TYPE.CLYDE,
-  OBJECT_TYPE.PILL,
-  OBJECT_TYPE.PACMAN,
-  OBJECT_TYPE.GHOSTLAIR,
-  OBJECT_TYPE.STAR,
+  OBJECT_TYPE.PLAYER,
+  OBJECT_TYPE.ENEMY,
   OBJECT_TYPE.DOOROPEN,
   
 
@@ -72,7 +60,7 @@ const PICKUPS = [
 ];
 
 const LEVEL = [
-  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
@@ -96,56 +84,47 @@ const LEVEL = [
 
 
 const pickupLevel = LEVEL;
+const doorpos = [];
 
 function addPickups(level) {
-  let tries = 0;
+  let tries = 4;
   for (let i = 0; i < level.length; i++) {
     const random = Math.floor(Math.random() * level.length);
     if (level[random] === 0){
       level[random] = 2;
-      tries++;
-      if (tries === 4) {
+      tries--;
+      if (tries === 0) {
         return 
       }
     }
   }
 }
 
-function globalTimer() {
+function globalTimer(levelTime) {
+  let time = levelTime;
 
-  const startMinutes = 1;
-  let time = startMinutes * 20;
-
-const countdownEl = document.getElementById('timer');
+  const countDown = document.getElementById('timer');
 
   setInterval(updateCountdown, 1000);
 
   function updateCountdown() {
-  const minutes = Math.floor(time / 60);
-  let seconds = time % 60;
-
-  seconds = seconds < 10 ? "0" + seconds : seconds;
-  countdownEl.innerHTML = time;
+  time < 10 ? countDown.innerHTML = '0' + time : countdownEl.innerHTML = time
   time--;
   if (time === 0) {
   window.location.href = "./stats.html";
   }
-  console.log(time);
   }
 }
 
-
-
 // GAMEBOARD
 
-let doorpos = []
 class GameBoard {
   constructor(DOMGrid) {
     this.grid = [];
     this.DOMGrid = DOMGrid;
   }
 
-  isSmallScreen(div){
+  screenSizeDiv(div){
     const mediaQuery = window.matchMedia('(max-width: 600px)')
     if (mediaQuery.matches) {
       div.style.cssText = `width: calc(${CELL_SIZE} * .05rem); height: calc(${CELL_SIZE} * .05rem);`;
@@ -170,22 +149,22 @@ addPickupClass(grid) {
     if (gameBoard.objectExist(pos, object)){
       if(gameBoard.objectExist(pos, OBJECT_TYPE.HTML) ) {
         gameBoard.removeObject(pos, [OBJECT_TYPE.HTML]);
-        gameBoard.showPickup(OBJECT_TYPE.HTML)
+        gameBoard.createPickup(OBJECT_TYPE.HTML)
         pickupCount--;
       }
       if(gameBoard.objectExist(pos, OBJECT_TYPE.CSS)) {
         gameBoard.removeObject(pos, [OBJECT_TYPE.CSS]);
-        gameBoard.showPickup(OBJECT_TYPE.CSS)
+        gameBoard.createPickup(OBJECT_TYPE.CSS)
         pickupCount--;
       }
       if(gameBoard.objectExist(pos, OBJECT_TYPE.JS)) {
         gameBoard.removeObject(pos, [OBJECT_TYPE.JS]);
-        gameBoard.showPickup(OBJECT_TYPE.JS)
+        gameBoard.createPickup(OBJECT_TYPE.JS)
         pickupCount--;
       }
       if(gameBoard.objectExist(pos, OBJECT_TYPE.GIT) ) {
         gameBoard.removeObject(pos, [OBJECT_TYPE.GIT]);
-        gameBoard.showPickup(OBJECT_TYPE.GIT)
+        gameBoard.createPickup(OBJECT_TYPE.GIT)
         pickupCount--;
       }
     }
@@ -195,7 +174,7 @@ addPickupClass(grid) {
       gameGrid.style.backgroundImage = "url('./assets/images/dooropen map.png')";
     }
 
-    // check if pacman can enter the door
+    // check if player can enter the door
     if (doorOpen === true){
       for (let i = 0; i < doorpos.length; i++) {
       gameBoard.removeObject(doorpos[i], [OBJECT_TYPE.DOOR]);
@@ -213,15 +192,14 @@ addPickupClass(grid) {
     }
   }
 
-  showGameStatus(gameWin) {
-     // Create and show game win or game over
+  gameStatusRedirect() {
      window.location.href = "./stats.html";
   }
 
-  showPickup(objecttoadd) {
+  createPickup(pickupToAdd) {
     const pickUp = document.createElement("div");
-    pickUp.classList.add(objecttoadd);
-    this.isSmallScreen(pickUp);
+    pickUp.classList.add(pickupToAdd);
+    this.screenSizeDiv(pickUp);
     scoreTable.appendChild(pickUp);
   }  
 
@@ -236,7 +214,7 @@ addPickupClass(grid) {
       const div = document.createElement("div");
       div.classList.add("square", CLASS_LIST[square]);
       // Check if the media query is true
-      this.isSmallScreen(div);
+      this.screenSizeDiv(div);
       this.DOMGrid.appendChild(div);
       this.grid.push(div);
     });
@@ -259,12 +237,12 @@ addPickupClass(grid) {
     return this.grid[pos].classList.contains(object);
   }
 
-  // to rotate pacman on the grid
+  // to rotate player on the grid
   rotateDiv(pos, deg) {
     this.grid[pos].style.transform = `rotate(${deg}deg)`;
   }
 
-  // planned to be used on both pacman and ghosts
+  // planned to be used on both player and enemies
   moveCharacter(character) {
     if (character.shouldMove()) {
       const { nextMovePos, direction } = character.getNextMove(
@@ -274,7 +252,7 @@ addPickupClass(grid) {
       
       if (character.rotation && nextMovePos !== character.pos) {
         this.rotateDiv(nextMovePos, character.dir.rotation); // we have rotated the div
-        // we have to rotat back the previous div or the ghost will be rotated when they move to that div
+        // we have to rotat back the previous div or the enemy will be rotated when they move to that div
         this.rotateDiv(character.pos, 0);
       }
       // to rotate div in place we check if nextMovePos is char.pos then rotating the char.pos div
@@ -300,30 +278,20 @@ addPickupClass(grid) {
 }
 
 
-//  PACMAN
+//  PLAYER
 
-
-class Pacman {
-  constructor(speed, startPos) {
+class Player {
+  constructor(startPos) {
     this.pos = startPos;
-    this.speed = speed;
     this.dir = null;
     this.timer = 0;
     this.rotation = true;
   }
 
-  // check if pacman is ready to move or not
+  // check if player is ready to move or not
   shouldMove() {
     // initially we don't move before player press a direciton on the keyboard
     if (!this.dir) return false;
-
-
-    // if (this.timer === this.speed) {
-    //   this.timer = 0;
-    //   return true;
-    // }
-    // this.timer++;
-
     
     // instead of returning true once every N of loops through the timer we return true only is 'this.dir' which is a keypress is true
     if (this.dir) {
@@ -331,7 +299,7 @@ class Pacman {
     }
   }
 
-  // this method calculate the next move of pacman
+  // this method calculate the next move of player
   getNextMove(objectExist) {
     let nextMovePos = this.pos + this.dir.movement;
 
@@ -343,18 +311,18 @@ class Pacman {
       nextMovePos = this.pos; // we don't do anything, we set the current position
     }
     
-    return { nextMovePos, direction: this.dir }; // we return an object and is the same interface that a ghost class is going to have
+    return { nextMovePos, direction: this.dir }; // we return an object and is the same interface that a enemy class is going to have
   }
   // if we have next move then we have a method to make the move
   // this is a div in the dom, so we can add/remove classes when we make a move
   makeMove() {
-    const classesToRemove = [OBJECT_TYPE.PACMAN]; // we remove the pacman class from the current position and we add it to the new position
-    const classesToAdd = [OBJECT_TYPE.PACMAN];    
+    const classesToRemove = [OBJECT_TYPE.PLAYER]; // we remove the player class from the current position and we add it to the new position
+    const classesToAdd = [OBJECT_TYPE.PLAYER];    
 
     return { classesToRemove, classesToAdd }; // with ES6 syntax we don't need to {classesToRemove: classesToRemove} as the name is the same as the const
   }
 
-  // now when setting new position we're first checking if a key was pressed (this.dir = null means no key press), and only then we change pacmans pos
+  // now when setting new position we're first checking if a key was pressed (this.dir = null means no key press), and only then we change player pos
   setNewPos(nextMovePos) {
     if (this.dir = null) {
       return;
@@ -363,7 +331,7 @@ class Pacman {
   }
   }
 
-  handleKeyInput = (e, objectExist) => {
+  handleKeyInput = (e) => {
     // e = event
     // console.log(e)  if we log we can see the key: ArrowUp
     let dir;
@@ -373,16 +341,7 @@ class Pacman {
       dir = DIRECTIONS[e.key]; // [e.key] = ArrowUp, ArroLeft,..
     } else {
       return;
-    }
-
-    const nextMovePos = this.pos + dir.movement;
-
-    // i still want to rotate on keypress so i removed this
-    // if (
-    //   objectExist(nextMovePos, OBJECT_TYPE.WALL) ||
-    //   objectExist(nextMovePos, OBJECT_TYPE.DOOR)
-    //   ) return;
-    
+    }   
     this.dir = dir;
   };
 }
@@ -397,26 +356,21 @@ const upButton = document.getElementById("up-btn");
 const downButton = document.getElementById("down-btn");
 // console.log("RIGHT BUTTON",rightButton); // used to check whether the button was recognized or not
 // Game constants
-const POWER_PILL_TIME = 10000; // ms
 const GLOBAL_SPEED = 80; // ms
 const gameBoard = GameBoard.createGameBoard(gameGrid, LEVEL);
 // Initial setup
 let score = 0;
 let timer = null;
 let gameWin = false;
-let powerPillActive = false;
-let powerPillTimer = null;
 let pickupCount = 4;
 let doorOpen = false;
 
 
-function playAudio() {}
-
-function gameOver(pacman, grid) {
+function gameOver(player, grid) {
   document.removeEventListener('keydown', e => 
-  pacman.handleKeyInput(e, gameBoard.objectExist.bind(gameBoard)));
+  player.handleKeyInput(e, gameBoard.objectExist.bind(gameBoard)));
 
-  gameBoard.showGameStatus(gameWin);
+  gameBoard.gameStatusRedirect();
 
   clearInterval(timer); // we stop the game loop
 
@@ -424,37 +378,37 @@ function gameOver(pacman, grid) {
 
 }
 
-// function checkCollision(pacman, dot) {
-//   const collidedGhost = dot.find( dot => pacman.pos === dot.pos);
+// function checkCollision(player, enemy) {
+//   const collidedEnemy = enemy.find( enemy => player.pos === enemy.pos);
 
-//   if(collidedGhost) {
-//     if(pacman.powerPill) {
-//       gameBoard.removeObject(collidedGhost.pos, [
-//         OBJECT_TYPE.DOT,
+//   if(collidedEnemy) {
+//     if(player.powerPill) {
+//       gameBoard.removeObject(collidedEnemy.pos, [
+//         OBJECT_TYPE.PICKUP,
 //         OBJECT_TYPE.SCARED,
-//         collidedGhost.name
+//         collidedEnemy.name
 //       ]);
-//       collidedGhost.pos = collidedGhost.startPos
+//       collidedEnemy.pos = collidedEnemy.startPos
 //       score += 100;
 //     } else {
-//       gameBoard.removeObject(pacman.pos, [OBJECT_TYPE.PACMAN]);
-//       gameBoard.rotateDiv(pacman.pos, 0)
-//       gameOver(pacman, gameGrid)
+//       gameBoard.removeObject(player.pos, [OBJECT_TYPE.PLAYER]);
+//       gameBoard.rotateDiv(player.pos, 0)
+//       gameOver(player, gameGrid)
 //     }
 //   }
 // }
 
-function gameLoop(pacman, ghosts) {
-    gameBoard.moveCharacter(pacman)
+function gameLoop(player, enemies) {
+    gameBoard.moveCharacter(player)
+    //gameBoard.moveCharacter(enemies)
 
-    // check if pacman eats a key
-    gameBoard.handlePickup(pacman.pos, OBJECT_TYPE.PICKUP)
+    // check if player collects pickup
+    gameBoard.handlePickup(player.pos, OBJECT_TYPE.PICKUP)
 
-
-    // // Check if all dots have been eaten
-    if(gameBoard.objectExist(pacman.pos, OBJECT_TYPE.DOOROPEN)) {
+    // // Check if all pickups have been collected
+    if(gameBoard.objectExist(player.pos, OBJECT_TYPE.DOOROPEN)) {
       gameWin = true;
-      gameOver(pacman);
+      gameOver(player);
     }
     // // Show the score
     // scoreTable.innerHTML = score;
@@ -462,69 +416,66 @@ function gameLoop(pacman, ghosts) {
 
 function startGame() {
   gameWin = false;
-  powerPillActive = false;
   score = 0;
 
   startButton.classList.add("hide");
+
   addPickups(pickupLevel);
   gameBoard.createGrid(pickupLevel);
 
-    const pacman = new Pacman(2, 380); // Pacman(speed, position)
-    gameBoard.addObject(380, [OBJECT_TYPE.PACMAN]); // we are adding a class(position, array with classes)
+    const player = new Player(380); // Player(position)
+    gameBoard.addObject(380, [OBJECT_TYPE.PLAYER]); // we are adding a class(position, array with classes)
 
   document.addEventListener(
-    "keydown", (e) => pacman.handleKeyInput(e, gameBoard.objectExist.bind(gameBoard), e.preventDefault()) // we have to bind it because we call if from a function, otherwise it will return undefined
-    // or we can set an arrow function in the objectExist
-    // objectExist(pos, object) => {
-    // return this.grid[pos].classList.contains(object)}
+    "keydown", (e) => player.handleKeyInput(e, gameBoard.objectExist.bind(gameBoard), e.preventDefault()) // we have to bind it because we call if from a function, otherwise it will return undefined
   );
 
   // hardcoding the directions for buttons
   rightButton.addEventListener("click", (e) =>
-    pacman.handleKeyInput(
+    player.handleKeyInput(
       { keyCode: 39, key: "ArrowRight" },
       gameBoard.objectExist.bind(gameBoard),
     )
   );
   leftButton.addEventListener("click", (e) =>
-    pacman.handleKeyInput(
+    player.handleKeyInput(
       { keyCode: 37, key: "ArrowLeft" },
       gameBoard.objectExist.bind(gameBoard)
     )
   );
   upButton.addEventListener("click", (e) =>
-    pacman.handleKeyInput(
+    player.handleKeyInput(
       { keyCode: 38, key: "ArrowUp" },
       gameBoard.objectExist.bind(gameBoard)
     )
   );
   downButton.addEventListener("click", (e) =>
-    pacman.handleKeyInput(
+    player.handleKeyInput(
       { keyCode: 40, key: "ArrowDown" },
       gameBoard.objectExist.bind(gameBoard)
     )
   );
 
-  // const ghosts = [
-  //   new Ghost(5, 188, randomMovement, OBJECT_TYPE.BLINKY),
-  //   new Ghost(4, 209, randomMovement, OBJECT_TYPE.PINKY),
-  //   new Ghost(3, 230, randomMovement, OBJECT_TYPE.INKY),
-  //   new Ghost(2, 251, randomMovement, OBJECT_TYPE.CLYDE),
+  // const enemies = [
+  //   new Enemy(5, 188, randomMovement, OBJECT_TYPE.BLINKY),
+  //   new Enemy(4, 209, randomMovement, OBJECT_TYPE.PINKY),
+  //   new Enemy(3, 230, randomMovement, OBJECT_TYPE.INKY),
+  //   new Enemy(2, 251, randomMovement, OBJECT_TYPE.CLYDE),
   // ];
 
-  // gane loop
-  timer = setInterval(() => gameLoop(pacman), GLOBAL_SPEED);
+  // game loop
+  timer = setInterval(() => gameLoop(player), GLOBAL_SPEED);
 }
 
 // Initialize game
 startButton.addEventListener("click",() => {    
   startGame();
-  globalTimer();    
+  globalTimer(20);    
 });
 
-// // GHOSTS
+// // ENEMIES
 
-// class Ghost {
+// class Enemy {
 //   constructor(speed = 5, startPos, movement, name) {
 //     this.name = name;
 //     this.movement = movement;
@@ -536,7 +487,7 @@ startButton.addEventListener("click",() => {
 //     this.isScared = false;
 //     this.rotation = false;
 //   }
-//   // since the methods are the same as in the pacman class, we could create a base class (ex.character) and extend this class from that class instead of repeating
+//   // since the methods are the same as in the player class, we could create a base class (ex.character) and extend this class from that class instead of repeating
 
 //   shouldMove() {
 //     if(this.timer === this.speed) {
@@ -558,8 +509,8 @@ startButton.addEventListener("click",() => {
 //   }
 
 //   makeMove() {
-//     const classesToRemove = [OBJECT_TYPE.GHOST, OBJECT_TYPE.SCARED, this.name]
-//     let classesToAdd = [OBJECT_TYPE.GHOST, this.name]; // why let? we have to check if ghost is scared. if is scared we have to add a class also
+//     const classesToRemove = [OBJECT_TYPE.ENEMY, OBJECT_TYPE.SCARED, this.name]
+//     let classesToAdd = [OBJECT_TYPE.ENEMY, this.name]; // why let? we have to check if enemy is scared. if is scared we have to add a class also
 
 //     if(this.isScared) classesToAdd = [...classesToAdd, OBJECT_TYPE.SCARED];
 
@@ -572,7 +523,7 @@ startButton.addEventListener("click",() => {
 //   }
 // }
 
-// // GHOST MOVES
+// // ENEMY MOVES
 
 // // Primitive random movement
 
@@ -582,16 +533,16 @@ startButton.addEventListener("click",() => {
 //   // bCreate an array from the directions object keys
 //   const keys = Object.keys(DIRECTIONS)  // it grabs all the keys and put them into an array
 
-//   // we don't want to ghosts to move into a wall
+//   // we don't want to enemies to move into a wall
 //   while(
-//     objectExist(nextMovePos, OBJECT_TYPE.WALL) || objectExist(nextMovePos, OBJECT_TYPE.GHOST)
+//     objectExist(nextMovePos, OBJECT_TYPE.WALL) || objectExist(nextMovePos, OBJECT_TYPE.ENEMY)
 //   ) {
 //     // get a random key from the key array
 //     const key = keys[Math.floor(Math.random() * keys.length)];
 //     // set the next move
 //     dir = DIRECTIONS[key] // ex key = ArrowUp
 //     // set the next move
-//     nextMovePos = position + dir.movement; // this is how we constantly change the direction of the ghost until we have a direction that don't collide with a wall or ghost
+//     nextMovePos = position + dir.movement; // this is how we constantly change the direction of the enemy until we have a direction that don't collide with a wall or enemy
 //   }
 //   return {nextMovePos, direction: dir}
 // }
