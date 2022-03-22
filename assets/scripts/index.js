@@ -108,7 +108,7 @@ function globalTimer(levelTime) {
   setInterval(updateCountdown, 1000);
 
   function updateCountdown() {
-  time < 10 ? countDown.innerHTML = '0' + time : countdownEl.innerHTML = time
+  time < 10 ? countDown.innerHTML = '0' + time : countDown.innerHTML = time
   time--;
   if (time === 0) {
   window.location.href = "./stats.html";
