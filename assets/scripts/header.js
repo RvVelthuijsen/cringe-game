@@ -39,11 +39,12 @@ if (localStorage.getItem("isDarkMode")) {
     isDarkMode = localStorage.getItem("isDarkMode") === "true";
     if (isDarkMode) {
         DOMbody.classList.toggle("dark-mode");
+        toggleBtn.innerHTML = "light mode";
     }
 } else {
     isDarkMode = localStorage.setItem("isDarkMode", false);
     DOMbody.classList.toggle("dark-mode");
-    // toggleBtn.innerHTML = "dark mode";
+    toggleBtn.innerHTML = "dark mode";
     // console.log(toggleBtn.innerHTML)
     
 }
