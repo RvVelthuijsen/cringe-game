@@ -35,5 +35,10 @@ const DOMbody = document.body;
 
 function toggleDark() {
     DOMbody.classList.toggle('dark-mode');
+    localStorage.setItem('isDarkMode', true);
+    if (localStorage.getItem('isDarkMode') === 'true') {
+        document.getElementById('main-page').classList.add('active-dark');
+    } 
+
 } 
 toggleBtn.addEventListener('click', toggleDark);

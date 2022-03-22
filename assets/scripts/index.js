@@ -127,9 +127,9 @@ class GameBoard {
   screenSizeDiv(div){
     const mediaQuery = window.matchMedia('(max-width: 600px)')
     if (mediaQuery.matches) {
-      div.style.cssText = `width: calc(${CELL_SIZE} * .05rem); height: calc(${CELL_SIZE} * .05rem);`;
+      div.style.cssText = `width: calc(${CELL_SIZE} * .06rem); height: calc(${CELL_SIZE} * .06rem);`;
     } else {
-      div.style.cssText = `width: calc(${CELL_SIZE} * .1rem); height: calc(${CELL_SIZE} * .1rem);`;
+      div.style.cssText = `width: calc(${CELL_SIZE} * .08rem); height: calc(${CELL_SIZE} * .08rem);`;
     }
   }
 
