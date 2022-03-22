@@ -119,6 +119,7 @@ button, .burger-menu {
   height: 5rem;
   font-size: 1.5rem;
   border: 5px solid var(--main-font-color);
+  color: var(--main-font-color);
   margin: 1rem;
   display: flex;
   justify-content: center;
@@ -127,6 +128,7 @@ button, .burger-menu {
   /* width: auto; */
 }
 .play-btn button {
+  color: var(--main-font-color);
   background-color: var(--main-bg-color);
   /* height: 2.5rem; */
   /* cursor: pointer; */
