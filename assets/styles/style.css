@@ -91,6 +91,8 @@ button, .burger-menu, span, input {
 
 .header button {
   display: flex;
+  justify-content: center;
+  align-items: center;
   color: var(--main-font-color);
   background-color: var(--main-bg-color);
   border: 3px solid var(--main-font-color);
