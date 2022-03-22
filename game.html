@@ -7,30 +7,34 @@
     <link href="./assets/styles/node_modules/nes.css/css/nes.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
     <!-- <link href="https://unpkg.com/nes.css/css/nes.css" rel="stylesheet" /> -->
-    <title>JS Pacman</title>
+    <title>Game</title>
   </head>
   <body>
-    <!-- header start -->
-      <div class="header">
-        <div class="logo-container">
-            😔
-            <!-- <img src="" alt="logo" class="logo"> -->
-        </div>
-        <div class="navbar" id="navbar">
-            <a href="./index.html">Home </a>
-            <!-- active html page gets id="active-html" for color highlighting in CSS -->
-            <a href="./game.html" id="active-html">Game</a> 
-            <a href="./stats.html">Stats</a>
-            <a href="./impressum.html">Impressum</a>
-            <a href="./settings.html">Settings</a>
-        </div>
-        <div class="burger-menu" id="burger-menu">
-            <div class="burger"></div>
-            <div class="burger"></div>
-        </div>
+     <!-- header start -->
+     <div class="header">
+      <div class="logo-container">
+          😔
+          <!-- <img src="" alt="logo" class="logo"> -->
       </div>
+      <div class="navbar" id="navbar">
+          <a href="./index.html">Home </a>
+          <!-- active html page gets id="active-html" for color highlighting in CSS -->
+          <a href="./game.html" id="active-html">Game</a> 
+          <a href="./stats.html">Stats</a>
+          <a href="./impressum.html">Impressum</a>
+          <a href="./settings.html">Settings</a>
+      </div>
+      <label>
+        <input type="checkbox" class="nes-checkbox"/>
+        <span>Dark mode</span>
+      </label>
+      <div class="burger-menu" id="burger-menu">
+          <div class="burger"></div>
+          <div class="burger"></div>
+      </div>
+    </div>
 
-      <!-- end header -->
+    <!-- end header -->
     <div id="wrapper">
       <div id="game"></div>
       <!-- <button type="button" class="nes-btn is-primary">Start Game</button> -->

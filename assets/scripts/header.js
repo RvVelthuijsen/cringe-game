@@ -35,6 +35,5 @@ const DOMbody = document.body;
 
 function toggleDark() {
     DOMbody.classList.toggle('dark-mode');
-    toggleBtn.classList.toggle('is-dark');
 } 
 toggleBtn.addEventListener('click', toggleDark);

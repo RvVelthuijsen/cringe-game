@@ -6,23 +6,24 @@
 :root {
   /* light mode */
   --main-bg-color: whitesmoke;
-  /* dark mode */
-  --dm-bg-color: #121212;
-  --dm-text-color:whitesmoke;
+  --main-font-color: #121212;
   --link-color: #007bff;
   --link-color-v: #0056b3;
+  --link-color-a: red;
 }
 body {
   background-color: var(--main-bg-color);
+  color: var(--main-font-color);
   margin: 0;
   padding: 0;
 }
 
 .dark-mode { 
-  background-color: var(--dm-bg-color);
-  color: var(--dm-text-color);
+  --main-bg-color: #121212;
+  --main-font-color:whitesmoke;
   --link-color: #ff7b00;
   --link-color-v: #e4260d;
+  --link-color-a: #007bff;
 }
 
 
@@ -67,8 +68,7 @@ button, .burger-menu {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 3px solid red;
-  box-shadow: 2px solid grey;
+  border-bottom: 3px solid var(--link-color-a);
 }
 
 .logo-container {
@@ -85,7 +85,7 @@ button, .burger-menu {
 }
 
 #active-html {
-  color: red;
+  color: var(--link-color-a);
 }
 
 /* end header */
@@ -118,7 +118,7 @@ button, .burger-menu {
   border-image-repeat: space; */
   height: 5rem;
   font-size: 1.5rem;
-  border: 5px solid black;
+  border: 5px solid var(--main-font-color);
   margin: 1rem;
   display: flex;
   justify-content: center;
@@ -150,7 +150,7 @@ button, .burger-menu {
   margin: 1rem;
   position: relative;
   display: inline-grid;
-  background: black;
+  background: var(--main-font-color);
   background-image: url("../images/grid-400px.png");
   background-repeat: no-repeat;
   background-size: cover;
@@ -166,8 +166,8 @@ button, .burger-menu {
   width: 100%;
   height: 50px;
   border: 5px darkblue solid;
-  background: black;
-  color: white;
+  background: var(--main-font-color);
+  color: var(--main-bg-color);
   font-family: Arial, Helvetica, sans-serif;
   font-size: 1.5rem;
 }
@@ -179,8 +179,8 @@ button, .burger-menu {
   width: 200px;
   height: 50px;
   /* border: 5px darkblue solid; */
-  background: black;
-  color: white;
+  background: var(--main-font-color);
+  color: var(--main-bg-color);
   font-family: Arial, Helvetica, sans-serif;
   font-size: 2rem;
 }
@@ -201,9 +201,9 @@ button, .burger-menu {
   border-image-repeat: space;
   margin: 1rem;
   font-size: 1.5rem;
-  border: 5px solid white;
-  color: #fff;
-  background-color: #209cee;
+  border: 5px solid --main-bg-color;
+  color: var(--main-bg-color);
+  background-color: var(--link-color);
 }
 
 /* start movement buttons */
@@ -379,7 +379,7 @@ button, .burger-menu {
     /* cursor: pointer; */
   }
   .burger {
-    background-color: black;
+    background-color: var(--main-font-color);
     height: 0.5rem;
     width: 2.5rem;
     margin: 0.25rem 2rem;
@@ -499,8 +499,8 @@ margin-top: 4rem;
   border-style: solid;
   border-width: 6px;
   border-collapse: separate;
-  color: #fff;
-  background-color: #212529;
+  color: var(--main-bg-color);
+  background-color: var(--main-font-color);
   border-spacing: 0;
   border-image-slice: 2;
 }
@@ -517,7 +517,7 @@ margin-top: 4rem;
 }
 
 th, td {
-  border-color: #fff;
+  border-color: var(--main-bg-color);
   border-style: solid;
 } 
 
