@@ -36,20 +36,22 @@ const DOMbody = document.body;
 let isDarkMode;
 
 if (localStorage.getItem("isDarkMode")) {
-  isDarkMode = localStorage.getItem("isDarkMode") === "true";
-  if (isDarkMode) {
-    DOMbody.classList.toggle("dark-mode");
-    toggleBtn.checked = isDarkMode;
-  }
+    isDarkMode = localStorage.getItem("isDarkMode") === "true";
+    if (isDarkMode) {
+        DOMbody.classList.toggle("dark-mode");
+    }
 } else {
-  isDarkMode = localStorage.setItem("isDarkMode", false);
-  toggleBtn.checked = false;
-  DOMbody.classList.toggle("dark-mode");
+    isDarkMode = localStorage.setItem("isDarkMode", false);
+    DOMbody.classList.toggle("dark-mode");
+    // toggleBtn.innerHTML = "dark mode";
+    // console.log(toggleBtn.innerHTML)
+    
 }
 
 function toggleDark() {
-  isDarkMode = !isDarkMode;
-  localStorage.setItem("isDarkMode", isDarkMode);
-  DOMbody.classList.toggle("dark-mode");
+    isDarkMode = !isDarkMode;
+    localStorage.setItem("isDarkMode", isDarkMode);
+    DOMbody.classList.toggle("dark-mode");
+    isDarkMode ? toggleBtn.innerHTML = "light mode" : toggleBtn .innerHTML = "dark mode";
 }
-toggleBtn.addEventListener("change", toggleDark);
+toggleBtn.addEventListener("click", toggleDark);
