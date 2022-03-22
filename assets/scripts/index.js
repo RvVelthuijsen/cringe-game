@@ -85,6 +85,9 @@ const LEVEL = [
 
 const pickupLevel = LEVEL;
 const doorpos = [];
+let playerName = "";
+let time = 0;
+let results = [];
 
 function addPickups(level) {
   let tries = 4;
@@ -101,7 +104,7 @@ function addPickups(level) {
 }
 
 function globalTimer(levelTime) {
-  let time = levelTime;
+  time = levelTime;
 
   const countDown = document.getElementById('timer');
 
@@ -111,8 +114,9 @@ function globalTimer(levelTime) {
   time < 10 ? countDown.innerHTML = '0' + time : countDown.innerHTML = time
   time--;
   if (time === 0) {
-  window.location.href = "./stats.html";
-  }
+
+    window.location.href = "./stats.html";
+    }
   }
 }
 
@@ -150,26 +154,30 @@ addPickupClass(grid) {
       if(gameBoard.objectExist(pos, OBJECT_TYPE.HTML) ) {
         gameBoard.removeObject(pos, [OBJECT_TYPE.HTML]);
         gameBoard.createPickup(OBJECT_TYPE.HTML)
-        pickupCount--;
+        pickupCount++;
+        score+= 50;
       }
       if(gameBoard.objectExist(pos, OBJECT_TYPE.CSS)) {
         gameBoard.removeObject(pos, [OBJECT_TYPE.CSS]);
         gameBoard.createPickup(OBJECT_TYPE.CSS)
-        pickupCount--;
+        pickupCount++;
+        score+= 50;
       }
       if(gameBoard.objectExist(pos, OBJECT_TYPE.JS)) {
         gameBoard.removeObject(pos, [OBJECT_TYPE.JS]);
         gameBoard.createPickup(OBJECT_TYPE.JS)
-        pickupCount--;
+        pickupCount++;
+        score+= 50;
       }
       if(gameBoard.objectExist(pos, OBJECT_TYPE.GIT) ) {
         gameBoard.removeObject(pos, [OBJECT_TYPE.GIT]);
         gameBoard.createPickup(OBJECT_TYPE.GIT)
-        pickupCount--;
+        pickupCount++;
+        score+= 50;
       }
     }
 
-    if(pickupCount === 0) {
+    if(pickupCount === 4) {
       doorOpen = true;
       gameGrid.style.backgroundImage = "url('./assets/images/dooropen map.png')";
     }
@@ -269,6 +277,40 @@ addPickupClass(grid) {
     }
   }
 
+  storeResults(myName, myScore){
+    let currentResults = localStorage.getItem("results");
+    
+    if (currentResults) {
+    results = JSON.parse(currentResults);
+
+    results.sort((a, b) =>
+    a.score > b.score ? 1 : b.score > a.score ? -1 : 0
+    )} else {
+
+    if (results[0].score < myScore)
+    {
+      results.push({
+        name: myName,
+        score: myScore,
+        });
+    }
+    localStorage.setItem("results", JSON.stringify(results));
+
+
+    results.sort((a, b) =>
+    a.score > b.score ? 1 : b.score > a.score ? -1 : 0
+    );    
+  }
+    
+    
+    
+    
+    
+    if (results.length > 6) {
+    results = results.splice(1);
+    }
+  }
+
   // static method: is something we can call without instantiating the class, we can call it directly on the class
   static createGameBoard(DOMGrid, level) {
     const board = new this(DOMGrid);
@@ -362,20 +404,28 @@ const gameBoard = GameBoard.createGameBoard(gameGrid, LEVEL);
 let score = 0;
 let timer = null;
 let gameWin = false;
-let pickupCount = 4;
+let pickupCount = 0;
 let doorOpen = false;
+
+
 
 
 function gameOver(player, grid) {
   document.removeEventListener('keydown', e => 
   player.handleKeyInput(e, gameBoard.objectExist.bind(gameBoard)));
+  clearInterval(timer); // we stop the game loop
+
+  score = score + time * 10;
+  alert(`You scored ${score} amount of points!`);
+  
+  gameBoard.storeResults(playerName, score);
+
+
+
 
   gameBoard.gameStatusRedirect();
 
-  clearInterval(timer); // we stop the game loop
-
-  startButton.classList.remove('hide')
-
+  
 }
 
 // function checkCollision(player, enemy) {
@@ -417,6 +467,8 @@ function gameLoop(player, enemies) {
 function startGame() {
   gameWin = false;
   score = 0;
+  playerName = prompt("What is your name?");
+  console.log(playerName);
 
   startButton.classList.add("hide");
 
