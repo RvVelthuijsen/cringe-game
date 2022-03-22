@@ -27,3 +27,14 @@ else if (player loses) {
 // Adding rows to the table
 
 const playersTableRow = document.createElement("tr");
+
+
+// DARK MODE
+const toggleBtn = document.querySelector(".nes-checkbox");
+const DOMbody = document.body;
+
+function toggleDark() {
+    DOMbody.classList.toggle('dark-mode');
+    toggleBtn.classList.toggle('is-dark');
+} 
+toggleBtn.addEventListener('click', toggleDark);
