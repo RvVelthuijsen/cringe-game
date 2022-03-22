@@ -7,6 +7,10 @@
   /* light mode */
   --main-bg-color: whitesmoke;
   /* dark mode */
+  --dm-bg-color: #121212;
+  --dm-text-color:whitesmoke;
+  --link-color: #007bff;
+  --link-color-v: #0056b3;
 }
 body {
   background-color: var(--main-bg-color);
@@ -14,15 +18,24 @@ body {
   padding: 0;
 }
 
+.dark-mode { 
+  background-color: var(--dm-bg-color);
+  color: var(--dm-text-color);
+  --link-color: #ff7b00;
+  --link-color-v: #e4260d;
+}
+
+
+
 /* SNES styles */
 a {
-  color: #007bff;
+  color: var(--link-color);
   text-decoration: none;
   background-color: transparent;
 }
 
 a:hover {
-  color: #0056b3;
+  color: var(--link-color-v);
   text-decoration: underline;
 }
 
