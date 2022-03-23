@@ -86,37 +86,3 @@ if (window.location.href === "./impressum.html") {
     validateForm();
   });
 }
-
-// DISPLAY STATS FROM LOCAL STORAGE
-
-if (window.location.href === "./stats.html") {
-  const statsTable = document.querySelector(".stats-table");
-  const noResultsRow = document.querySelector(".no-results-row");
-
-  // checking if results is not empty, then remove the test row
-  if (localStorage.getItem("results")) {
-    noResultsRow.remove();
-
-    let results = localStorage.getItem("results");
-    let currentResults = JSON.parse(results);
-    console.log(currentResults);
-
-    for (let i=0; i<currentResults.length; i++) {    // looping over number ob objects in results array
-
-    var tableRow[i] = document.createElement("tr");   // creating and appending table rows for each object in array
-    statsTable.appendChild(tableRow[i]);
-
-    var tableCell1[i] = document.createElement("td");   // creating and appending table cells for each object, using "var" instead of "let" because of error message on scope
-    var tableCell2[i] = document.createElement("td");
-    var tableCell3[i] = document.createElement("td");
-    var tableCell4[i] = document.createElement("td");
-
-    tableRow[i].appendChild(tableCell1[i], tableCell2[i], tableCell3[i], tableCell4[i]); // check if this works, otherwise only "append"
-
-    tableCell1[i].innerHTML = results[i].name;    // modify content of table cells
-    tableCell2[i].innerHTML = results[i].timeLeft;
-    tableCell3[i].innerHTML = results[i].numPickups;
-    tableCell4[i].innerHTML = results[i].score;
-    }
-  }
-}
