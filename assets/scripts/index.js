@@ -26,17 +26,17 @@ const DIRECTIONS = {
 };
 
 const OBJECT_TYPE = {
-  BLANK: 'blank',
-  WALL: 'wall',
-  PICKUP: 'pickup',
-  DOOR: 'door',
-  PLAYER: 'player',
-  ENEMY: 'enemy',
-  DOOROPEN: 'dooropen',
-  JS: 'js',
-  HTML: 'html',
-  GIT: 'git',
-  CSS: 'css'
+  BLANK: "blank",
+  WALL: "wall",
+  PICKUP: "pickup",
+  DOOR: "door",
+  PLAYER: "player",
+  ENEMY: "enemy",
+  DOOROPEN: "dooropen",
+  JS: "js",
+  HTML: "html",
+  GIT: "git",
+  CSS: "css",
 };
 
 // Lookup array for classes
@@ -48,40 +48,33 @@ const CLASS_LIST = [
   OBJECT_TYPE.PLAYER,
   OBJECT_TYPE.ENEMY,
   OBJECT_TYPE.DOOROPEN,
-  
-
 ];
 
 const PICKUPS = [
   OBJECT_TYPE.JS,
   OBJECT_TYPE.HTML,
   OBJECT_TYPE.GIT,
-  OBJECT_TYPE.CSS
+  OBJECT_TYPE.CSS,
 ];
 
 const LEVEL = [
-1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-0, 0, 0, 1, 1, 1, 1, 1, 3, 3, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0,
-0, 0, 0, 1, 1, 1, 1, 1, 3, 3, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0,
-0, 0, 0, 1, 1, 1, 1, 1, 3, 3, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0,
-0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1,
-0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1,
-0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1,
-0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1,
-0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1,
-0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1,
-0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1,
-0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1,
-0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1,
-0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1,
-0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1,
-0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1,
+  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+  1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 3, 3, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+  1, 1, 1, 1, 3, 3, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 3, 3,
+  1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1,
+  1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1,
+  0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1,
+  1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0,
+  1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0,
+  1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 1, 1,
 ];
-
 
 const pickupLevel = LEVEL;
 const doorpos = [];
@@ -93,11 +86,11 @@ function addPickups(level) {
   let tries = 4;
   for (let i = 0; i < level.length; i++) {
     const random = Math.floor(Math.random() * level.length);
-    if (level[random] === 0){
+    if (level[random] === 0) {
       level[random] = 2;
       tries--;
       if (tries === 0) {
-        return 
+        return;
       }
     }
   }
@@ -106,16 +99,17 @@ function addPickups(level) {
 function globalTimer(levelTime) {
   time = levelTime;
 
-  const countDown = document.getElementById('timer');
+  const countDown = document.getElementById("timer");
 
   setInterval(updateCountdown, 1000);
 
   function updateCountdown() {
-  time < 10 ? countDown.innerHTML = '0' + time : countDown.innerHTML = time
-  time--;
-  if (time === 0) {
-
-    window.location.href = "./stats.html";
+    time < 10
+      ? (countDown.innerHTML = "0" + time)
+      : (countDown.innerHTML = time);
+    time--;
+    if (time === 0) {
+      //window.location.href = "./stats.html";
     }
   }
 }
@@ -128,8 +122,8 @@ class GameBoard {
     this.DOMGrid = DOMGrid;
   }
 
-  screenSizeDiv(div){
-    const mediaQuery = window.matchMedia('(max-width: 600px)')
+  screenSizeDiv(div) {
+    const mediaQuery = window.matchMedia("(max-width: 600px)");
     if (mediaQuery.matches) {
       div.style.cssText = `width: calc(${CELL_SIZE} * .05rem); height: calc(${CELL_SIZE} * .05rem);`;
     } else {
@@ -137,71 +131,69 @@ class GameBoard {
     }
   }
 
-addPickupClass(grid) {
-  const pickups = PICKUPS;
-  for (let i = 0; i < grid.length; i++) {
-    if (grid[i].classList.contains(OBJECT_TYPE.PICKUP)){
-      grid[i].classList.add(pickups[0]);
-      pickups.shift();
-      console.log(pickups);
-      console.log(grid[i]);
+  addPickupClass(grid) {
+    const pickups = PICKUPS;
+    for (let i = 0; i < grid.length; i++) {
+      if (grid[i].classList.contains(OBJECT_TYPE.PICKUP)) {
+        grid[i].classList.add(pickups[0]);
+        pickups.shift();
       }
+    }
   }
-};
 
   handlePickup(pos, object) {
-    if (gameBoard.objectExist(pos, object)){
-      if(gameBoard.objectExist(pos, OBJECT_TYPE.HTML) ) {
+    if (gameBoard.objectExist(pos, object)) {
+      if (gameBoard.objectExist(pos, OBJECT_TYPE.HTML)) {
         gameBoard.removeObject(pos, [OBJECT_TYPE.HTML]);
-        gameBoard.createPickup(OBJECT_TYPE.HTML)
+        gameBoard.createPickup(OBJECT_TYPE.HTML);
         pickupCount++;
-        score+= 50;
+        score += 50;
       }
-      if(gameBoard.objectExist(pos, OBJECT_TYPE.CSS)) {
+      if (gameBoard.objectExist(pos, OBJECT_TYPE.CSS)) {
         gameBoard.removeObject(pos, [OBJECT_TYPE.CSS]);
-        gameBoard.createPickup(OBJECT_TYPE.CSS)
+        gameBoard.createPickup(OBJECT_TYPE.CSS);
         pickupCount++;
-        score+= 50;
+        score += 50;
       }
-      if(gameBoard.objectExist(pos, OBJECT_TYPE.JS)) {
+      if (gameBoard.objectExist(pos, OBJECT_TYPE.JS)) {
         gameBoard.removeObject(pos, [OBJECT_TYPE.JS]);
-        gameBoard.createPickup(OBJECT_TYPE.JS)
+        gameBoard.createPickup(OBJECT_TYPE.JS);
         pickupCount++;
-        score+= 50;
+        score += 50;
       }
-      if(gameBoard.objectExist(pos, OBJECT_TYPE.GIT) ) {
+      if (gameBoard.objectExist(pos, OBJECT_TYPE.GIT)) {
         gameBoard.removeObject(pos, [OBJECT_TYPE.GIT]);
-        gameBoard.createPickup(OBJECT_TYPE.GIT)
+        gameBoard.createPickup(OBJECT_TYPE.GIT);
         pickupCount++;
-        score+= 50;
+        score += 50;
       }
     }
 
-    if(pickupCount === 4) {
+    if (pickupCount === 4) {
       doorOpen = true;
-      gameGrid.style.backgroundImage = "url('./assets/images/dooropen map.png')";
+      gameGrid.style.backgroundImage =
+        "url('./assets/images/dooropen map.png')";
     }
 
     // check if player can enter the door
-    if (doorOpen === true){
+    if (doorOpen === true) {
       for (let i = 0; i < doorpos.length; i++) {
-      gameBoard.removeObject(doorpos[i], [OBJECT_TYPE.DOOR]);
-      gameBoard.addObject(doorpos[i], [OBJECT_TYPE.DOOROPEN])
-      
+        gameBoard.removeObject(doorpos[i], [OBJECT_TYPE.DOOR]);
+        gameBoard.addObject(doorpos[i], [OBJECT_TYPE.DOOROPEN]);
       }
     }
-  };
+  }
 
   createDoorArray(grid) {
     for (let i = 0; i < grid.length; i++) {
       if (grid[i].classList.contains(OBJECT_TYPE.DOOR)) {
-        doorpos.push([i])
+        doorpos.push([i]);
       }
     }
   }
 
   gameStatusRedirect() {
-     window.location.href = "./stats.html";
+    window.location.href = "./stats.html";
   }
 
   createPickup(pickupToAdd) {
@@ -209,14 +201,13 @@ addPickupClass(grid) {
     pickUp.classList.add(pickupToAdd);
     this.screenSizeDiv(pickUp);
     scoreTable.appendChild(pickUp);
-  }  
+  }
 
   createGrid(level) {
     this.grid = [];
     this.DOMGrid.innerHTML = "";
     // First set correct amount of columns based on Grid Size and Cell Size
     this.DOMGrid.style.cssText = `grid-template-columns: repeat(${GRID_SIZE}, 1fr);`;
-     
 
     level.forEach((square) => {
       const div = document.createElement("div");
@@ -230,7 +221,7 @@ addPickupClass(grid) {
     this.addPickupClass(this.grid);
     this.createDoorArray(this.grid);
   }
-  
+
   // to add or remove classes
   // if we want to change the grid to canves, we don't have classes. that's why it calls addobjects
   addObject(pos, classes) {
@@ -257,7 +248,7 @@ addPickupClass(grid) {
         this.objectExist.bind(this)
       );
       const { classesToRemove, classesToAdd } = character.makeMove();
-      
+
       if (character.rotation && nextMovePos !== character.pos) {
         this.rotateDiv(nextMovePos, character.dir.rotation); // we have rotated the div
         // we have to rotat back the previous div or the enemy will be rotated when they move to that div
@@ -277,37 +268,96 @@ addPickupClass(grid) {
     }
   }
 
-  storeResults(myName, myScore){
-    let currentResults = localStorage.getItem("results");
-    
-    if (currentResults) {
-    results = JSON.parse(currentResults);
+  storeResults(myScore) {
+    //console.log(localStorage);
+    //results = [{name: playerName, score: myScore}, {name: "", score: 0}];
+    if (!localStorage.getItem("results")) {
+      localStorage.setItem(
+        "results",
+        JSON.stringify([{ name: playerName, score: myScore }])
+      );
+      //`[{name: "${playerName}", score: ${myScore}}]`);
+    } else {
+      results = localStorage.getItem("results");
+      let currentResults = JSON.parse(results);
+      //console.log(currentResults);
 
-    results.sort((a, b) =>
-    a.score > b.score ? 1 : b.score > a.score ? -1 : 0
-    )} else {
+      if (currentResults.length > 4) {
+        //console.log(currentResults[0].score);
+        currentResults.sort((a, b) =>
+          a.score > b.score ? 1 : b.score > a.score ? -1 : 0
+        );
+        console.log(currentResults);
 
-    if (results[0].score < myScore)
-    {
-      results.push({
-        name: myName,
-        score: myScore,
+        if (myScore < currentResults[0].score) {
+          //console.log(currentResults[0].score);
+          return;
+        } else {
+          //console.log(myScore);
+          for (let i = 0; i < currentResults.length; i++) {
+            console.log(currentResults);
+            let newResult = { name: playerName, score: myScore };
+            if (myScore <= currentResults[i].score) {
+              //console.log(currentResults[i].score);
+              currentResults.splice(i, 0, newResult);
+              currentResults.shift();
+              localStorage.setItem("results", JSON.stringify(currentResults));
+              return;
+            }
+            // else {
+            //   currentResults.push(newResult);
+            //   currentResults.shift();
+            //   localStorage.setItem("results", JSON.stringify(currentResults));
+            //   return;
+            // }
+          }
+        }
+      } else {
+        currentResults.push({
+          name: playerName,
+          score: myScore,
         });
-    }
-    localStorage.setItem("results", JSON.stringify(results));
 
+        localStorage.setItem("results", JSON.stringify(currentResults));
+      }
 
-    results.sort((a, b) =>
-    a.score > b.score ? 1 : b.score > a.score ? -1 : 0
-    );    
-  }
-    
-    
-    
-    
-    
-    if (results.length > 6) {
-    results = results.splice(1);
+      //   if (currentResults[0].score < myScore)
+      //   {currentResults.shift()
+
+      //     results.push({
+      //       name: myName,
+      //       score: myScore,
+      //       });
+      //   }
+
+      //   currentResults.push({
+      //     name: playerName,
+      //     score: myScore,
+      //     });
+
+      //   localStorage.setItem("results", JSON.stringify(currentResults))
+      // }
+
+      // results.sort((a, b) =>
+      // a.score > b.score ? 1 : b.score > a.score ? -1 : 0
+      // )
+
+      // if (results[0].score < myScore)
+      // {
+      //   results.push({
+      //     name: myName,
+      //     score: myScore,
+      //     });
+      // }
+      // localStorage.setItem("results", JSON.stringify(results));
+
+      // results.sort((a, b) =>
+      // a.score > b.score ? 1 : b.score > a.score ? -1 : 0
+      // );
+
+      // if (results.length > 6) {
+      // results = results.splice(1);
+      // }
     }
   }
 
@@ -318,7 +368,6 @@ addPickupClass(grid) {
     return board;
   }
 }
-
 
 //  PLAYER
 
@@ -334,7 +383,7 @@ class Player {
   shouldMove() {
     // initially we don't move before player press a direciton on the keyboard
     if (!this.dir) return false;
-    
+
     // instead of returning true once every N of loops through the timer we return true only is 'this.dir' which is a keypress is true
     if (this.dir) {
       return true;
@@ -348,29 +397,29 @@ class Player {
     // if statement to check if we collide with a wall
     if (
       objectExist(nextMovePos, OBJECT_TYPE.WALL) ||
-      objectExist(nextMovePos, OBJECT_TYPE.DOOR) 
+      objectExist(nextMovePos, OBJECT_TYPE.DOOR)
     ) {
       nextMovePos = this.pos; // we don't do anything, we set the current position
     }
-    
+
     return { nextMovePos, direction: this.dir }; // we return an object and is the same interface that a enemy class is going to have
   }
   // if we have next move then we have a method to make the move
   // this is a div in the dom, so we can add/remove classes when we make a move
   makeMove() {
     const classesToRemove = [OBJECT_TYPE.PLAYER]; // we remove the player class from the current position and we add it to the new position
-    const classesToAdd = [OBJECT_TYPE.PLAYER];    
+    const classesToAdd = [OBJECT_TYPE.PLAYER];
 
     return { classesToRemove, classesToAdd }; // with ES6 syntax we don't need to {classesToRemove: classesToRemove} as the name is the same as the const
   }
 
   // now when setting new position we're first checking if a key was pressed (this.dir = null means no key press), and only then we change player pos
   setNewPos(nextMovePos) {
-    if (this.dir = null) {
+    if ((this.dir = null)) {
       return;
-    } else{
-    this.pos = nextMovePos;
-  }
+    } else {
+      this.pos = nextMovePos;
+    }
   }
 
   handleKeyInput = (e) => {
@@ -383,7 +432,7 @@ class Player {
       dir = DIRECTIONS[e.key]; // [e.key] = ArrowUp, ArroLeft,..
     } else {
       return;
-    }   
+    }
     this.dir = dir;
   };
 }
@@ -407,25 +456,18 @@ let gameWin = false;
 let pickupCount = 0;
 let doorOpen = false;
 
-
-
-
 function gameOver(player, grid) {
-  document.removeEventListener('keydown', e => 
-  player.handleKeyInput(e, gameBoard.objectExist.bind(gameBoard)));
+  document.removeEventListener("keydown", (e) =>
+    player.handleKeyInput(e, gameBoard.objectExist.bind(gameBoard))
+  );
   clearInterval(timer); // we stop the game loop
 
   score = score + time * 10;
   alert(`You scored ${score} amount of points!`);
-  
-  gameBoard.storeResults(playerName, score);
 
+  gameBoard.storeResults(score);
 
-
-
-  gameBoard.gameStatusRedirect();
-
-  
+  //gameBoard.gameStatusRedirect();
 }
 
 // function checkCollision(player, enemy) {
@@ -449,19 +491,19 @@ function gameOver(player, grid) {
 // }
 
 function gameLoop(player, enemies) {
-    gameBoard.moveCharacter(player)
-    //gameBoard.moveCharacter(enemies)
+  gameBoard.moveCharacter(player);
+  //gameBoard.moveCharacter(enemies)
 
-    // check if player collects pickup
-    gameBoard.handlePickup(player.pos, OBJECT_TYPE.PICKUP)
+  // check if player collects pickup
+  gameBoard.handlePickup(player.pos, OBJECT_TYPE.PICKUP);
 
-    // // Check if all pickups have been collected
-    if(gameBoard.objectExist(player.pos, OBJECT_TYPE.DOOROPEN)) {
-      gameWin = true;
-      gameOver(player);
-    }
-    // // Show the score
-    // scoreTable.innerHTML = score;
+  // // Check if all pickups have been collected
+  if (gameBoard.objectExist(player.pos, OBJECT_TYPE.DOOROPEN)) {
+    gameWin = true;
+    gameOver(player);
+  }
+  // // Show the score
+  // scoreTable.innerHTML = score;
 }
 
 function startGame() {
@@ -475,18 +517,24 @@ function startGame() {
   addPickups(pickupLevel);
   gameBoard.createGrid(pickupLevel);
 
-    const player = new Player(380); // Player(position)
-    gameBoard.addObject(380, [OBJECT_TYPE.PLAYER]); // we are adding a class(position, array with classes)
+  const player = new Player(380); // Player(position)
+  gameBoard.addObject(380, [OBJECT_TYPE.PLAYER]); // we are adding a class(position, array with classes)
 
   document.addEventListener(
-    "keydown", (e) => player.handleKeyInput(e, gameBoard.objectExist.bind(gameBoard), e.preventDefault()) // we have to bind it because we call if from a function, otherwise it will return undefined
+    "keydown",
+    (e) =>
+      player.handleKeyInput(
+        e,
+        gameBoard.objectExist.bind(gameBoard),
+        e.preventDefault()
+      ) // we have to bind it because we call if from a function, otherwise it will return undefined
   );
 
   // hardcoding the directions for buttons
   rightButton.addEventListener("click", (e) =>
     player.handleKeyInput(
       { keyCode: 39, key: "ArrowRight" },
-      gameBoard.objectExist.bind(gameBoard),
+      gameBoard.objectExist.bind(gameBoard)
     )
   );
   leftButton.addEventListener("click", (e) =>
@@ -520,9 +568,9 @@ function startGame() {
 }
 
 // Initialize game
-startButton.addEventListener("click",() => {    
+startButton.addEventListener("click", () => {
   startGame();
-  globalTimer(20);    
+  globalTimer(20);
 });
 
 // // ENEMIES
