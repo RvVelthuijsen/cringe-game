@@ -4,9 +4,6 @@ document.addEventListener("DOMContentLoaded", function () {
   console.log(navBar);
   let isOpen = false;
   function toggle() {
-    // if (isOpen === false) {
-    //     navBar.style.visibility = "visible"
-    // } else {navBar.style.visibility = "hidden"}
     isOpen
       ? (navBar.style.visibility = "hidden")
       : (navBar.style.visibility = "visible");
@@ -31,7 +28,7 @@ else if (player loses) {
 const playersTableRow = document.createElement("tr");
 
 // DARK MODE
-let toggleBtn = document.querySelector(".nes-checkbox");
+const toggleBtn = document.querySelector(".nes-checkbox");
 const DOMbody = document.body;
 let isDarkMode;
 
@@ -57,6 +54,7 @@ function toggleDark() {
     : (toggleBtn.innerHTML = "dark mode");
 }
 toggleBtn.addEventListener("click", toggleDark);
+
 
 // FORM VALIDATION (on impressum page)
 

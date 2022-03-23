@@ -11,20 +11,25 @@
     <title>Cringe Stats</title>
   </head>
   <body>
+
     <!-- header start -->
+
     <div class="header">
       <div class="logo-container">
         😔
         <!-- <img src="" alt="logo" class="logo"> -->
       </div>
       <div class="navbar" id="navbar">
-        <a href="./index.html">Home </a>
+        <a href="./index.html" class="home-page">Home </a>
         <!-- active html page gets id="active-html" for color highlighting in CSS -->
-        <a href="./game.html">Game</a>
-        <a href="./stats.html" id="active-html">Stats</a>
-        <a href="./impressum.html">Impressum</a>
-        <a href="./settings.html">Settings</a>
+        <a href="./game.html" class="game-page">Game</a>
+        <a href="./stats.html" id="active-html" class="stats-page">Stats</a>
+        <a href="./impressum.html" class="impressum-page">Impressum</a>
+        <a href="./settings.html" class="settings-page">Settings</a>
       </div>
+      <button class="en" href="#en">en</button>
+      <button class="de" href="#de">de</button>
+
       <button class="nes-checkbox">dark mode</button>
       <div class="burger-menu" id="burger-menu">
         <div class="burger"></div>
@@ -73,5 +78,7 @@
     </div>
     <script src="./assets/scripts/header.js"></script>
     <script src="./assets/scripts/statstable.js"></script>
+    <script src="./assets/scripts/lang-stats.js"></script>
+
   </body>
 </html>

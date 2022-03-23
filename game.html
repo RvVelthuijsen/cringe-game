@@ -9,24 +9,25 @@
   </head>
   <body>
      <!-- header start -->
-     <div class="header">
+    <div class="header">
       <div class="logo-container">
-          😔
-          <!-- <img src="" alt="logo" class="logo"> -->
+        😔
+        <!-- <img src="" alt="logo" class="logo"> -->
       </div>
       <div class="navbar" id="navbar">
-          <a href="./index.html">Home </a>
-          <!-- active html page gets id="active-html" for color highlighting in CSS -->
-          <a href="./game.html" id="active-html">Game</a> 
-          <a href="./stats.html">Stats</a>
-          <a href="./impressum.html">Impressum</a>
-          <a href="./settings.html">Settings</a>
+        <a href="./index.html"class="home-page">Home </a>
+        <!-- active html page gets id="active-html" for color highlighting in CSS -->
+        <a href="./game.html" class="game-page" id="active-html">Game</a>
+        <a href="./stats.html" class="stats-page">Stats</a>
+        <a href="./impressum.html" class="impressum-page">Impressum</a>
+        <a href="./settings.html" class="settings-page">Settings</a>
       </div>
-      <label>
-        <button class="nes-checkbox">dark mode</button>
+      <button class="en" href="#en">en</button>
+      <button class="de" href="#de">de</button>
+      <button class="nes-checkbox">dark mode</button>
       <div class="burger-menu" id="burger-menu">
-          <div class="burger"></div>
-          <div class="burger"></div>
+        <div class="burger"></div>
+        <div class="burger"></div>
       </div>
     </div>
 
@@ -34,7 +35,7 @@
     <div id="wrapper">
       <div id="game"></div>
       <!-- <button type="button" class="nes-btn is-primary">Start Game</button> -->
-      <button type="button" id="start-button">Start Game</button>
+      <button type="button" id="start-button" >Start Game</button>
       <div id="score" class="nes-container is-rounded is-dark"></div>
       <div class="nes-container is-rounded is-dark"> 
         <p id="timer"></p>
@@ -50,5 +51,6 @@
     </div>
     <script src="./assets/scripts/index.js"></script>
     <script src="./assets/scripts/header.js"></script>
+    <script src="./assets/scripts/lang-game.js"></script>
   </body>
 </html>
