@@ -353,7 +353,9 @@ class GameBoard {
           numPickups: pickupCount,
           timeLeft: time,
         });
-
+        currentResults.sort((a, b) =>
+          b.score > a.score ? 1 : a.score > b.score ? -1 : 0
+        );
         localStorage.setItem("results", JSON.stringify(currentResults));
       }
     }

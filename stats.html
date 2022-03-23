@@ -11,7 +11,6 @@
     <title>Cringe Stats</title>
   </head>
   <body>
-
     <!-- header start -->
 
     <div class="header">
@@ -55,10 +54,10 @@
         <!-- Via JavaScript, DOM manipulation and Tiny DB, creating table rows -->
         <table class="stats-table">
           <tr>
-            <th>Player</th>
-            <th>Time Left</th>
-            <th># Items</th>
-            <th>Score</th>
+            <th id="player-name">Player</th>
+            <th id="player-time">Time Left</th>
+            <th id="player-items"># Items</th>
+            <th id="player-score">Score</th>
           </tr>
           <tr id="no-results-row">
             <td>/</td>
@@ -77,8 +76,7 @@
       </a>
     </div>
     <script src="./assets/scripts/header.js"></script>
-    <script src="./assets/scripts/statstable.js"></script>
     <script src="./assets/scripts/lang-stats.js"></script>
-
+    <script src="./assets/scripts/statstable.js"></script>
   </body>
 </html>
