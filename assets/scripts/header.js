@@ -31,15 +31,29 @@ else if (player loses) {
 const playersTableRow = document.createElement("tr");
 
 // DARK MODE
-const toggleBtn = document.querySelector(".nes-checkbox");
+let toggleBtn = document.querySelector(".nes-checkbox");
 const DOMbody = document.body;
+let isDarkMode;
+
+if (localStorage.getItem("isDarkMode")) {
+    isDarkMode = localStorage.getItem("isDarkMode") === "true";
+    if (isDarkMode) {
+        DOMbody.classList.toggle("dark-mode");
+        toggleBtn.innerHTML = "light mode";
+    }
+} else {
+    isDarkMode = localStorage.setItem("isDarkMode", false);
+    DOMbody.classList.toggle("dark-mode");
+    toggleBtn.innerHTML = "dark mode";
+    // console.log(toggleBtn.innerHTML)
+    
+}
 
 function toggleDark() {
-  DOMbody.classList.toggle("dark-mode");
-  localStorage.setItem("isDarkMode", true);
-  if (localStorage.getItem("isDarkMode") === "true") {
-    document.getElementById("main-page").classList.add("active-dark");
-  }
+    isDarkMode = !isDarkMode;
+    localStorage.setItem("isDarkMode", isDarkMode);
+    DOMbody.classList.toggle("dark-mode");
+    isDarkMode ? toggleBtn.innerHTML = "light mode" : toggleBtn .innerHTML = "dark mode";
 }
 toggleBtn.addEventListener("click", toggleDark);
 
@@ -68,3 +82,4 @@ submitBtn.addEventListener("click", function (event) {
   event.preventDefault();
   validateForm();
 });
+
