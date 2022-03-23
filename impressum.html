@@ -3,8 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./assets/styles/style.css">
-    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/styles/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Press+Start+2P"
+      rel="stylesheet"
+    />
     <title>Impressum</title>
   </head>
   <body>
@@ -15,6 +18,7 @@
         <!-- <img src="" alt="logo" class="logo"> -->
       </div>
       <div class="navbar" id="navbar">
+
         <a href="./index.html">Home </a>
         <!-- active html page gets id="active-html" for color highlighting in CSS -->
         <a href="./game.html">Game</a>
@@ -22,6 +26,8 @@
         <a href="./impressum.html" id="active-html">Impressum</a>
         <a href="./settings.html">Settings</a>
       </div>
+      <button class="en" href="#en">en</button>
+      <button class="de" href="#de">de</button>
       <button class="nes-checkbox">dark mode</button>
       <div class="burger-menu" id="burger-menu">
         <div class="burger"></div>
@@ -34,11 +40,11 @@
       <h1 class="main-title">Impressum</h1>
       <section class="impr-sections legal">
         <h2 class="section-title">About us</h2>
-        <p>Our team</p>
+        <p id="about-us">Our team</p>
       </section>
       <section class="impr-sections credits">
-        <h2 class="section-title">Credits</h2>
-        <p class="impr-par">
+        <h2 id="credits-title" class="section-title">Credits</h2>
+        <p id="credits-content" class="impr-par">
           This website could not have been made without the help of the
           following assets:
         </p>
@@ -60,18 +66,16 @@
           <li><a href="">CSS library</a></li>
         </ul>
       </section>
-      <section class="contact" id="contact">
-        <h2 class="section-title">Contact us</h2>
-        <div class="form-text">
-          <p class="impr-par">
-            Would you like to give some feedback or just tell us how great of a
-            job we did, leave us a message:
-          </p>
-          <p class="submit-msg"></p>
-        </div>
-        <form class="contact-form" name="form">
+
+      <section class="contact">
+        <h2 id="contact-us" class="section-title">Contact us</h2>
+        <p id="contact-us-desc" class="impr-par">
+          Would you like to give some feedback or just tell us how great of a
+          job we did, leave us a message:
+        </p>
+        <form id="contact-form">
           <div id="name-field">
-            <label for="name">Your name:</label>
+            <label id="contact-name" for="name">Your name</label>
             <br />
             <input
               type="text"
@@ -83,7 +87,7 @@
             <br />
           </div>
           <div id="email-field">
-            <label for="email">Your email:</label>
+            <label id="contact-email" for="email">Your email</label>
             <br />
             <input
               type="email"
@@ -95,7 +99,8 @@
             <br />
           </div>
           <div id="message-field">
-            <label for="message">Your message:</label>
+            <label id="contact-message" for="message">Your message</label>
+
             <br />
             <textarea
               id="message"
@@ -116,6 +121,7 @@
         </form>
       </section>
     </main>
-    <script src="./assets/scripts/header.js"></script>
+    <script src="/assets/scripts/header.js"></script>
+    <script src="/assets/scripts/lang-impressum.js"></script>
   </body>
 </html>

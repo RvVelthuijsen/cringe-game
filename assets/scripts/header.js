@@ -4,9 +4,6 @@ document.addEventListener("DOMContentLoaded", function () {
   console.log(navBar);
   let isOpen = false;
   function toggle() {
-    // if (isOpen === false) {
-    //     navBar.style.visibility = "visible"
-    // } else {navBar.style.visibility = "hidden"}
     isOpen
       ? (navBar.style.visibility = "hidden")
       : (navBar.style.visibility = "visible");
@@ -31,31 +28,33 @@ else if (player loses) {
 const playersTableRow = document.createElement("tr");
 
 // DARK MODE
-let toggleBtn = document.querySelector(".nes-checkbox");
+const toggleBtn = document.querySelector(".nes-checkbox");
 const DOMbody = document.body;
 let isDarkMode;
 
 if (localStorage.getItem("isDarkMode")) {
-    isDarkMode = localStorage.getItem("isDarkMode") === "true";
-    if (isDarkMode) {
-        DOMbody.classList.toggle("dark-mode");
-        toggleBtn.innerHTML = "light mode";
-    }
-} else {
-    isDarkMode = localStorage.setItem("isDarkMode", false);
+  isDarkMode = localStorage.getItem("isDarkMode") === "true";
+  if (isDarkMode) {
     DOMbody.classList.toggle("dark-mode");
-    toggleBtn.innerHTML = "dark mode";
-    // console.log(toggleBtn.innerHTML)
-    
+    toggleBtn.innerHTML = "light mode";
+  }
+} else {
+  isDarkMode = localStorage.setItem("isDarkMode", false);
+  DOMbody.classList.toggle("dark-mode");
+  toggleBtn.innerHTML = "dark mode";
+  // console.log(toggleBtn.innerHTML)
 }
 
 function toggleDark() {
-    isDarkMode = !isDarkMode;
-    localStorage.setItem("isDarkMode", isDarkMode);
-    DOMbody.classList.toggle("dark-mode");
-    isDarkMode ? toggleBtn.innerHTML = "light mode" : toggleBtn .innerHTML = "dark mode";
+  isDarkMode = !isDarkMode;
+  localStorage.setItem("isDarkMode", isDarkMode);
+  DOMbody.classList.toggle("dark-mode");
+  isDarkMode
+    ? (toggleBtn.innerHTML = "light mode")
+    : (toggleBtn.innerHTML = "dark mode");
 }
 toggleBtn.addEventListener("click", toggleDark);
+
 
 // FORM VALIDATION (on impressum page)
 
@@ -82,4 +81,3 @@ submitBtn.addEventListener("click", function (event) {
   event.preventDefault();
   validateForm();
 });
-
