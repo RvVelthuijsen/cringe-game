@@ -36,24 +36,25 @@ const DOMbody = document.body;
 let isDarkMode;
 
 if (localStorage.getItem("isDarkMode")) {
-    isDarkMode = localStorage.getItem("isDarkMode") === "true";
-    if (isDarkMode) {
-        DOMbody.classList.toggle("dark-mode");
-        toggleBtn.innerHTML = "light mode";
-    }
-} else {
-    isDarkMode = localStorage.setItem("isDarkMode", false);
+  isDarkMode = localStorage.getItem("isDarkMode") === "true";
+  if (isDarkMode) {
     DOMbody.classList.toggle("dark-mode");
-    toggleBtn.innerHTML = "dark mode";
-    // console.log(toggleBtn.innerHTML)
-    
+    toggleBtn.innerHTML = "light mode";
+  }
+} else {
+  isDarkMode = localStorage.setItem("isDarkMode", false);
+  DOMbody.classList.toggle("dark-mode");
+  toggleBtn.innerHTML = "dark mode";
+  // console.log(toggleBtn.innerHTML)
 }
 
 function toggleDark() {
-    isDarkMode = !isDarkMode;
-    localStorage.setItem("isDarkMode", isDarkMode);
-    DOMbody.classList.toggle("dark-mode");
-    isDarkMode ? toggleBtn.innerHTML = "light mode" : toggleBtn .innerHTML = "dark mode";
+  isDarkMode = !isDarkMode;
+  localStorage.setItem("isDarkMode", isDarkMode);
+  DOMbody.classList.toggle("dark-mode");
+  isDarkMode
+    ? (toggleBtn.innerHTML = "light mode")
+    : (toggleBtn.innerHTML = "dark mode");
 }
 toggleBtn.addEventListener("click", toggleDark);
 
@@ -82,4 +83,35 @@ submitBtn.addEventListener("click", function (event) {
   event.preventDefault();
   validateForm();
 });
+
+// DISPLAY STATS FROM LOCAL STORAGE
+
+let results = localStorage.getItem("results");
+let currentResults = JSON.parse(results);
+console.log(currentResults);
+
+const statsTable = document.querySelector(".stats-table");
+const noResultsRow = document.querySelector(".no-results-row");
+
+if (currentResults) {      // checking if results is not empty, then remove the test row
+  noResultsRow.remove();
+
+  for (let i=0; i<currentResults.length; i++) {    // looping over number ob objects in results array
+
+  var tableRow[i] = document.createElement("tr");   // creating and appending table rows for each object in array
+  statsTable.appendChild(tableRow[i]);
+
+  var tableCell1[i] = document.createElement("td");   // creating and appending table cells for each object, using "var" instead of "let" because of error message on scope
+  var tableCell2[i] = document.createElement("td");
+  var tableCell3[i] = document.createElement("td");
+  var tableCell4[i] = document.createElement("td");
+
+  tableRow[i].appendChild(tableCell1[i], tableCell2[i], tableCell3[i], tableCell4[i]); // check if this works, otherwise only "append"
+
+  tableCell1[i].innerHTML = results[i].name;    // modify content of table cells
+  tableCell2[i].innerHTML = results[i].timeLeft;
+  tableCell3[i].innerHTML = results[i].numPickups;
+  tableCell4[i].innerHTML = results[i].score;
+  }
+}
 
