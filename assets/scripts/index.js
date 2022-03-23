@@ -57,30 +57,71 @@ const PICKUPS = [
   OBJECT_TYPE.CSS,
 ];
 
-const LEVEL = [
+const LEVEL1 = [
   1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
   1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
   1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-  1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 3, 3, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-  1, 1, 1, 1, 3, 3, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 3, 3,
-  1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0,
-  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0,
-  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1,
-  1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1,
-  0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1,
-  1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0,
-  1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0,
-  1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0,
-  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-  0, 0, 0, 0, 0, 0, 0, 0, 1, 1,
+  1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 3, 3, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1,
+  1, 1, 1, 1, 3, 3, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1, 3, 3,
+  1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1,
+  1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1,
+  1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1,
+  1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0,
+  1, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0,
+  1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+  1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
 ];
 
-const pickupLevel = LEVEL;
+const LEVEL2 = [
+  1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0,
+  0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1,
+  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+  1, 1, 1, 0, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0,
+  1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0,
+  0, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1,
+  1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 1, 0,
+  0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 3, 1, 0, 0, 0, 0, 0, 0, 0,
+  0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 3, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1,
+  1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1,
+  1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 0,
+  0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1,
+  1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0,
+  0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+  1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+];
+
+const LEVEL3 = [
+  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0,
+  0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0,
+  1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1,
+  1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 0, 1, 1, 0, 1, 1, 1,
+  1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0,
+  0, 0, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1,
+  0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1,
+  0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 0, 1, 1,
+  0, 1, 1, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1,
+  1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1,
+  1, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1,
+  1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0,
+  1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1,
+  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 3, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+  1, 1, 1, 1, 1, 1, 3, 3, 3, 3,
+];
+
+const pickupLevel1 = LEVEL1;
+const pickupLevel2 = LEVEL2;
+const pickupLevel3 = LEVEL3;
 const doorpos = [];
 let playerName = "";
 let time = 0;
 let results = [];
+let doorOpenImage = "url('./assets/images/dooropen map.png')";
 
 function addPickups(level) {
   let tries = 4;
@@ -132,11 +173,11 @@ class GameBoard {
   }
 
   addPickupClass(grid) {
-    const pickups = PICKUPS;
+    let pickupsToAdd = [...PICKUPS];
     for (let i = 0; i < grid.length; i++) {
       if (grid[i].classList.contains(OBJECT_TYPE.PICKUP)) {
-        grid[i].classList.add(pickups[0]);
-        pickups.shift();
+        grid[i].classList.add(pickupsToAdd[0]);
+        pickupsToAdd.shift();
       }
     }
   }
@@ -168,11 +209,12 @@ class GameBoard {
         score += 50;
       }
     }
+  }
 
+  doorOpenHandler(image) {
     if (pickupCount === 4) {
       doorOpen = true;
-      gameGrid.style.backgroundImage =
-        "url('./assets/images/dooropen map.png')";
+      gameGrid.style.backgroundImage = image;
     }
 
     // check if player can enter the door
@@ -291,7 +333,6 @@ class GameBoard {
         );
 
         for (let i = 0; i < currentResults.length; i++) {
-          console.log(currentResults);
           let newResult = {
             name: playerName,
             score: myScore,
@@ -392,6 +433,88 @@ class Player {
     }
     this.dir = dir;
   };
+
+  resetPos(newPos) {
+    this.pos = newPos;
+  }
+}
+
+// ENEMIES
+
+class Enemy {
+  constructor(speed = 5, startPos, movement, name) {
+    this.name = name;
+    this.movement = movement;
+    this.startPos = startPos;
+    this.pos = startPos;
+    this.dir = DIRECTIONS.ArrowRight;
+    this.speed = speed;
+    this.timer = 0;
+    this.isScared = false;
+    this.rotation = false;
+  }
+  // since the methods are the same as in the player class, we could create a base class (ex.character) and extend this class from that class instead of repeating
+
+  shouldMove() {
+    if (this.timer === this.speed) {
+      this.timer = 0;
+      return true;
+    }
+    this.timer++;
+    // console.log(timer);
+    // return false;
+  }
+
+  getNextMove(objectExist) {
+    const { nextMovePos, direction } = this.movement(
+      this.pos,
+      this.dir,
+      objectExist
+    );
+    return { nextMovePos, direction };
+  }
+
+  makeMove() {
+    const classesToRemove = [OBJECT_TYPE.ENEMY, this.name];
+    let classesToAdd = [OBJECT_TYPE.ENEMY, this.name];
+
+    return { classesToRemove, classesToAdd };
+  }
+
+  setNewPos(nextMovePos, direction) {
+    this.pos = nextMovePos;
+    this.dir = direction;
+  }
+
+  resetPos(newPos) {
+    this.pos = newPos;
+  }
+}
+
+// ENEMY MOVES
+
+// Primitive random movement
+
+function randomMovement(position, direction, objectExist) {
+  let dir = direction;
+  let nextMovePos = position + dir.movement;
+  // bCreate an array from the directions object keys
+  const keys = Object.keys(DIRECTIONS); // it grabs all the keys and put them into an array
+
+  // we don't want to enemies to move into a wall
+  while (
+    objectExist(nextMovePos, OBJECT_TYPE.WALL) ||
+    objectExist(nextMovePos, OBJECT_TYPE.DOOR) ||
+    objectExist(nextMovePos, OBJECT_TYPE.DOOROPEN)
+  ) {
+    // get a random key from the key array
+    const key = keys[Math.floor(Math.random() * keys.length)];
+    // set the next move
+    dir = DIRECTIONS[key]; // ex key = ArrowUp
+    // set the next move
+    nextMovePos = position + dir.movement; // this is how we constantly change the direction of the enemy until we have a direction that don't collide with a wall or enemy
+  }
+  return { nextMovePos, direction: dir };
 }
 
 // Dom Elements
@@ -405,7 +528,7 @@ const downButton = document.getElementById("down-btn");
 // console.log("RIGHT BUTTON",rightButton); // used to check whether the button was recognized or not
 // Game constants
 const GLOBAL_SPEED = 80; // ms
-const gameBoard = GameBoard.createGameBoard(gameGrid, LEVEL);
+let gameBoard = GameBoard.createGameBoard(gameGrid, LEVEL1);
 // Initial setup
 let score = 0;
 let timer = null;
@@ -413,7 +536,7 @@ let gameWin = false;
 let pickupCount = 0;
 let doorOpen = false;
 
-function gameOver(player, grid) {
+function gameOver(player) {
   document.removeEventListener("keydown", (e) =>
     player.handleKeyInput(e, gameBoard.objectExist.bind(gameBoard))
   );
@@ -427,55 +550,86 @@ function gameOver(player, grid) {
   gameBoard.gameStatusRedirect();
 }
 
-// function checkCollision(player, enemy) {
-//   const collidedEnemy = enemy.find( enemy => player.pos === enemy.pos);
-
-//   if(collidedEnemy) {
-//     if(player.powerPill) {
-//       gameBoard.removeObject(collidedEnemy.pos, [
-//         OBJECT_TYPE.PICKUP,
-//         OBJECT_TYPE.SCARED,
-//         collidedEnemy.name
-//       ]);
-//       collidedEnemy.pos = collidedEnemy.startPos
-//       score += 100;
-//     } else {
-//       gameBoard.removeObject(player.pos, [OBJECT_TYPE.PLAYER]);
-//       gameBoard.rotateDiv(player.pos, 0)
-//       gameOver(player, gameGrid)
-//     }
-//   }
-// }
-
+function checkCollision(player, enemies) {
+  const collidedGhost = enemies.find((enemy) => player.pos === enemy.pos);
+  if (collidedGhost) {
+    // gameBoard.removeObject(player.pos, [OBJECT_TYPE.PLAYER]);
+    // gameBoard.rotateDiv(player.pos, 0);
+    time = 0;
+    gameOver(player, gameGrid);
+  }
+}
+let level = 1;
 function gameLoop(player, enemies) {
+  // 1. Move Pacman
   gameBoard.moveCharacter(player);
-  //gameBoard.moveCharacter(enemies)
+  // 2. Check Ghost collision on the old positions
+  checkCollision(player, enemies);
+  // 3. Move ghosts
+  enemies.forEach((enemy) => gameBoard.moveCharacter(enemy));
 
   // check if player collects pickup
   gameBoard.handlePickup(player.pos, OBJECT_TYPE.PICKUP);
 
   // // Check if all pickups have been collected
-  if (gameBoard.objectExist(player.pos, OBJECT_TYPE.DOOROPEN)) {
+  if (level === 1 && gameBoard.objectExist(player.pos, OBJECT_TYPE.DOOROPEN)) {
+    //console.log(levelname);
+    //console.log(typeof levelname);
+    doorOpen = false;
+    scoreTable.innerHTML = "";
+    pickupCount = 0;
+    doorOpenImage = "url('./assets/images/chicken-level-400px.png')";
+    addPickups(pickupLevel2);
+    gameBoard = GameBoard.createGameBoard(gameGrid, pickupLevel2);
+    gameBoard.createGrid(pickupLevel2);
+    player.resetPos(361);
+    enemies[0].resetPos(260);
+    enemies[1].resetPos(175);
+    gameGrid.style.backgroundImage =
+      "url('./assets/images/chicken-level-400px.png')";
+    gameBoard.addObject(player.pos, [OBJECT_TYPE.PLAYER]);
+    level++;
+    //console.log(level);
+  }
+  if (level === 2 && gameBoard.objectExist(player.pos, OBJECT_TYPE.DOOROPEN)) {
+    doorOpen = false;
+    scoreTable.innerHTML = "";
+    pickupCount = 0;
+    doorOpenImage = "url('./assets/images/level 3.png')";
+    addPickups(pickupLevel3);
+    gameBoard = GameBoard.createGameBoard(gameGrid, pickupLevel3);
+    gameBoard.createGrid(pickupLevel3);
+    player.resetPos(324);
+    enemies[0].resetPos(146);
+    enemies[1].resetPos(155);
+    gameGrid.style.backgroundImage = "url('./assets/images/level 3.png')";
+    gameBoard.addObject(player.pos, [OBJECT_TYPE.PLAYER]);
+    level++;
+    //console.log(level);
+  }
+  if (level === 3 && gameBoard.objectExist(player.pos, OBJECT_TYPE.DOOROPEN)) {
     gameWin = true;
     gameOver(player);
   }
   // // Show the score
   // scoreTable.innerHTML = score;
+  gameBoard.doorOpenHandler(doorOpenImage);
 }
 
 function startGame() {
   gameWin = false;
   score = 0;
   playerName = prompt("What is your name?");
-  console.log(playerName);
 
   startButton.classList.add("hide");
 
-  addPickups(pickupLevel);
-  gameBoard.createGrid(pickupLevel);
+  addPickups(pickupLevel1);
 
-  const player = new Player(380); // Player(position)
-  gameBoard.addObject(380, [OBJECT_TYPE.PLAYER]); // we are adding a class(position, array with classes)
+  addPickups(pickupLevel3);
+  gameBoard.createGrid(pickupLevel1);
+
+  let player = new Player(361); // Player(position)
+  gameBoard.addObject(361, [OBJECT_TYPE.PLAYER]); // we are adding a class(position, array with classes)
 
   document.addEventListener(
     "keydown",
@@ -513,93 +667,17 @@ function startGame() {
     )
   );
 
-  // const enemies = [
-  //   new Enemy(5, 188, randomMovement, OBJECT_TYPE.BLINKY),
-  //   new Enemy(4, 209, randomMovement, OBJECT_TYPE.PINKY),
-  //   new Enemy(3, 230, randomMovement, OBJECT_TYPE.INKY),
-  //   new Enemy(2, 251, randomMovement, OBJECT_TYPE.CLYDE),
-  // ];
+  const enemies = [
+    new Enemy(3, 300, randomMovement, OBJECT_TYPE.ENEMY),
+    new Enemy(2, 249, randomMovement, OBJECT_TYPE.ENEMY),
+  ];
 
   // game loop
-  timer = setInterval(() => gameLoop(player), GLOBAL_SPEED);
+  timer = setInterval(() => gameLoop(player, enemies), GLOBAL_SPEED);
 }
 
 // Initialize game
 startButton.addEventListener("click", () => {
   startGame();
-  globalTimer(20);
+  globalTimer(100);
 });
-
-// // ENEMIES
-
-// class Enemy {
-//   constructor(speed = 5, startPos, movement, name) {
-//     this.name = name;
-//     this.movement = movement;
-//     this.startPos = startPos;
-//     this.pos = startPos;
-//     this.dir = DIRECTIONS.ArrowRight;
-//     this.speed = speed;
-//     this.timer = 0;
-//     this.isScared = false;
-//     this.rotation = false;
-//   }
-//   // since the methods are the same as in the player class, we could create a base class (ex.character) and extend this class from that class instead of repeating
-
-//   shouldMove() {
-//     if(this.timer === this.speed) {
-//       this.timer = 0;
-//       return true;
-//     }
-//     this.timer++;
-//     console.log(timer);
-//     return false
-//   }
-
-//   getNextMove(objectExist) {
-//     const {nextMovePos, direction} = this.movement(
-//       this.pos,
-//       this.dir,
-//       objectExist
-//     );
-//     return {nextMovePos, direction}
-//   }
-
-//   makeMove() {
-//     const classesToRemove = [OBJECT_TYPE.ENEMY, OBJECT_TYPE.SCARED, this.name]
-//     let classesToAdd = [OBJECT_TYPE.ENEMY, this.name]; // why let? we have to check if enemy is scared. if is scared we have to add a class also
-
-//     if(this.isScared) classesToAdd = [...classesToAdd, OBJECT_TYPE.SCARED];
-
-//     return { classesToRemove, classesToAdd };
-//   }
-
-//   setNewPos(nextMovePos, direction) {
-//     this.pos = nextMovePos;
-//     this.dir = direction
-//   }
-// }
-
-// // ENEMY MOVES
-
-// // Primitive random movement
-
-// function randomMovement(position, direction, objectExist) {
-//   let dir = direction;
-//   let nextMovePos = position + dir.movement;
-//   // bCreate an array from the directions object keys
-//   const keys = Object.keys(DIRECTIONS)  // it grabs all the keys and put them into an array
-
-//   // we don't want to enemies to move into a wall
-//   while(
-//     objectExist(nextMovePos, OBJECT_TYPE.WALL) || objectExist(nextMovePos, OBJECT_TYPE.ENEMY)
-//   ) {
-//     // get a random key from the key array
-//     const key = keys[Math.floor(Math.random() * keys.length)];
-//     // set the next move
-//     dir = DIRECTIONS[key] // ex key = ArrowUp
-//     // set the next move
-//     nextMovePos = position + dir.movement; // this is how we constantly change the direction of the enemy until we have a direction that don't collide with a wall or enemy
-//   }
-//   return {nextMovePos, direction: dir}
-// }

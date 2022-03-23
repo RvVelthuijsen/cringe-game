@@ -6,6 +6,7 @@
   /*   font-family: monospace; */
   line-height: 1.5;
 }
+
 :root {
   /* light mode */
   --main-bg-color: whitesmoke;
@@ -55,9 +56,9 @@ a:not([href]):not([tabindex]):focus {
 a:not([href]):not([tabindex]):focus {
   outline: 0;
 }
+
 a, button, .burger-menu, span, input {
   cursor: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAzElEQVRYR+2X0Q6AIAhF5f8/2jYXZkwEjNSVvVUjDpcrGgT7FUkI2D9xRfQETwNIiWO85wfINfQUEyxBG2ArsLwC0jioGt5zFcwF4OYDPi/mBYKm4t0U8ATgRm3ThFoAqkhNgWkA0jJLvaOVSs7j3qMnSgXWBMiWPXe94QqMBMBc1VZIvaTu5u5pQewq0EqNZvIEMCmxAawK0DNkay9QmfFNAJUXfgGgUkLaE7j/h8fnASkxHTz0DGIBMCnBeeM7AArpUd3mz2x3C7wADglA8BcWMZhZAAAAAElFTkSuQmCC') 14 0, pointer;
-
 }
 /* SNES styles */
 
@@ -96,14 +97,10 @@ a, button, .burger-menu, span, input {
   color: var(--main-font-color);
   background-color: var(--main-bg-color);
   border: 3px solid var(--main-font-color);
-  padding: .2rem;
+  padding: 0.2rem;
   height: 3rem;
   width: 5rem;
 }
-
-
-
-
 
 /* end header */
 /* start home */
@@ -278,10 +275,12 @@ a, button, .burger-menu, span, input {
 
 .enemy {
   position: relative;
-  border-radius: 10px 10px 2px 2px;
+  /* border-radius: 10px 10px 2px 2px; */
   border: none;
+  background-size: contain;
+  background-image: url("../images/andrei.gif");
 }
-
+/* 
 .enemy::before {
   content: "";
   display: block;
@@ -306,7 +305,7 @@ a, button, .burger-menu, span, input {
   right: 3px;
   top: 5px;
   border: 2px solid white;
-}
+} */
 
 .css {
   background-image: url("../images/css_16x16.png");
