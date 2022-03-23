@@ -15,7 +15,7 @@ const statsRank = document.querySelector(".rank");
 const playerName = document.querySelector(".players-name");
 const time = document.querySelector(".time");
 const noOfItems = document.querySelector(".noOfItems");
-const score = documents.querySelector(".score")
+const score = document.querySelector(".score")
 const lang = {
   
 //   TextContent
@@ -24,7 +24,14 @@ const lang = {
     gameNav: "Game",
     statsNav: "Stats",
     settingsNav: "Settings",
-    statsTitle: ""
+    statsTitle: "Score Ranking",
+    statsMessage2: "Take a look at the scores of you and other players!",
+    playerName: "Player's name",
+    statsRank: "Rank",
+    time: "Time",
+    noOfItems: "No. of items",
+    score: "Score",
+
 
   },
   de: {
@@ -32,6 +39,13 @@ const lang = {
     gameNav: "Spiel",
     statsNav: "Statistiken",
     settingsNav: "Einstellungen",
+    statsTitle: "Rangliste",
+    statsMessage2: "Werfen Sie einen Blick auf die Ergebnisse von Ihnen und anderen Spielern!",
+    playerName: "Spieler Name",
+    statsRank: "Rang",
+    time: "Zeit",
+    noOfItems: "Anzahl items",
+    score: "Punktzahl",
   },
 };
 
@@ -42,6 +56,13 @@ if (localStorage.getItem("languageLs")) {
     gamePage.textContent = lang.de.gameNav;
     statsPage.textContent = lang.de.statsNav;
     settingsPage.textContent = lang.de.settingsNav;
+    statsTitle.textContent = lang.de.statsTitle;
+    statsMessage2.textContent = lang.de.statsMessage2;
+    playerName.textContent = lang.de.playerName;
+    statsRank.textContent = lang.de.statsRank;
+    time.textContent = lang.de.time;
+    noOfItems.textContent = lang.de.noOfItems;
+    score.textContent = lang.de.score;
     console.log(languageLs);
   } else if (languageLs === "#en") {
     languageLs = localStorage.getItem("languageLs");
@@ -49,6 +70,13 @@ if (localStorage.getItem("languageLs")) {
     gamePage.textContent = lang.en.gameNav;
     statsPage.textContent = lang.en.statsNav;
     settingsPage.textContent = lang.en.settingsNav;
+    statsTitle.textContent = lang.en.statsTitle;
+    statsMessage2.textContent = lang.en.statsMessage2;
+    playerName.textContent = lang.en.playerName;
+    statsRank.textContent = lang.en.statsRank;
+    time.textContent = lang.en.time;
+    noOfItems.textContent = lang.en.noOfItems;
+    score.textContent = lang.en.score;
   }
 } else {
   if ((languageLs = undefined)) {
@@ -57,15 +85,29 @@ if (localStorage.getItem("languageLs")) {
     gamePage.textContent = lang.en.gameNav;
     statsPage.textContent = lang.en.statsNav;
     settingsPage.textContent = lang.en.settingsNav;
+    statsTitle.textContent = lang.en.statsTitle;
+    statsMessage2.textContent = lang.en.statsMessage2;
+    playerName.textContent = lang.en.playerName;
+    statsRank.textContent = lang.en.statsRank;
+    time.textContent = lang.en.time;
+    noOfItems.textContent = lang.en.noOfItems;
+    score.textContent = lang.en.score;
   }
 }
 
 const toggleEn = () => {
   languageLs = "#en";
   homePage.textContent = lang.en.homeNav;
-  gamePage.textContent = lang.en.gameNav;
-  statsPage.textContent = lang.en.statsNav;
-  settingsPage.textContent = lang.en.settingsNav;
+    gamePage.textContent = lang.en.gameNav;
+    statsPage.textContent = lang.en.statsNav;
+    settingsPage.textContent = lang.en.settingsNav;
+    statsTitle.textContent = lang.en.statsTitle;
+    statsMessage2.textContent = lang.en.statsMessage2;
+    playerName.textContent = lang.en.playerName;
+    statsRank.textContent = lang.en.statsRank;
+    time.textContent = lang.en.time;
+    noOfItems.textContent = lang.en.noOfItems;
+    score.textContent = lang.en.score;
   localStorage.setItem("languageLs", "#en");
   // location.reload();
 };
@@ -76,6 +118,13 @@ const toggleDe = () => {
   gamePage.textContent = lang.de.gameNav;
   statsPage.textContent = lang.de.statsNav;
   settingsPage.textContent = lang.de.settingsNav;
+  statsTitle.textContent = lang.de.statsTitle;
+  statsMessage2.textContent = lang.de.statsMessage2;
+  playerName.textContent = lang.de.playerName;
+  statsRank.textContent = lang.de.statsRank;
+  time.textContent = lang.de.time;
+  noOfItems.textContent = lang.de.noOfItems;
+  score.textContent = lang.de.score;
   localStorage.setItem("languageLs", "#de");
   // location.reload();
 };
