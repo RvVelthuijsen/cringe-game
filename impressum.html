@@ -8,24 +8,24 @@
     <title>Impressum</title>
   </head>
   <body>
-     <!-- header start -->
-     <div class="header">
+    <!-- header start -->
+    <div class="header">
       <div class="logo-container">
-          😔
-          <!-- <img src="" alt="logo" class="logo"> -->
+        😔
+        <!-- <img src="" alt="logo" class="logo"> -->
       </div>
       <div class="navbar" id="navbar">
-          <a href="./index.html">Home </a>
-          <!-- active html page gets id="active-html" for color highlighting in CSS -->
-          <a href="./game.html">Game</a> 
-          <a href="./stats.html">Stats</a>
-          <a href="./impressum.html" id="active-html">Impressum</a>
-          <a href="./settings.html">Settings</a>
+        <a href="./index.html">Home </a>
+        <!-- active html page gets id="active-html" for color highlighting in CSS -->
+        <a href="./game.html">Game</a>
+        <a href="./stats.html">Stats</a>
+        <a href="./impressum.html" id="active-html">Impressum</a>
+        <a href="./settings.html">Settings</a>
       </div>
       <button class="nes-checkbox">dark mode</button>
       <div class="burger-menu" id="burger-menu">
-          <div class="burger"></div>
-          <div class="burger"></div>
+        <div class="burger"></div>
+        <div class="burger"></div>
       </div>
     </div>
 
@@ -60,38 +60,62 @@
           <li><a href="">CSS library</a></li>
         </ul>
       </section>
-      <section class="contact">
+      <section class="contact" id="contact">
         <h2 class="section-title">Contact us</h2>
-        <p class="impr-par">
-          Would you like to give some feedback or just tell us how great of a
-          job we did, leave us a message:
-        </p>
-        <form id="contact-form">
+        <div class="form-text">
+          <p class="impr-par">
+            Would you like to give some feedback or just tell us how great of a
+            job we did, leave us a message:
+          </p>
+          <p class="submit-msg"></p>
+        </div>
+        <form class="contact-form" name="form">
           <div id="name-field">
-            <label for="name">Your name</label>
+            <label for="name">Your name:</label>
             <br />
-            <input type="text" id="name" name="name" value="" />
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value=""
+              class="input-field"
+            />
             <br />
           </div>
           <div id="email-field">
-            <label for="email">Your email</label>
+            <label for="email">Your email:</label>
             <br />
-            <input type="email" id="email" name="email" value="" />
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value=""
+              class="input-field"
+            />
             <br />
           </div>
           <div id="message-field">
-            <label for="message">Your message</label>
+            <label for="message">Your message:</label>
             <br />
-            <textarea id="message" name="message"></textarea>
+            <textarea
+              id="message"
+              name="message"
+              class="input-field"
+            ></textarea>
             <br /><br />
           </div>
           <div></div>
           <div id="button-cell">
-            <input id="button" type="submit" value="Submit" />
+            <input
+              id="button"
+              type="submit"
+              value="Submit"
+              class="play-btn submit-btn"
+            />
           </div>
         </form>
       </section>
     </main>
-    <script src="/assets/scripts/header.js"></script>
+    <script src="./assets/scripts/header.js"></script>
   </body>
 </html>
