@@ -18,14 +18,13 @@
         <!-- <img src="" alt="logo" class="logo"> -->
       </div>
       <div class="navbar" id="navbar">
-        <a href="./index.html" class="home-page">Home </a>
+
+        <a href="./index.html">Home </a>
         <!-- active html page gets id="active-html" for color highlighting in CSS -->
-        <a href="./game.html" class="game-page">Game</a>
-        <a href="./stats.html" class="stats-page">Stats</a>
-        <a href="./impressum.html" class="impressum-page" id="active-html"
-          >Impressum</a
-        >
-        <a href="./settings.html" class="settings-page">Settings</a>
+        <a href="./game.html">Game</a>
+        <a href="./stats.html">Stats</a>
+        <a href="./impressum.html" id="active-html">Impressum</a>
+        <a href="./settings.html">Settings</a>
       </div>
       <button class="en" href="#en">en</button>
       <button class="de" href="#de">de</button>
@@ -67,6 +66,7 @@
           <li><a href="">CSS library</a></li>
         </ul>
       </section>
+
       <section class="contact">
         <h2 id="contact-us" class="section-title">Contact us</h2>
         <p id="contact-us-desc" class="impr-par">
@@ -77,24 +77,46 @@
           <div id="name-field">
             <label id="contact-name" for="name">Your name</label>
             <br />
-            <input type="text" id="name" name="name" value="" />
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value=""
+              class="input-field"
+            />
             <br />
           </div>
           <div id="email-field">
             <label id="contact-email" for="email">Your email</label>
             <br />
-            <input type="email" id="email" name="email" value="" />
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value=""
+              class="input-field"
+            />
             <br />
           </div>
           <div id="message-field">
             <label id="contact-message" for="message">Your message</label>
+
             <br />
-            <textarea id="message" name="message"></textarea>
+            <textarea
+              id="message"
+              name="message"
+              class="input-field"
+            ></textarea>
             <br /><br />
           </div>
           <div></div>
           <div id="button-cell">
-            <input id="button" type="submit" value="Submit" />
+            <input
+              id="button"
+              type="submit"
+              value="Submit"
+              class="play-btn submit-btn"
+            />
           </div>
         </form>
       </section>
