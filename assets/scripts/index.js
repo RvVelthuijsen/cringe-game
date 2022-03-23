@@ -57,7 +57,7 @@ const PICKUPS = [
   OBJECT_TYPE.CSS,
 ];
 
-const LEVEL = [
+const LEVEL1 = [
   1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
   1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
   1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
@@ -76,11 +76,52 @@ const LEVEL = [
   0, 0, 0, 0, 0, 0, 0, 0, 1, 1,
 ];
 
-const pickupLevel = LEVEL;
+const LEVEL2 = [
+  1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0,
+  0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1,
+  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+  1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0,
+  1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0,
+  0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1,
+  1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1,
+  1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0,
+  0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0,
+  0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1,
+  1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1,
+  0, 0, 0, 0, 0, 0, 0, 1, 1, 0,
+];
+
+const LEVEL3 = [
+  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0,
+  0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0,
+  1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1,
+  1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 0, 1, 1, 0, 1, 1, 1,
+  1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0,
+  0, 0, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1,
+  0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1,
+  0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 0, 1, 1,
+  0, 1, 1, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1,
+  1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1,
+  1, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1,
+  1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0,
+  1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1,
+  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 3, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+  1, 1, 1, 1, 1, 1, 3, 3, 3, 3,
+];
+
+const pickupLevel1 = LEVEL1;
+const pickupLevel2 = LEVEL2;
+const pickupLevel3 = LEVEL3;
 const doorpos = [];
 let playerName = "";
 let time = 0;
 let results = [];
+let doorOpenImage = "url('./assets/images/dooropen map.png')";
 
 function addPickups(level) {
   let tries = 4;
@@ -132,11 +173,11 @@ class GameBoard {
   }
 
   addPickupClass(grid) {
-    const pickups = PICKUPS;
+    let pickupsToAdd = [...PICKUPS];
     for (let i = 0; i < grid.length; i++) {
       if (grid[i].classList.contains(OBJECT_TYPE.PICKUP)) {
-        grid[i].classList.add(pickups[0]);
-        pickups.shift();
+        grid[i].classList.add(pickupsToAdd[0]);
+        pickupsToAdd.shift();
       }
     }
   }
@@ -168,11 +209,12 @@ class GameBoard {
         score += 50;
       }
     }
+  }
 
+  doorOpenHandler(image) {
     if (pickupCount === 4) {
       doorOpen = true;
-      gameGrid.style.backgroundImage =
-        "url('./assets/images/dooropen map.png')";
+      gameGrid.style.backgroundImage = image;
     }
 
     // check if player can enter the door
@@ -291,7 +333,6 @@ class GameBoard {
         );
 
         for (let i = 0; i < currentResults.length; i++) {
-          console.log(currentResults);
           let newResult = {
             name: playerName,
             score: myScore,
@@ -392,6 +433,10 @@ class Player {
     }
     this.dir = dir;
   };
+
+  resetPos(newPos) {
+    this.pos = newPos;
+  }
 }
 
 // Dom Elements
@@ -405,7 +450,7 @@ const downButton = document.getElementById("down-btn");
 // console.log("RIGHT BUTTON",rightButton); // used to check whether the button was recognized or not
 // Game constants
 const GLOBAL_SPEED = 80; // ms
-const gameBoard = GameBoard.createGameBoard(gameGrid, LEVEL);
+let gameBoard = GameBoard.createGameBoard(gameGrid, LEVEL1);
 // Initial setup
 let score = 0;
 let timer = null;
@@ -413,7 +458,7 @@ let gameWin = false;
 let pickupCount = 0;
 let doorOpen = false;
 
-function gameOver(player, grid) {
+function gameOver(player) {
   document.removeEventListener("keydown", (e) =>
     player.handleKeyInput(e, gameBoard.objectExist.bind(gameBoard))
   );
@@ -446,7 +491,7 @@ function gameOver(player, grid) {
 //     }
 //   }
 // }
-
+let level = 1;
 function gameLoop(player, enemies) {
   gameBoard.moveCharacter(player);
   //gameBoard.moveCharacter(enemies)
@@ -455,26 +500,59 @@ function gameLoop(player, enemies) {
   gameBoard.handlePickup(player.pos, OBJECT_TYPE.PICKUP);
 
   // // Check if all pickups have been collected
-  if (gameBoard.objectExist(player.pos, OBJECT_TYPE.DOOROPEN)) {
+  if (level === 1 && gameBoard.objectExist(player.pos, OBJECT_TYPE.DOOROPEN)) {
+    //console.log(levelname);
+    //console.log(typeof levelname);
+    doorOpen = false;
+    scoreTable.innerHTML = "";
+    pickupCount = 0;
+    doorOpenImage = "url('./assets/images/chicken-level-400px.png')";
+    addPickups(pickupLevel2);
+    gameBoard = GameBoard.createGameBoard(gameGrid, pickupLevel2);
+    gameBoard.createGrid(pickupLevel2);
+    player.resetPos(380);
+    gameGrid.style.backgroundImage =
+      "url('./assets/images/chicken-level-400px.png')";
+    gameBoard.addObject(player.pos, [OBJECT_TYPE.PLAYER]);
+    level++;
+    //console.log(level);
+  }
+  if (level === 2 && gameBoard.objectExist(player.pos, OBJECT_TYPE.DOOROPEN)) {
+    doorOpen = false;
+    scoreTable.innerHTML = "";
+    pickupCount = 0;
+    doorOpenImage = "url('./assets/images/level 3.png')";
+    addPickups(pickupLevel3);
+    gameBoard = GameBoard.createGameBoard(gameGrid, pickupLevel3);
+    gameBoard.createGrid(pickupLevel3);
+    player.resetPos(324);
+    gameGrid.style.backgroundImage = "url('./assets/images/level 3.png')";
+    gameBoard.addObject(player.pos, [OBJECT_TYPE.PLAYER]);
+    level++;
+    //console.log(level);
+  }
+  if (level === 3 && gameBoard.objectExist(player.pos, OBJECT_TYPE.DOOROPEN)) {
     gameWin = true;
     gameOver(player);
   }
   // // Show the score
   // scoreTable.innerHTML = score;
+  gameBoard.doorOpenHandler(doorOpenImage);
 }
 
 function startGame() {
   gameWin = false;
   score = 0;
   playerName = prompt("What is your name?");
-  console.log(playerName);
 
   startButton.classList.add("hide");
 
-  addPickups(pickupLevel);
-  gameBoard.createGrid(pickupLevel);
+  addPickups(pickupLevel1);
 
-  const player = new Player(380); // Player(position)
+  addPickups(pickupLevel3);
+  gameBoard.createGrid(pickupLevel1);
+
+  let player = new Player(380); // Player(position)
   gameBoard.addObject(380, [OBJECT_TYPE.PLAYER]); // we are adding a class(position, array with classes)
 
   document.addEventListener(
@@ -527,7 +605,7 @@ function startGame() {
 // Initialize game
 startButton.addEventListener("click", () => {
   startGame();
-  globalTimer(20);
+  globalTimer(100);
 });
 
 // // ENEMIES
