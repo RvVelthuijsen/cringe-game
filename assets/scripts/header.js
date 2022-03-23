@@ -60,29 +60,26 @@ toggleBtn.addEventListener("click", toggleDark);
 
 // FORM VALIDATION (on impressum page)
 
-if (window.location.href === "./impressum.html") {
-  const submitBtn = document.querySelector(".submit-btn");
-  const submitMsg = document.querySelector(".submit-msg");
-  const form = document.querySelector(".contact-form");
+const submitBtn = document.querySelector(".submit-btn");
+const submitMsg = document.querySelector(".submit-msg");
+const form = document.querySelector(".contact-form");
 
-  function validateForm() {
-    const inputFields1 = document.forms["form"]["name"].value;
-    const inputFields2 = document.forms["form"]["email"].value;
-    const inputFields3 = document.forms["form"]["message"].value;
+function validateForm() {
+  const inputFields1 = document.forms["form"]["name"].value;
+  const inputFields2 = document.forms["form"]["email"].value;
+  const inputFields3 = document.forms["form"]["message"].value;
 
-    if (!inputFields1 || !inputFields2 || !inputFields3) {
-      submitMsg.innerHTML =
-        "Oops! Please fill out all fields before submitting!";
-      /* return false; */
-    } else {
-      submitMsg.innerHTML = "Great! Thank you for your message!";
-      submitMsg.classList.add("success-msg");
-      form.setAttribute("id", "form-submitted");
-    }
+  if (!inputFields1 || !inputFields2 || !inputFields3) {
+    submitMsg.innerHTML = "Oops! Please fill out all fields before submitting!";
+    /* return false; */
+  } else {
+    submitMsg.innerHTML = "Great! Thank you for your message!";
+    submitMsg.classList.add("success-msg");
+    form.setAttribute("id", "form-submitted");
   }
-
-  submitBtn.addEventListener("click", function (event) {
-    event.preventDefault();
-    validateForm();
-  });
 }
+
+submitBtn.addEventListener("click", function (event) {
+  event.preventDefault();
+  validateForm();
+});
