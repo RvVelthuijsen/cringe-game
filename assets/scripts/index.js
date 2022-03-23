@@ -109,7 +109,7 @@ function globalTimer(levelTime) {
       : (countDown.innerHTML = time);
     time--;
     if (time === 0) {
-      //window.location.href = "./stats.html";
+      window.location.href = "./stats.html";
     }
   }
 }
@@ -272,89 +272,49 @@ class GameBoard {
     if (!localStorage.getItem("results")) {
       localStorage.setItem(
         "results",
-        JSON.stringify([{ name: playerName, score: myScore }])
+        JSON.stringify([
+          {
+            name: playerName,
+            score: myScore,
+            numPickups: pickupCount,
+            timeLeft: time,
+          },
+        ])
       );
     } else {
       results = localStorage.getItem("results");
       let currentResults = JSON.parse(results);
-      //console.log(currentResults);
 
       if (currentResults.length > 4) {
-        //console.log(currentResults[0].score);
         currentResults.sort((a, b) =>
-          a.score > b.score ? 1 : b.score > a.score ? -1 : 0
+          b.score > a.score ? 1 : a.score > b.score ? -1 : 0
         );
-        console.log(currentResults);
 
-        if (myScore < currentResults[0].score) {
-          //console.log(currentResults[0].score);
-          return;
-        } else {
-          //console.log(myScore);
-          for (let i = 0; i < currentResults.length; i++) {
-            console.log(currentResults);
-            let newResult = { name: playerName, score: myScore };
-            if (myScore <= currentResults[i].score) {
-              //console.log(currentResults[i].score);
-              currentResults.splice(i, 0, newResult);
-              currentResults.shift();
-              localStorage.setItem("results", JSON.stringify(currentResults));
-              return;
-            }
-            // else {
-            //   currentResults.push(newResult);
-            //   currentResults.shift();
-            //   localStorage.setItem("results", JSON.stringify(currentResults));
-            //   return;
-            // }
+        for (let i = 0; i < currentResults.length; i++) {
+          console.log(currentResults);
+          let newResult = {
+            name: playerName,
+            score: myScore,
+            numPickups: pickupCount,
+            timeLeft: time,
+          };
+          if (myScore >= currentResults[i].score) {
+            currentResults.splice(i, 0, newResult);
+            currentResults.pop();
+            localStorage.setItem("results", JSON.stringify(currentResults));
+            return;
           }
         }
       } else {
         currentResults.push({
           name: playerName,
           score: myScore,
+          numPickups: pickupCount,
+          timeLeft: time,
         });
 
         localStorage.setItem("results", JSON.stringify(currentResults));
       }
-
-      //   if (currentResults[0].score < myScore)
-      //   {currentResults.shift()
-
-      //     results.push({
-      //       name: myName,
-      //       score: myScore,
-      //       });
-      //   }
-
-      //   currentResults.push({
-      //     name: playerName,
-      //     score: myScore,
-      //     });
-
-      //   localStorage.setItem("results", JSON.stringify(currentResults))
-      // }
-
-      // results.sort((a, b) =>
-      // a.score > b.score ? 1 : b.score > a.score ? -1 : 0
-      // )
-
-      // if (results[0].score < myScore)
-      // {
-      //   results.push({
-      //     name: myName,
-      //     score: myScore,
-      //     });
-      // }
-      // localStorage.setItem("results", JSON.stringify(results));
-
-      // results.sort((a, b) =>
-      // a.score > b.score ? 1 : b.score > a.score ? -1 : 0
-      // );
-
-      // if (results.length > 6) {
-      // results = results.splice(1);
-      // }
     }
   }
 
@@ -464,7 +424,7 @@ function gameOver(player, grid) {
 
   gameBoard.storeResults(score);
 
-  //gameBoard.gameStatusRedirect();
+  gameBoard.gameStatusRedirect();
 }
 
 // function checkCollision(player, enemy) {
