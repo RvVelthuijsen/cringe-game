@@ -15,6 +15,11 @@ const creditsContent = document.getElementById("credits-content");
 const contactUs = document.getElementById("contact-us");
 const contactUsDesc = document.getElementById("contact-us-desc");
 
+const contactName = document.getElementById("contact-name");
+const contactEmail = document.getElementById("contact-email");
+const contactMessage = document.getElementById("contact-message");
+const contactButton = document.getElementById("button");
+
 const lang = {
   //   TextContent
   en: {
@@ -31,6 +36,10 @@ const lang = {
     contactUs: "Contact Us",
     contactUsDesc:
       "Would you like to give some feedback or just tell us how great of a job we did, leave us a message:",
+    contactName: "Your name",
+    contactEmail: "Your email",
+    contactMessage: "Your message",
+    contactButton: "Submit",
   },
   de: {
     homeNav: "Über",
@@ -46,6 +55,10 @@ const lang = {
     contactUs: "Kontaktiere Uns",
     contactUsDesc:
       "Möchten Sie Feedback geben oder uns einfach sagen, wie großartig wir unsere Arbeit gemacht haben, hinterlassen Sie uns eine Nachricht:",
+    contactName: "Ihr Name",
+    contactEmail: "Ihre E-Mail-Adresse",
+    contactMessage: "Ihre Nachricht",
+    contactButton: "Senden",
   },
 };
 
@@ -60,6 +73,14 @@ if (localStorage.getItem("languageLs")) {
     aboutUsContent.textContent = lang.de.aboutUsContent;
     creditsTitle.textContent = lang.de.creditsTitle;
     creditsContent.textContent = lang.de.creditsContent;
+    contactUs.textContent = lang.de.contactUs;
+    contactUsDesc.textContent = lang.de.contactUsDesc;
+
+    contactName.textContent = lang.de.contactName;
+    contactEmail.textContent = lang.de.contactEmail;
+    contactMessage.textContent = lang.de.contactMessage;
+    contactButton.value = lang.de.contactButton;
+
     console.log(languageLs);
   } else if (languageLs === "#en") {
     languageLs = localStorage.getItem("languageLs");
@@ -71,6 +92,13 @@ if (localStorage.getItem("languageLs")) {
     aboutUsContent.textContent = lang.en.aboutUsContent;
     creditsTitle.textContent = lang.en.creditsTitle;
     creditsContent.textContent = lang.en.creditsContent;
+    contactUs.textContent = lang.en.contactUs;
+    contactUsDesc.textContent = lang.en.contactUsDesc;
+
+    contactName.textContent = lang.en.contactName;
+    contactEmail.textContent = lang.en.contactEmail;
+    contactMessage.textContent = lang.en.contactMessage;
+    contactButton.value = lang.en.contactButton;
   }
 } else {
   if ((languageLs = undefined)) {
@@ -83,6 +111,13 @@ if (localStorage.getItem("languageLs")) {
     aboutUsContent.textContent = lang.en.aboutUsContent;
     creditsTitle.textContent = lang.en.creditsTitle;
     creditsContent.textContent = lang.en.creditsContent;
+    contactUs.textContent = lang.en.contactUs;
+    contactUsDesc.value = lang.en.contactUsDesc;
+
+    contactName.textContent = lang.en.contactName;
+    contactEmail.textContent = lang.en.contactEmail;
+    contactMessage.textContent = lang.en.contactMessage;
+    contactButton.value = lang.en.contactButton;
   }
 }
 
@@ -96,6 +131,12 @@ const toggleEn = () => {
   aboutUsContent.textContent = lang.en.aboutUsContent;
   creditsTitle.textContent = lang.en.creditsTitle;
   creditsContent.textContent = lang.en.creditsContent;
+  contactUs.textContent = lang.en.contactUs;
+  contactUsDesc.textContent = lang.en.contactUsDesc;
+  contactName.textContent = lang.en.contactName;
+  contactEmail.textContent = lang.en.contactEmail;
+  contactMessage.textContent = lang.en.contactMessage;
+  contactButton.value = lang.en.contactButton;
   localStorage.setItem("languageLs", "#en");
   // location.reload();
 };
@@ -110,6 +151,12 @@ const toggleDe = () => {
   aboutUsContent.textContent = lang.de.aboutUsContent;
   creditsTitle.textContent = lang.de.creditsTitle;
   creditsContent.textContent = lang.de.creditsContent;
+  contactUs.textContent = lang.de.contactUs;
+  contactUsDesc.textContent = lang.de.contactUsDesc;
+  contactName.textContent = lang.de.contactName;
+  contactEmail.textContent = lang.de.contactEmail;
+  contactMessage.textContent = lang.de.contactMessage;
+  contactButton.value = lang.de.contactButton;
   localStorage.setItem("languageLs", "#de");
   // location.reload();
 };
