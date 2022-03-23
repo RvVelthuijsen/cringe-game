@@ -269,14 +269,11 @@ class GameBoard {
   }
 
   storeResults(myScore) {
-    //console.log(localStorage);
-    //results = [{name: playerName, score: myScore}, {name: "", score: 0}];
     if (!localStorage.getItem("results")) {
       localStorage.setItem(
         "results",
         JSON.stringify([{ name: playerName, score: myScore }])
       );
-      //`[{name: "${playerName}", score: ${myScore}}]`);
     } else {
       results = localStorage.getItem("results");
       let currentResults = JSON.parse(results);
