@@ -12,17 +12,6 @@ document.addEventListener("DOMContentLoaded", function () {
   burgerMenu.addEventListener("click", toggle);
 });
 
-// Changing the stats message"
-const statsMessage = document.querySelector(".stats-message");
-
-/*if (player wins) {
-    statsMessage.innerHTML = "Congrats! You did it!";
-}
-else if (player loses) {
-    statsMessage.innerHTML = "Oops! You failed!";
-}
-*/
-
 // Adding rows to the table
 
 const playersTableRow = document.createElement("tr");
@@ -60,6 +49,7 @@ if (document.URL.includes("impressum.html")){
 const submitBtn = document.getElementById("button");
 const submitMsg = document.querySelector(".submit-msg");
 const form = document.getElementById("contact-form");
+const lang = localStorage.getItem("languageLs");
 console.log(submitBtn, submitMsg, form);
 
 function validateForm() {
@@ -68,10 +58,18 @@ function validateForm() {
   const inputFields3 = document.forms["form"]["message"].value;
 
   if (!inputFields1 || !inputFields2 || !inputFields3) {
+    if (lang === "#de"){
+      submitMsg.innerHTML = "Hoppla! Bitte füllen Sie vor dem Absenden alle Felder aus!";
+    } else if (lang === "#en"){
     submitMsg.innerHTML = "Oops! Please fill out all fields before submitting!";
+    }
     /* return false; */
   } else {
-    submitMsg.innerHTML = "Great! Thank you for your message!";
+    if (lang === "#de"){
+      submitMsg.innerHTML = "Toll! Danke für deine Nachricht!";
+    } else if (lang === "#en"){
+      submitMsg.innerHTML = "Great! Thank you for your message!";
+    }
     submitMsg.classList.add("success-msg");
     form.setAttribute("id", "form-submitted");
   }
@@ -95,22 +93,40 @@ if (document.URL.includes("settings.html")){
 
 function setEasy(){
   localStorage.setItem("difficulty", JSON.stringify(80));
+  easyBtn.classList.add('active-btn');
+  mediumBtn.classList.remove('active-btn');
+  hardBtn.classList.remove('active-btn');
 }
 function setMedium(){
   localStorage.setItem("difficulty", JSON.stringify(60));
+  easyBtn.classList.remove('active-btn');
+  mediumBtn.classList.add('active-btn');
+  hardBtn.classList.remove('active-btn');
 }
 function setHard(){
   localStorage.setItem("difficulty", JSON.stringify(30));
+  easyBtn.classList.remove('active-btn');
+  mediumBtn.classList.remove('active-btn');
+  hardBtn.classList.add('active-btn');
 }
 
 function setChar1(){
   localStorage.setItem("character", JSON.stringify(1));
+  char1Btn.classList.add('active-btn');
+  char2Btn.classList.remove('active-btn');
+  char3Btn.classList.remove('active-btn');
 }
 function setChar2(){
   localStorage.setItem("character", JSON.stringify(2));
+  char1Btn.classList.remove('active-btn');
+  char2Btn.classList.add('active-btn');
+  char3Btn.classList.remove('active-btn');
 }
 function setChar3(){
   localStorage.setItem("character", JSON.stringify(3));
+  char1Btn.classList.remove('active-btn');
+  char2Btn.classList.remove('active-btn');
+  char3Btn.classList.add('active-btn');
 }
 
 

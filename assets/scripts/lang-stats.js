@@ -15,7 +15,7 @@ const playerName = document.getElementById("player-name");
 const time = document.getElementById("player-time");
 const noOfItems = document.getElementById("player-items");
 const score = document.getElementById("player-score");
-const playBtn = document.getElementById("play-btn");
+const playBtn = document.querySelector(".play-button");
 const lang = {
   //   TextContent
   en: {

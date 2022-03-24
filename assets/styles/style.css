@@ -88,7 +88,7 @@ input {
 .navbar a {
   /*  text-decoration: none;
   color: whitesmoke; */
-  padding: 0 1rem;
+  padding: clamp(0.2rem, -1rem + 2.333vw, 1rem);
   font-size: 1.5rem;
 }
 
@@ -153,6 +153,14 @@ input {
   /* height: 2.5rem; */
   /* cursor: pointer; */
   border-style: none;
+}
+
+.difficulty-container{
+  margin-bottom: 5rem;
+}
+
+.active-btn{
+  background-color: #ff7b00 !important;
 }
 /* end home */
 /******************************************
@@ -341,6 +349,15 @@ input {
   /* animation: chew 0.2s linear forwards infinite; */
 }
 
+#timer{
+  height: 2rem;
+  width: 3.5rem;
+  font-size: 1rem;
+  border: 5px solid var(--main-font-color);
+  color: var(--main-font-color);
+  text-align: center;
+}
+
 /* @keyframes chew {
   50% {
     clip-path: polygon(
@@ -415,6 +432,11 @@ input {
   .navbar {
     visibility: visible;
     display: flex;
+    width: 70%;
+    overflow: hidden;
+  }
+  .navbar a {
+    font-size: clamp(1rem, -0.875rem + 2.333vw, 1.5rem);
   }
   /* end header */
   /* start home */
@@ -624,6 +646,7 @@ td {
 
 .section-title {
   font-size: 2rem;
+  margin-bottom: 3rem;
 }
 
 .impr-sections {
