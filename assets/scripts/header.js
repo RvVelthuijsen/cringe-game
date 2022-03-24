@@ -56,6 +56,7 @@ function toggleDark() {
 toggleBtn.addEventListener("click", toggleDark);
 
 // FORM VALIDATION (on impressum page)
+if (document.URL.includes("impressum.html")){
 const submitBtn = document.getElementById("button");
 const submitMsg = document.querySelector(".submit-msg");
 const form = document.getElementById("contact-form");
@@ -80,3 +81,46 @@ submitBtn.addEventListener("click", function (event) {
   event.preventDefault();
   validateForm();
 });
+}
+
+//Difficulty setting (on settings page)
+if (document.URL.includes("settings.html")){
+
+  const easyBtn = document.querySelector(".easy-btn");
+  const mediumBtn = document.querySelector(".medium-btn");
+  const hardBtn = document.querySelector(".hard-btn");
+  const char1Btn = document.querySelector(".char1");
+  const char2Btn = document.querySelector(".char2");
+  const char3Btn = document.querySelector(".char3");
+
+function setEasy(){
+  localStorage.setItem("difficulty", JSON.stringify(80));
+}
+function setMedium(){
+  localStorage.setItem("difficulty", JSON.stringify(60));
+}
+function setHard(){
+  localStorage.setItem("difficulty", JSON.stringify(30));
+}
+
+function setChar1(){
+  localStorage.setItem("character", JSON.stringify(1));
+}
+function setChar2(){
+  localStorage.setItem("character", JSON.stringify(2));
+}
+function setChar3(){
+  localStorage.setItem("character", JSON.stringify(3));
+}
+
+
+
+easyBtn.addEventListener("click", setEasy);
+mediumBtn.addEventListener("click", setMedium);
+hardBtn.addEventListener("click", setHard);
+
+char1Btn.addEventListener("click", setChar1);
+char2Btn.addEventListener("click", setChar2);
+char3Btn.addEventListener("click", setChar3);
+
+}

@@ -127,6 +127,8 @@ let time = 0;
 let results = [];
 let doorOpenImage = "url('./assets/images/dooropen map.png')";
 
+
+
 function addPickups(level) {
   let tries = 4;
   for (let i = 0; i < level.length; i++) {
@@ -304,15 +306,16 @@ class GameBoard {
       if (nextMovePos === character.pos) {
         this.rotateDiv(character.pos, character.dir.rotation);
       }
-
+      this.resetBG();
       // now we can move the character on the div, by remove and adding classes
       this.removeObject(character.pos, classesToRemove);
       this.addObject(nextMovePos, classesToAdd);
-
+      this.setChar();
       // then we have to set the new position
       character.setNewPos(nextMovePos, direction);
     }
   }
+
 
   storeResults(myScore) {
     if (!localStorage.getItem("results")) {
@@ -363,6 +366,27 @@ class GameBoard {
         localStorage.setItem("results", JSON.stringify(currentResults));
       }
     }
+  }
+
+  setChar() {
+    const playerModel = document.querySelector(".player");
+    if(localStorage.getItem("character")){
+      console.log(localStorage.getItem("character"));
+      if (JSON.parse(localStorage.getItem("character")) === 1){
+        playerModel.style.backgroundImage = "url('./assets/images/alien.png')";
+      }
+      if (JSON.parse(localStorage.getItem("character")) === 2){
+        playerModel.style.backgroundImage = "url('./assets/images/cat.png')";
+      }
+      if (JSON.parse(localStorage.getItem("character")) === 3){
+        playerModel.style.backgroundImage = "url('assets/images/vamp.png')";
+      }
+    } 
+  }
+
+  resetBG(){
+    const playerModel = document.querySelector(".player");
+    playerModel.style.backgroundImage = "";
   }
 
   // static method: is something we can call without instantiating the class, we can call it directly on the class
@@ -443,6 +467,7 @@ class Player {
   resetPos(newPos) {
     this.pos = newPos;
   }
+
 }
 
 // ENEMIES
@@ -567,6 +592,7 @@ function checkCollision(player, enemies) {
 }
 let level = 1;
 function gameLoop(player, enemies) {
+  
   // 1. Move Pacman
   gameBoard.moveCharacter(player);
   // 2. Check Ghost collision on the old positions
@@ -634,6 +660,7 @@ function startGame() {
 
   let player = new Player(361); // Player(position)
   gameBoard.addObject(361, [OBJECT_TYPE.PLAYER]); // we are adding a class(position, array with classes)
+  gameBoard.setChar();
 
   document.addEventListener(
     "keydown",
@@ -680,8 +707,17 @@ function startGame() {
   timer = setInterval(() => gameLoop(player, enemies), GLOBAL_SPEED);
 }
 
+let difficulty = 80;
+
+function checkDifficulty() {
+  if (localStorage.getItem("difficulty")){
+    difficulty = JSON.parse(localStorage.getItem("difficulty"));
+  }
+}
+
 // Initialize game
 startButton.addEventListener("click", () => {
   startGame();
-  globalTimer(100);
+  checkDifficulty();
+  globalTimer(difficulty);
 });
