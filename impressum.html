@@ -2,10 +2,13 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./style.css" />
-    <title>Cringe Game - Impressum</title>
+    <link rel="stylesheet" href="./assets/styles/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Press+Start+2P"
+      rel="stylesheet"
+    />
+    <title>Impressum</title>
   </head>
   <body>
     <!-- header start -->
@@ -15,28 +18,34 @@
         <!-- <img src="" alt="logo" class="logo"> -->
       </div>
       <div class="navbar" id="navbar">
-        <a href="./index.html">Home </a>
+        <a href="./index.html" class="home-page">Home </a>
         <!-- active html page gets id="active-html" for color highlighting in CSS -->
-        <a href="./game.html">Game</a>
-        <a href="./stats.html">Stats</a>
-        <a href="./impressum.html" id="active-html">Impressum</a>
-        <a href="./settings.html">Settings</a>
+        <a href="./game.html" class="game-page">Game</a>
+        <a href="./stats.html" class="stats-page">Stats</a>
+        <a href="./impressum.html" id="active-html" class="impressum-page"
+          >Impressum</a
+        >
+        <a href="./settings.html" class="settings-page">Settings</a>
       </div>
+      <button class="en" href="#en">en</button>
+      <button class="de" href="#de">de</button>
+      <button class="nes-checkbox">dark mode</button>
       <div class="burger-menu" id="burger-menu">
         <div class="burger"></div>
         <div class="burger"></div>
       </div>
     </div>
+
     <!-- end header -->
     <main class="main-container">
       <h1 class="main-title">Impressum</h1>
       <section class="impr-sections legal">
         <h2 class="section-title">About us</h2>
-        <p>Our team</p>
+        <p id="about-us">Our team</p>
       </section>
       <section class="impr-sections credits">
-        <h2 class="section-title">Credits</h2>
-        <p class="impr-par">
+        <h2 id="credits-title" class="section-title">Credits</h2>
+        <p id="credits-content" class="impr-par">
           This website could not have been made without the help of the
           following assets:
         </p>
@@ -58,38 +67,62 @@
           <li><a href="">CSS library</a></li>
         </ul>
       </section>
+
       <section class="contact">
-        <h2 class="section-title">Contact us</h2>
-        <p class="impr-par">
+        <h2 id="contact-us" class="section-title">Contact us</h2>
+        <p id="contact-us-desc" class="impr-par">
           Would you like to give some feedback or just tell us how great of a
           job we did, leave us a message:
         </p>
         <form id="contact-form">
           <div id="name-field">
-            <label for="name">Your name</label>
+            <label id="contact-name" for="name">Your name</label>
             <br />
-            <input type="text" id="name" name="name" value="" />
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value=""
+              class="input-field"
+            />
             <br />
           </div>
           <div id="email-field">
-            <label for="email">Your email</label>
+            <label id="contact-email" for="email">Your email</label>
             <br />
-            <input type="email" id="email" name="email" value="" />
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value=""
+              class="input-field"
+            />
             <br />
           </div>
           <div id="message-field">
-            <label for="message">Your message</label>
+            <label id="contact-message" for="message">Your message</label>
+
             <br />
-            <textarea id="message" name="message"></textarea>
+            <textarea
+              id="message"
+              name="message"
+              class="input-field"
+            ></textarea>
             <br /><br />
           </div>
           <div></div>
           <div id="button-cell">
-            <input id="button" type="submit" value="Submit" />
+            <input
+              id="button"
+              type="submit"
+              value="Submit"
+              class="play-btn home-page"
+            />
           </div>
         </form>
       </section>
     </main>
-    <script src="header.js"></script>
+    <script src="/assets/scripts/header.js"></script>
+    <script src="/assets/scripts/lang-impressum.js"></script>
   </body>
 </html>

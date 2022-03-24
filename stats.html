@@ -2,33 +2,41 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <title>Document</title>
+    <link rel="stylesheet" href="./assets/styles/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Press+Start+2P"
+      rel="stylesheet"
+    />
+    <title>Cringe Stats</title>
   </head>
-  <!-- header start -->
-  <div class="header">
-    <div class="logo-container">
-      😔
-      <!-- <img src="" alt="logo" class="logo"> -->
-    </div>
-    <div class="navbar" id="navbar">
-      <a href="./home.html">Home </a>
-      <!-- active html page gets id="active-html" for color highlighting in CSS -->
-      <a href="game.html">Game</a>
-      <a href="./stats.html" id="active-html">Stats</a>
-      <a href="./impressum.html">Impressum</a>
-      <a href="./settings.html">Settings</a>
-    </div>
-    <div class="burger-menu" id="burger-menu">
-      <div class="burger"></div>
-      <div class="burger"></div>
-    </div>
-  </div>
+  <body>
+    <!-- header start -->
 
-  <!-- end header -->
-  <body class="stats-body">
+    <div class="header">
+      <div class="logo-container">
+        😔
+        <!-- <img src="" alt="logo" class="logo"> -->
+      </div>
+      <div class="navbar" id="navbar">
+        <a href="./index.html" class="home-page">Home </a>
+        <!-- active html page gets id="active-html" for color highlighting in CSS -->
+        <a href="./game.html" class="game-page">Game</a>
+        <a href="./stats.html" id="active-html" class="stats-page">Stats</a>
+        <a href="./impressum.html" class="impressum-page">Impressum</a>
+        <a href="./settings.html" class="settings-page">Settings</a>
+      </div>
+      <button class="en" href="#en">en</button>
+      <button class="de" href="#de">de</button>
+
+      <button class="nes-checkbox">dark mode</button>
+      <div class="burger-menu" id="burger-menu">
+        <div class="burger"></div>
+        <div class="burger"></div>
+      </div>
+    </div>
+
+    <!-- end header -->
     <h1 class="stats-title">Score Ranking</h1>
     <!--  here we display different headings depending on winning/losing state,
             e.g. "Congrats...." when winning, "ooops, you failed..." when losing-->
@@ -46,27 +54,29 @@
         <!-- Via JavaScript, DOM manipulation and Tiny DB, creating table rows -->
         <table class="stats-table">
           <tr>
-            <th>Rank</th>
-            <th>Player's name</th>
-            <th>Time</th>
-            <th>No. of items</th>
-            <th>Score</th>
+            <th id="player-name">Player</th>
+            <th id="player-time">Time Left</th>
+            <th id="player-items"># Items</th>
+            <th id="player-score">Score</th>
           </tr>
-          <tr>
-            <td>1</td>
-            <td>Test</td>
-            <td>Test</td>
-            <td>Test</td>
-            <td>Test</td>
+          <tr id="no-results-row">
+            <td>/</td>
+            <td>/</td>
+            <td>/</td>
+            <td>/</td>
           </tr>
         </table>
       </div>
     </div>
     <!--  Change text in button depending on case (play again, try again) -->
+
     <div class="container-btn">
-      <a href="game.html"><button class="play-again-btn">Play</button></a>
+      <a class="play-btn stats-play-btn" href="./game.html">
+        <button>Play ▶</button>
+      </a>
     </div>
-    <script src="stats.js"></script>
-    <script src="header.js"></script>
+    <script src="./assets/scripts/header.js"></script>
+    <script src="./assets/scripts/lang-stats.js"></script>
+    <script src="./assets/scripts/statstable.js"></script>
   </body>
 </html>

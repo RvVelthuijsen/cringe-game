@@ -3,42 +3,54 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <title>JS Pacman</title>
+    <link rel="stylesheet" href="./assets/styles/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <title>Game</title>
   </head>
   <body>
-    <!-- header start -->
-      <div class="header">
-        <div class="logo-container">
-            😔
-            <!-- <img src="" alt="logo" class="logo"> -->
-        </div>
-        <div class="navbar" id="navbar">
-            <a href="./index.html">Home </a>
-            <!-- active html page gets id="active-html" for color highlighting in CSS -->
-            <a href="./game.html" id="active-html">Game</a> 
-            <a href="./stats.html">Stats</a>
-            <a href="./impressum.html">Impressum</a>
-            <a href="./settings.html">Settings</a>
-        </div>
-        <div class="burger-menu" id="burger-menu">
-            <div class="burger"></div>
-            <div class="burger"></div>
-        </div>
+     <!-- header start -->
+    <div class="header">
+      <div class="logo-container">
+        😔
+        <!-- <img src="" alt="logo" class="logo"> -->
       </div>
-
-      <!-- end header -->
-    <div id="wrapper">
-      <div id="game"></div>
-      <button id="start-button">Start Game</button>
-      <div id="score"></div>
-      <div class="btn">
-        <button id="left-btn">◀</button>
-        <button id="right-btn">▶</button>
-        <button id="up-btn">▲</button>
-        <button id="down-btn">▼</button>
+      <div class="navbar" id="navbar">
+        <a href="./index.html"class="home-page">Home </a>
+        <!-- active html page gets id="active-html" for color highlighting in CSS -->
+        <a href="./game.html" class="game-page" id="active-html">Game</a>
+        <a href="./stats.html" class="stats-page">Stats</a>
+        <a href="./impressum.html" class="impressum-page">Impressum</a>
+        <a href="./settings.html" class="settings-page">Settings</a>
+      </div>
+      <button class="en" href="#en">en</button>
+      <button class="de" href="#de">de</button>
+      <button class="nes-checkbox">dark mode</button>
+      <div class="burger-menu" id="burger-menu">
+        <div class="burger"></div>
+        <div class="burger"></div>
       </div>
     </div>
-    <script src="./index.js"></script>
+
+    <!-- end header -->
+    <div id="wrapper">
+      <div id="game"></div>
+      <!-- <button type="button" class="nes-btn is-primary">Start Game</button> -->
+      <button type="button" id="start-button" >Start Game</button>
+      <div id="score" class="nes-container is-rounded is-dark"></div>
+      <div class="nes-container is-rounded is-dark"> 
+        <p id="timer"></p>
+      
+      </div>
+      <!-- <div id="score"></div> -->
+      <div class="btn">
+        <button class="nes-btn" href="#" id="left-btn">◀</button>
+        <button class="nes-btn" href="#" id="right-btn">▶</button>
+        <button class="nes-btn" href="#" id="up-btn">▲</button>
+        <button class="nes-btn" href="#" id="down-btn">▼</button>
+      </div>
+    </div>
+    <script src="./assets/scripts/index.js"></script>
+    <script src="./assets/scripts/header.js"></script>
+    <script src="./assets/scripts/lang-game.js"></script>
   </body>
 </html>
