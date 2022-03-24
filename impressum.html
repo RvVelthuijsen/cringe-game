@@ -70,11 +70,14 @@
 
       <section class="contact">
         <h2 id="contact-us" class="section-title">Contact us</h2>
-        <p id="contact-us-desc" class="impr-par">
-          Would you like to give some feedback or just tell us how great of a
-          job we did, leave us a message:
-        </p>
-        <form id="contact-form">
+        <div class="form-text">
+          <p id="contact-us-desc" class="impr-par">
+            Would you like to give some feedback or just tell us how great of a
+            job we did, leave us a message:
+          </p>
+          <p class="submit-msg"></p>
+        </div>
+        <form id="contact-form" name="form">
           <div id="name-field">
             <label id="contact-name" for="name">Your name</label>
             <br />
@@ -116,13 +119,13 @@
               id="button"
               type="submit"
               value="Submit"
-              class="play-btn home-page"
+              class="play-btn home-page submit-btn"
             />
           </div>
         </form>
       </section>
     </main>
-    <script src="/assets/scripts/header.js"></script>
-    <script src="/assets/scripts/lang-impressum.js"></script>
+    <script src="./assets/scripts/header.js"></script>
+    <script src="./assets/scripts/lang-impressum.js"></script>
   </body>
 </html>
