@@ -259,25 +259,32 @@ input {
   display: block;
 }
 
-.blank {
+/* .blank { */
   /* background: black; */
-}
+/* } */
 
-.wall {
+/* .wall { */
   /* border: 1px solid blue; */
-}
-.door {
+/* } */
+/* .door { */
   /* background: green; */
-}
-.dooropen {
+/* }
+.dooropen { */
   /* background: greenyellow; */
-}
+/* }
 
-.pickup {
+.pickup { */
   /* background-image: url("../images/javascript_16x16.png");
   background-repeat: no-repeat;
   background-size: cover; */
+/* } */
+
+.char1, .char2, .char3{
+  font-size: 3rem !important;
+  height: 5rem !important;
+  width: auto !important;
 }
+
 
 .enemy {
   position: relative;
@@ -286,32 +293,6 @@ input {
   background-size: contain;
   background-image: url("../images/andrei.gif");
 }
-/* 
-.enemy::before {
-  content: "";
-  display: block;
-  position: absolute;
-  width: 3px;
-  height: 3px;
-  background: black;
-  border-radius: 50%;
-  left: 3px;
-  top: 5px;
-  border: 2px solid white;
-}
-
-.enemy::after {
-  content: "";
-  display: block;
-  position: absolute;
-  width: 3px;
-  height: 3px;
-  background: black;
-  border-radius: 50%;
-  right: 3px;
-  top: 5px;
-  border: 2px solid white;
-} */
 
 .css {
   background-image: url("../images/css_16x16.png");
@@ -341,12 +322,14 @@ input {
 }
 
 .player {
-  background: yellow;
-  /* background-repeat: no-repeat; */
-  /* background-size: cover; */
+  /* background: yellow; */
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: url("../images/alien.png");
+  
   border: none;
-  border-radius: 50%;
-  clip-path: polygon(
+  border-radius: 50%; 
+  /* clip-path: polygon(
     0 0,
     40px 0,
     40px -10px,
@@ -354,11 +337,11 @@ input {
     40px 50px,
     40px 40px,
     0 40px
-  );
-  animation: chew 0.2s linear forwards infinite;
+  ); */
+  /* animation: chew 0.2s linear forwards infinite; */
 }
 
-@keyframes chew {
+/* @keyframes chew {
   50% {
     clip-path: polygon(
       0 0,
@@ -370,7 +353,7 @@ input {
       0 40px
     );
   }
-}
+} */
 /* end game grid div properties */
 /******************************************
 ************END GAME************************ 
