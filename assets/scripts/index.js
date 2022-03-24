@@ -77,22 +77,26 @@ const LEVEL1 = [
 ];
 
 const LEVEL2 = [
-  1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0,
-  0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1,
-  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-  1, 1, 1, 0, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0,
-  1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0,
-  0, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1,
-  1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 1, 0,
-  0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 3, 1, 0, 0, 0, 0, 0, 0, 0,
-  0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 3, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1,
-  1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1,
-  1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 0,
-  0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1,
-  1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-  0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0,
-  0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-  1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+  1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+  1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+  1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+  1, 0, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+  1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+  1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 1,
+  1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 1,
+  1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 
+  1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+  1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+  1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1,
+  1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1,
+  1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1,
+  1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1,
+  1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1,
+  1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+  1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1,
+  1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3,
+  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
 ];
 
 const LEVEL3 = [
@@ -212,7 +216,7 @@ class GameBoard {
   }
 
   doorOpenHandler(image) {
-    if (pickupCount === 4) {
+    if ((level=== 1 && pickupCount === 4) || (level=== 2 && pickupCount === 8) || (level=== 3 && pickupCount === 12)){
       doorOpen = true;
       gameGrid.style.backgroundImage = image;
     }
@@ -543,12 +547,12 @@ function gameOver(player) {
     player.handleKeyInput(e, gameBoard.objectExist.bind(gameBoard))
   );
   clearInterval(timer); // we stop the game loop
-
+  localStorage.setItem("time", JSON.stringify(time));
   score = score + time * 10;
   alert(`You scored ${score} amount of points!`);
 
   gameBoard.storeResults(score);
-
+  
   gameBoard.gameStatusRedirect();
 }
 
@@ -558,7 +562,7 @@ function checkCollision(player, enemies) {
     // gameBoard.removeObject(player.pos, [OBJECT_TYPE.PLAYER]);
     // gameBoard.rotateDiv(player.pos, 0);
     time = 0;
-    gameOver(player, gameGrid);
+    gameOver(player);
   }
 }
 let level = 1;
@@ -579,8 +583,7 @@ function gameLoop(player, enemies) {
     //console.log(typeof levelname);
     doorOpen = false;
     scoreTable.innerHTML = "";
-    pickupCount = 0;
-    doorOpenImage = "url('./assets/images/chicken-level-400px.png')";
+    doorOpenImage = "assets/images/level2.png')";
     addPickups(pickupLevel2);
     gameBoard = GameBoard.createGameBoard(gameGrid, pickupLevel2);
     gameBoard.createGrid(pickupLevel2);
@@ -588,7 +591,7 @@ function gameLoop(player, enemies) {
     enemies[0].resetPos(260);
     enemies[1].resetPos(175);
     gameGrid.style.backgroundImage =
-      "url('./assets/images/chicken-level-400px.png')";
+      "url('assets/images/level2.png')";
     gameBoard.addObject(player.pos, [OBJECT_TYPE.PLAYER]);
     level++;
     //console.log(level);
@@ -596,7 +599,6 @@ function gameLoop(player, enemies) {
   if (level === 2 && gameBoard.objectExist(player.pos, OBJECT_TYPE.DOOROPEN)) {
     doorOpen = false;
     scoreTable.innerHTML = "";
-    pickupCount = 0;
     doorOpenImage = "url('./assets/images/level 3.png')";
     addPickups(pickupLevel3);
     gameBoard = GameBoard.createGameBoard(gameGrid, pickupLevel3);
