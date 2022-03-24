@@ -15,6 +15,7 @@ const playerName = document.getElementById("player-name");
 const time = document.getElementById("player-time");
 const noOfItems = document.getElementById("player-items");
 const score = document.getElementById("player-score");
+const playBtn = document.getElementById("play-btn");
 const lang = {
   //   TextContent
   en: {
@@ -28,6 +29,7 @@ const lang = {
     time: "Time",
     noOfItems: "No. of items",
     score: "Score",
+    playBtn: "Play ▶",
   },
   de: {
     homeNav: "Über",
@@ -41,6 +43,7 @@ const lang = {
     time: "Zeit",
     noOfItems: "Anzahl items",
     score: "Punktzahl",
+    playBtn: "Spielen ▶",
   },
 };
 
@@ -57,6 +60,7 @@ if (localStorage.getItem("languageLs")) {
     time.textContent = lang.de.time;
     noOfItems.textContent = lang.de.noOfItems;
     score.textContent = lang.de.score;
+    playBtn.textContent = lang.de.playBtn;
     console.log(languageLs);
   } else if (languageLs === "#en") {
     languageLs = localStorage.getItem("languageLs");
@@ -70,6 +74,7 @@ if (localStorage.getItem("languageLs")) {
     time.textContent = lang.en.time;
     noOfItems.textContent = lang.en.noOfItems;
     score.textContent = lang.en.score;
+    playBtn.textContent = lang.en.playBtn;
   }
 } else {
   if ((languageLs = undefined)) {
@@ -84,6 +89,7 @@ if (localStorage.getItem("languageLs")) {
     time.textContent = lang.en.time;
     noOfItems.textContent = lang.en.noOfItems;
     score.textContent = lang.en.score;
+    playBtn.textContent = lang.en.playBtn;
   }
 }
 
@@ -99,6 +105,7 @@ const toggleEn = () => {
   time.textContent = lang.en.time;
   noOfItems.textContent = lang.en.noOfItems;
   score.textContent = lang.en.score;
+  playBtn.textContent = lang.en.playBtn;
   localStorage.setItem("languageLs", "#en");
   // location.reload();
 };
@@ -115,6 +122,7 @@ const toggleDe = () => {
   time.textContent = lang.de.time;
   noOfItems.textContent = lang.de.noOfItems;
   score.textContent = lang.de.score;
+  playBtn.textContent = lang.de.playBtn;
   localStorage.setItem("languageLs", "#de");
   // location.reload();
 };
