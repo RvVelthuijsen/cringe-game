@@ -12,6 +12,10 @@ document.addEventListener("DOMContentLoaded", function () {
   burgerMenu.addEventListener("click", toggle);
 });
 
+if (!localStorage.getItem("languageLs")){
+  localStorage.setItem("languageLs", "#en")
+}
+
 // Adding rows to the table
 
 const playersTableRow = document.createElement("tr");
