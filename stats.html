@@ -8,14 +8,15 @@
       href="https://fonts.googleapis.com/css?family=Press+Start+2P"
       rel="stylesheet"
     />
-    <title>Cringe Stats</title>
+    <link rel="icon" type="image/x-icon" href="./assets/images/alien.png">
+    <title>Cringe Game - Stats</title>
   </head>
   <body>
     <!-- header start -->
 
     <div class="header">
       <div class="logo-container">
-        😔
+        <img id="logo" src="./assets/images/alien.png" alt="cringe game alien logo">
         <!-- <img src="" alt="logo" class="logo"> -->
       </div>
       <div class="navbar" id="navbar">
@@ -37,43 +38,41 @@
     </div>
 
     <!-- end header -->
-    <h1 class="stats-title">Score Ranking</h1>
-    <!--  here we display different headings depending on winning/losing state,
+    <div class="main-container">
+      <h1 class="stats-title">Score Ranking</h1>
+      <!--  here we display different headings depending on winning/losing state,
             e.g. "Congrats...." when winning, "ooops, you failed..." when losing-->
-    <h2 class="stats-message">
-      Take a look at the scores of you and other players!
-    </h2>
-    <div class="container-img-statstable">
-      <div class="stats-flex-item img-container">
-        <img
-          src="https://placekitten.com/200/287"
-          class="img-players-character"
-        />
+      <h2 class="stats-message"></h2>
+      <div class="container-img-statstable">
+        <div class="stats-flex-item img-container">
+          <img src="./assets/images/trophy.png" class="stats-img" />
+        </div>
+        <div class="stats-flex-item table-container">
+          <!-- Via JavaScript, DOM manipulation and Tiny DB, creating table rows -->
+          <table class="stats-table">
+            <tr>
+              <th id="player-rank">Rank</th>
+              <th id="player-name">Player</th>
+              <th id="player-time">Time Left</th>
+              <th id="player-items"># Items</th>
+              <th id="player-score">Score</th>
+            </tr>
+            <tr id="no-results-row">
+              <td>/</td>
+              <td>/</td>
+              <td>/</td>
+              <td>/</td>
+              <td>/</td>
+            </tr>
+          </table>
+        </div>
       </div>
-      <div class="stats-flex-item table-container">
-        <!-- Via JavaScript, DOM manipulation and Tiny DB, creating table rows -->
-        <table class="stats-table">
-          <tr>
-            <th id="player-name">Player</th>
-            <th id="player-time">Time Left</th>
-            <th id="player-items"># Items</th>
-            <th id="player-score">Score</th>
-          </tr>
-          <tr id="no-results-row">
-            <td>/</td>
-            <td>/</td>
-            <td>/</td>
-            <td>/</td>
-          </tr>
-        </table>
+      <!--  Change text in button depending on case (play again, try again) -->
+      <div class="container-btn">
+        <a class="play-btn stats-play-btn" href="./game.html">
+          <button class="play-button">Play ▶</button>
+        </a>
       </div>
-    </div>
-    <!--  Change text in button depending on case (play again, try again) -->
-
-    <div class="container-btn">
-      <a class="play-btn stats-play-btn" href="./game.html">
-        <button>Play ▶</button>
-      </a>
     </div>
     <script src="./assets/scripts/header.js"></script>
     <script src="./assets/scripts/lang-stats.js"></script>

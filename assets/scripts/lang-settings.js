@@ -8,6 +8,12 @@ const gamePage = document.querySelector(".game-page");
 const statsPage = document.querySelector(".stats-page");
 const impressumPage = document.querySelector(".impressum-page");
 const settingsPage = document.querySelector(".settings-page");
+const difficultyTitle = document.querySelector(".difficulty-title");
+const mainTitle = document.querySelector(".main-title");
+const sectionTitle = document.querySelector(".section-title");
+const characterTitle = document.querySelector(".character-title");
+
+
 const lang = {
   
 //   TextContent
@@ -16,12 +22,21 @@ const lang = {
     gameNav: "Game",
     statsNav: "Stats",
     settingsNav: "Settings",
+    difficultyTitle: "Difficulty",
+    mainTitle: "Settings",
+    sectionTitle: "Profile",
+    characterTitle: "Character",
+    
   },
   de: {
     homeNav: "Über",
     gameNav: "Spiel",
     statsNav: "Statistiken",
     settingsNav: "Einstellungen",
+    difficultyTitle: "Schwierigkeit",
+    mainTitle: "Einstellungen",
+    sectionTitle: "Profiel",
+    characterTitle: "Figur"
   },
 };
 
@@ -32,6 +47,10 @@ if (localStorage.getItem("languageLs")) {
     gamePage.textContent = lang.de.gameNav;
     statsPage.textContent = lang.de.statsNav;
     settingsPage.textContent = lang.de.settingsNav;
+    difficultyTitle.textContent = lang.de.difficultyTitle;
+    mainTitle.textContent = lang.de.mainTitle;
+    sectionTitle.textContent = lang.de.sectionTitle;
+    characterTitle.textContent = lang.de.characterTitle;
     console.log(languageLs);
   } else if (languageLs === "#en") {
     languageLs = localStorage.getItem("languageLs");
@@ -39,6 +58,10 @@ if (localStorage.getItem("languageLs")) {
     gamePage.textContent = lang.en.gameNav;
     statsPage.textContent = lang.en.statsNav;
     settingsPage.textContent = lang.en.settingsNav;
+    difficultyTitle.textContent = lang.en.difficultyTitle;
+    mainTitle.textContent = lang.en.mainTitle;
+    sectionTitle.textContent = lang.en.sectionTitle;
+    characterTitle.textContent = lang.en.characterTitle;
   }
 } else {
   if ((languageLs = undefined)) {
@@ -47,6 +70,10 @@ if (localStorage.getItem("languageLs")) {
     gamePage.textContent = lang.en.gameNav;
     statsPage.textContent = lang.en.statsNav;
     settingsPage.textContent = lang.en.settingsNav;
+    difficultyTitle.textContent = lang.en.difficultyTitle;
+    mainTitle.textContent = lang.en.mainTitle;
+    sectionTitle.textContent = lang.en.sectionTitle;
+    characterTitle.textContent = lang.en.characterTitle;
   }
 }
 
@@ -56,6 +83,10 @@ const toggleEn = () => {
   gamePage.textContent = lang.en.gameNav;
   statsPage.textContent = lang.en.statsNav;
   settingsPage.textContent = lang.en.settingsNav;
+  difficultyTitle.textContent = lang.en.difficultyTitle;
+  mainTitle.textContent = lang.en.mainTitle;
+  sectionTitle.textContent = lang.en.sectionTitle;
+  characterTitle.textContent = lang.en.characterTitle;
   localStorage.setItem("languageLs", "#en");
   // location.reload();
 };
@@ -66,6 +97,10 @@ const toggleDe = () => {
   gamePage.textContent = lang.de.gameNav;
   statsPage.textContent = lang.de.statsNav;
   settingsPage.textContent = lang.de.settingsNav;
+  difficultyTitle.textContent = lang.de.difficultyTitle;
+  mainTitle.textContent = lang.de.mainTitle;
+  sectionTitle.textContent = lang.de.sectionTitle;
+  characterTitle.textContent = lang.de.characterTitle;
   localStorage.setItem("languageLs", "#de");
   // location.reload();
 };

@@ -77,22 +77,26 @@ const LEVEL1 = [
 ];
 
 const LEVEL2 = [
-  1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0,
-  0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1,
-  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-  1, 1, 1, 0, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0,
-  1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0,
-  0, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1,
-  1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 1, 0,
-  0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 3, 1, 0, 0, 0, 0, 0, 0, 0,
-  0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 3, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1,
-  1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1,
-  1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 0,
-  0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1,
-  1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-  0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0,
-  0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-  1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+  1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+  1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+  1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+  1, 0, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+  1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+  1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 1,
+  1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 1,
+  1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 
+  1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+  1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+  1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1,
+  1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1,
+  1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1,
+  1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1,
+  1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1,
+  1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+  1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1,
+  1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3,
+  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
 ];
 
 const LEVEL3 = [
@@ -122,6 +126,8 @@ let playerName = "";
 let time = 0;
 let results = [];
 let doorOpenImage = "url('./assets/images/dooropen map.png')";
+
+
 
 function addPickups(level) {
   let tries = 4;
@@ -212,7 +218,7 @@ class GameBoard {
   }
 
   doorOpenHandler(image) {
-    if (pickupCount === 4) {
+    if ((level=== 1 && pickupCount === 4) || (level=== 2 && pickupCount === 8) || (level=== 3 && pickupCount === 12)){
       doorOpen = true;
       gameGrid.style.backgroundImage = image;
     }
@@ -300,15 +306,16 @@ class GameBoard {
       if (nextMovePos === character.pos) {
         this.rotateDiv(character.pos, character.dir.rotation);
       }
-
+      this.resetBG();
       // now we can move the character on the div, by remove and adding classes
       this.removeObject(character.pos, classesToRemove);
       this.addObject(nextMovePos, classesToAdd);
-
+      this.setChar();
       // then we have to set the new position
       character.setNewPos(nextMovePos, direction);
     }
   }
+
 
   storeResults(myScore) {
     if (!localStorage.getItem("results")) {
@@ -359,6 +366,27 @@ class GameBoard {
         localStorage.setItem("results", JSON.stringify(currentResults));
       }
     }
+  }
+
+  setChar() {
+    const playerModel = document.querySelector(".player");
+    if(localStorage.getItem("character")){
+      console.log(localStorage.getItem("character"));
+      if (JSON.parse(localStorage.getItem("character")) === 1){
+        playerModel.style.backgroundImage = "url('./assets/images/alien.png')";
+      }
+      if (JSON.parse(localStorage.getItem("character")) === 2){
+        playerModel.style.backgroundImage = "url('./assets/images/cat.png')";
+      }
+      if (JSON.parse(localStorage.getItem("character")) === 3){
+        playerModel.style.backgroundImage = "url('assets/images/vamp.png')";
+      }
+    } 
+  }
+
+  resetBG(){
+    const playerModel = document.querySelector(".player");
+    playerModel.style.backgroundImage = "";
   }
 
   // static method: is something we can call without instantiating the class, we can call it directly on the class
@@ -439,6 +467,7 @@ class Player {
   resetPos(newPos) {
     this.pos = newPos;
   }
+
 }
 
 // ENEMIES
@@ -543,12 +572,12 @@ function gameOver(player) {
     player.handleKeyInput(e, gameBoard.objectExist.bind(gameBoard))
   );
   clearInterval(timer); // we stop the game loop
-
+  localStorage.setItem("time", JSON.stringify(time));
   score = score + time * 10;
   alert(`You scored ${score} amount of points!`);
 
   gameBoard.storeResults(score);
-
+  
   gameBoard.gameStatusRedirect();
 }
 
@@ -558,11 +587,12 @@ function checkCollision(player, enemies) {
     // gameBoard.removeObject(player.pos, [OBJECT_TYPE.PLAYER]);
     // gameBoard.rotateDiv(player.pos, 0);
     time = 0;
-    gameOver(player, gameGrid);
+    gameOver(player);
   }
 }
 let level = 1;
 function gameLoop(player, enemies) {
+  
   // 1. Move Pacman
   gameBoard.moveCharacter(player);
   // 2. Check Ghost collision on the old positions
@@ -579,8 +609,7 @@ function gameLoop(player, enemies) {
     //console.log(typeof levelname);
     doorOpen = false;
     scoreTable.innerHTML = "";
-    pickupCount = 0;
-    doorOpenImage = "url('./assets/images/chicken-level-400px.png')";
+    doorOpenImage = "assets/images/level2.png')";
     addPickups(pickupLevel2);
     gameBoard = GameBoard.createGameBoard(gameGrid, pickupLevel2);
     gameBoard.createGrid(pickupLevel2);
@@ -588,7 +617,7 @@ function gameLoop(player, enemies) {
     enemies[0].resetPos(260);
     enemies[1].resetPos(175);
     gameGrid.style.backgroundImage =
-      "url('./assets/images/chicken-level-400px.png')";
+      "url('assets/images/level2.png')";
     gameBoard.addObject(player.pos, [OBJECT_TYPE.PLAYER]);
     level++;
     //console.log(level);
@@ -596,7 +625,6 @@ function gameLoop(player, enemies) {
   if (level === 2 && gameBoard.objectExist(player.pos, OBJECT_TYPE.DOOROPEN)) {
     doorOpen = false;
     scoreTable.innerHTML = "";
-    pickupCount = 0;
     doorOpenImage = "url('./assets/images/level 3.png')";
     addPickups(pickupLevel3);
     gameBoard = GameBoard.createGameBoard(gameGrid, pickupLevel3);
@@ -632,6 +660,7 @@ function startGame() {
 
   let player = new Player(361); // Player(position)
   gameBoard.addObject(361, [OBJECT_TYPE.PLAYER]); // we are adding a class(position, array with classes)
+  gameBoard.setChar();
 
   document.addEventListener(
     "keydown",
@@ -678,8 +707,17 @@ function startGame() {
   timer = setInterval(() => gameLoop(player, enemies), GLOBAL_SPEED);
 }
 
+let difficulty = 80;
+
+function checkDifficulty() {
+  if (localStorage.getItem("difficulty")){
+    difficulty = JSON.parse(localStorage.getItem("difficulty"));
+  }
+}
+
 // Initialize game
 startButton.addEventListener("click", () => {
   startGame();
-  globalTimer(100);
+  checkDifficulty();
+  globalTimer(difficulty);
 });
