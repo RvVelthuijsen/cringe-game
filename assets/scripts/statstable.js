@@ -1,4 +1,18 @@
 // DISPLAY STATS FROM LOCAL STORAGE
+const statsMsg = document.querySelector(".stats-message");
+const statsImg = document.querySelector(".stats-img");
+const lang2 = localStorage.getItem("languageLs");
+console.log(lang2);
+
+statsMsg.innerHTML = "No stats yet. Play a game first!";
+if (localStorage.getItem("languageLs")) {
+  if (localStorage.getItem("languageLs") === "#de") {
+    statsMsg.innerHTML = "Werfen Sie einen Blick auf Ihre Ergebnisse!";
+  } else if (localStorage.getItem("languageLs") === "#en") {
+    statsMsg.innerHTML = "Take a look at your scores!";
+  }
+}
+
 const statsTable = document.querySelector(".stats-table");
 const noResultsRow = document.getElementById("no-results-row");
 
@@ -36,22 +50,35 @@ console.log(timeWinFail);
 
 localStorage.removeItem("time");
 
-const statsMsg = document.querySelector(".stats-message");
-const statsImg = document.querySelector(".stats-img");
+console.log(timeWinFail);
 
 // if win
 if (timeWinFail > 0) {
-  statsMsg.innerHTML = "Congrats, you did it! Take a look at your scores!";
+  if (lang2 === "#de") {
+    statsMsg.innerHTML =
+      "Glückwunsch, du hast es geschafft! Guck dir deine Ergebnisse an!";
+  } else if (lang2 === "#en") {
+    statsMsg.innerHTML = "Congrats, you did it! Take a look at your scores!";
+  }
 }
 
 // if lose
 if (timeWinFail === 0) {
-  statsMsg.innerHTML =
-    "Oops, time's up. Take a look at your scores and try again!";
   statsImg.src = "./assets/images/bomb.png";
+  if (lang2 === "#de") {
+    statsMsg.innerHTML =
+      "Hoppla, Zeit ist um. Sieh dir deine Punkte an und versuch's nochmal!";
+  } else if (lang2 === "#en") {
+    statsMsg.innerHTML =
+      "Oops, time's up. Take a look at your scores and try again!";
+  }
 }
 
 // if results are empty, we display another stats message
 if (!currentResults) {
-  statsMsg.innerHTML = "No stats yet. Play a game first!";
+  if (lang2 === "#de") {
+    statsMsg.innerHTML = "Keine Ergebnisse bisher. Spiel zuerst eine Runde!";
+  } else if (lang2 === "#en") {
+    statsMsg.innerHTML = "No stats yet. Play a game first!";
+  }
 }

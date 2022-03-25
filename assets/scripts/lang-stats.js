@@ -24,7 +24,7 @@ const lang = {
     statsNav: "Stats",
     settingsNav: "Settings",
     statsTitle: "Score Ranking",
-    statsMessage2: "Take a look at the scores of you and other players!",
+    /*statsMessage2: "Take a look at your scores!", */
     playerName: "Player's name",
     time: "Time",
     noOfItems: "No. of items",
@@ -37,8 +37,7 @@ const lang = {
     statsNav: "Statistiken",
     settingsNav: "Einstellungen",
     statsTitle: "Rangliste",
-    statsMessage2:
-      "Werfen Sie einen Blick auf die Ergebnisse von Ihnen und anderen Spielern!",
+    /* statsMessage2: "Werfen Sie einen Blick auf Ihre Ergebnisse!", */
     playerName: "Spieler Name",
     time: "Zeit",
     noOfItems: "Anzahl items",
@@ -55,7 +54,7 @@ if (localStorage.getItem("languageLs")) {
     statsPage.textContent = lang.de.statsNav;
     settingsPage.textContent = lang.de.settingsNav;
     statsTitle.textContent = lang.de.statsTitle;
-    statsMessage2.textContent = lang.de.statsMessage2;
+    /* statsMessage2.textContent = lang.de.statsMessage2; */
     playerName.textContent = lang.de.playerName;
     time.textContent = lang.de.time;
     noOfItems.textContent = lang.de.noOfItems;
@@ -69,7 +68,7 @@ if (localStorage.getItem("languageLs")) {
     statsPage.textContent = lang.en.statsNav;
     settingsPage.textContent = lang.en.settingsNav;
     statsTitle.textContent = lang.en.statsTitle;
-    statsMessage2.textContent = lang.en.statsMessage2;
+    /* statsMessage2.textContent = lang.en.statsMessage2;*/
     playerName.textContent = lang.en.playerName;
     time.textContent = lang.en.time;
     noOfItems.textContent = lang.en.noOfItems;
@@ -84,7 +83,7 @@ if (localStorage.getItem("languageLs")) {
     statsPage.textContent = lang.en.statsNav;
     settingsPage.textContent = lang.en.settingsNav;
     statsTitle.textContent = lang.en.statsTitle;
-    statsMessage2.textContent = lang.en.statsMessage2;
+    /* statsMessage2.textContent = lang.en.statsMessage2; */
     playerName.textContent = lang.en.playerName;
     time.textContent = lang.en.time;
     noOfItems.textContent = lang.en.noOfItems;
