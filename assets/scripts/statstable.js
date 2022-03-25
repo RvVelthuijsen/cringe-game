@@ -31,9 +31,10 @@ if (currentResults) {
 
 // CHANGING HEADLINE AND IMAGE ACCORDING TO WIN/FAIL STATUS
 let timeLastGame = localStorage.getItem("time");
-console.log(timeLastGame);
 let timeWinFail = JSON.parse(timeLastGame);
 console.log(timeWinFail);
+
+localStorage.removeItem("time");
 
 const statsMsg = document.querySelector(".stats-message");
 const statsImg = document.querySelector(".stats-img");
@@ -54,16 +55,3 @@ if (timeWinFail === 0) {
 if (!currentResults) {
   statsMsg.innerHTML = "No stats yet. Play a game first!";
 }
-
-/* // adjusting message on stats-page
-const statsPage = document.querySelector(".stats-page");
-
-function regularStatsMsg() {
-  if (timeLastGame) {
-    timeLastGame = undefined;
-    timeLastGame = statsMsg.innerHTML = "Take a look at your scores!";
-  }
-}
-
-statsPage.addEventListener("click", regularStatsMsg);
- */
