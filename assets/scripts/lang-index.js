@@ -93,6 +93,7 @@ const toggleDe = () => {
   statsPage.textContent = lang.de.statsNav;
   settingsPage.textContent = lang.de.settingsNav;
   playBtn.textContent = lang.de.playBtn;
+  instruTitle.textContent = lang.de.instruTitle;
   localStorage.setItem("languageLs", "#de");
   // location.reload();
 };
