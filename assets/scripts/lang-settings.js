@@ -35,7 +35,7 @@ const lang = {
     settingsNav: "Einstellungen",
     difficultyTitle: "Schwierigkeit",
     mainTitle: "Einstellungen",
-    sectionTitle: "Profiel",
+    sectionTitle: "Profil",
     characterTitle: "Figur"
   },
 };

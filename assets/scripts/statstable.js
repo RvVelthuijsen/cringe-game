@@ -69,7 +69,7 @@ if (timeWinFail === 0) {
       "Hoppla, Zeit ist um. Sieh dir deine Punkte an und versuch's nochmal!";
   } else if (lang2 === "#en") {
     statsMsg.innerHTML =
-      "Oops, time's up. Take a look at your scores and try again!";
+      "Oops, you lost! Take a look at your scores and try again!";
   }
 }
 
@@ -95,7 +95,7 @@ enButton.addEventListener(("click"), () => {
     if (timeWinFail === 0){
       statsImg.src = "./assets/images/bomb.png";
     statsMsg.innerHTML =
-        "Oops, time's up. Take a look at your scores and try again!";
+        "Oops, you lost! Take a look at your scores and try again!";
       }
     
   });
