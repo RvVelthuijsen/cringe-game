@@ -594,6 +594,7 @@ td {
   .navbar {
     visibility: visible;
     display: flex;
+    justify-content: space-around;
   }
   /* end header */
   /* start home */
